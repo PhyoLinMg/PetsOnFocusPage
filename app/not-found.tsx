@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: "Page not found", robots: { index: fa
 export default function NotFound() {
   return (
     <section className="container not-found">
-      <Image src={catDisappointed} alt="A tabby cat looking a little let down" sizes="200px" priority />
+      <Image src={catDisappointed} alt="A tabby cat looking a little let down" sizes="200px" loading="eager" fetchPriority="high" />
       <h1 className="section-title">This page wandered off.</h1>
       <p>It isn’t here any more, or it never was. The cat is as surprised as you are.</p>
       <p>

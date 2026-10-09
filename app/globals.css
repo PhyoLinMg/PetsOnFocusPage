@@ -10,12 +10,14 @@
   --dark: #141414;
   --card: #252523;
   --accent: #8aac6c;
+  --accent-hover: #9bbb7d;
   --on-accent: #14210d;
 
   /* Supporting colours */
   --on-dark-2: #c9c6b6;
   --paper: #f2efe0;
   --paper-2: #d9d2b6;
+  --frame-paper: #e3d9bc;
   --baseboard: #335a34;
   --sky: #a9cbd3;
   --sun: #f2d27a;
@@ -26,7 +28,17 @@
   --leaf: #2f5a31;
   --leaf-2: #4e7d4a;
 
+  /* App-screen colours, used only inside the demos */
+  --slate: #5d6670;
+  --navy: #3b4a6b;
+  --teal: #4b7f7a;
+  --card-pinned: #2c3a28;
+  --rarity-epic: #b49ce0;
+  --rarity-legendary: #d9a441;
+  --rarity-rare: #7fa8dc;
+
   --radius: 20px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --gutter: clamp(16px, 4vw, 32px);
 }
 
@@ -55,6 +67,15 @@ body {
   font-size: 1.125rem;
   line-height: 1.6;
   overflow-x: hidden;
+  /* Short pages (404) keep the floor at the bottom of the window. */
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 img {
@@ -81,6 +102,16 @@ a {
   color: inherit;
   text-underline-offset: 0.18em;
   text-decoration-thickness: 1.5px;
+}
+
+::selection {
+  background: var(--floor);
+  color: var(--on-floor);
+}
+
+.section--dark ::selection {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 :focus-visible {
@@ -123,8 +154,8 @@ a {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px 24px;
-  padding-block: 20px;
+  gap: 0 24px;
+  padding-block: 14px;
 }
 
 .wordmark {
@@ -150,7 +181,7 @@ a {
 
 .site-nav a {
   text-decoration: none;
-  padding-block: 6px;
+  padding-block: 10px;
 }
 
 .site-nav a:hover {
@@ -169,65 +200,11 @@ a {
   margin-bottom: 14px;
 }
 
-.eyebrow--dark {
-  color: var(--accent);
-}
-
 .section-title {
   font-size: clamp(2rem, 4.4vw, 3rem);
 }
 
-/* ---------- Hero: the room ---------- */
-
-.hero {
-  --floor-h: clamp(104px, 15vw, 168px);
-  position: relative;
-  padding-top: clamp(16px, 4vw, 48px);
-  isolation: isolate;
-}
-
-/* The floor runs the full width of the page under the room. */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0 0;
-  height: var(--floor-h);
-  background: var(--floor);
-  border-top: 10px solid var(--baseboard);
-  z-index: -1;
-}
-
-.hero-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  align-items: end;
-  gap: 32px;
-}
-
-.hero-copy {
-  align-self: center;
-  padding-bottom: calc(var(--floor-h) + 24px);
-}
-
-.hero-title {
-  font-size: clamp(3rem, 7.4vw, 5.75rem);
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-
-.hero-tagline {
-  font-family: var(--font-hand), cursive;
-  font-weight: 500;
-  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
-  margin-top: 10px;
-}
-
-.hero-lede {
-  max-width: 34ch;
-  margin-top: 22px;
-  font-size: clamp(1.125rem, 1.6vw, 1.3rem);
-  color: var(--ink-2);
-}
+/* ---------- Store badges ---------- */
 
 .store-list {
   list-style: none;
@@ -264,54 +241,278 @@ a {
   font-weight: 700;
 }
 
-.room {
+/* ---------- Journey: garden → door → room ---------- */
+
+/* A sticky stage behind a column of notes. Journey.tsx drives the door, the zoom and
+   the room camera from the scroll; the notes are ordinary content in the flow. */
+.journey {
   position: relative;
-  width: 100%;
-  max-width: 520px;
-  aspect-ratio: 5 / 6;
-  justify-self: end;
 }
 
-.room > * {
-  position: absolute;
-}
-
-.room-window {
-  left: 2%;
-  top: 4%;
-  width: 40%;
-  aspect-ratio: 4 / 5;
-  background: var(--paper);
-}
-
-.room-sky {
-  position: absolute;
-  inset: 8%;
-  background: var(--sky);
+.journey-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
   overflow: hidden;
+  background: var(--room-wall, var(--wall));
+  transition: background-color 900ms var(--ease-out);
 }
 
-.room-sun,
-.room-moon {
+/* The last stop pulls back: the whole room, lit, in the dark. */
+.journey-stage[data-view="fit"] {
+  background: var(--dark);
+}
+
+.journey-track {
+  position: relative;
+  margin-top: -100vh;
+  margin-top: -100svh;
+}
+
+.beat--intro {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.beat--door {
+  height: 110vh;
+  height: 110svh;
+}
+
+.beat--stop {
+  min-height: 96vh;
+  min-height: 96svh;
+  display: flex;
+  align-items: center;
+  padding-inline: max(var(--gutter), calc((100% - 1160px) / 2 + var(--gutter)));
+  padding-block: 8vh;
+}
+
+/* Intro, written on the sky */
+
+.intro {
+  padding-top: clamp(104px, 17vh, 170px);
+}
+
+.intro-title {
+  font-size: clamp(2.75rem, 7vw, 5.75rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.intro-tagline {
+  font-family: var(--font-hand), cursive;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  line-height: 1.15;
+  margin-top: 10px;
+}
+
+.intro-lede {
+  max-width: 34ch;
+  margin-top: 16px;
+  font-size: clamp(1.125rem, 1.6vw, 1.3rem);
+  color: var(--ink-2);
+}
+
+.intro-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.intro-cue-arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 2.5px solid currentColor;
+  border-bottom: 2.5px solid currentColor;
+  transform: translateY(-3px) rotate(45deg);
+  animation: cue-bob 2.4s var(--ease-out) 3;
+}
+
+@keyframes cue-bob {
+  0%,
+  60%,
+  100% {
+    translate: 0 0;
+  }
+  30% {
+    translate: 0 5px;
+  }
+}
+
+[data-sky="night"] .intro {
+  color: var(--on-floor);
+}
+
+[data-sky="night"] .intro-lede {
+  color: var(--on-dark-2);
+}
+
+/* Paper notes */
+
+.note {
+  width: 100%;
+  max-width: 27rem;
+  padding: clamp(22px, 3vw, 34px);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+}
+
+.note .eyebrow {
+  margin-bottom: 10px;
+}
+
+.note-count {
+  margin-left: 0.6em;
+  color: var(--ink);
+}
+
+.note-headline {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.note-lede {
+  margin-top: 14px;
+  color: var(--ink-2);
+}
+
+.note .store-list {
+  margin-top: 26px;
+}
+
+.note-title {
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.note-title--step {
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  margin-bottom: 10px;
+}
+
+.note-body {
+  color: var(--ink-2);
+  font-size: 1.05rem;
+}
+
+.note-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.note-features li + li {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 2px solid var(--ink);
+}
+
+.visually-hidden {
   position: absolute;
-  right: 12%;
-  top: 10%;
-  width: 30%;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The header floats over the garden on the home page. */
+body:has(.journey) .site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+}
+
+[data-sky="night"] body:has(.journey) .site-header,
+[data-sky="night"] body:has(.journey) .site-header .wordmark {
+  color: var(--on-floor);
+}
+
+[data-sky="night"] body:has(.journey) .site-header :focus-visible {
+  outline-color: var(--on-floor);
+}
+
+/* ---------- Outside: the garden and the house ---------- */
+
+/* The home page doesn't bounce past its ends: a bounce at the top would uncover the
+   wall colour above the garden's sky. */
+html:has(.journey) {
+  overscroll-behavior-y: none;
+}
+
+/* No will-change here: it would freeze the garden's raster at whatever zoom it was
+   first painted at. Coming back out through the door it reappears at ~19x, and on
+   zooming back to 1x most of its tiles were never painted, so the room showed through. */
+.outside-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.outside {
+  --house-x: 50%;
+  --house-w: min(66vh, 92vw, 640px);
+  --ground-h: 24%;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--sky);
+}
+
+@supports (height: 1svh) {
+  .outside {
+    --house-w: min(66svh, 92vw, 640px);
+  }
+}
+
+.outside > *,
+.outside-sky > *,
+.house > *,
+.house-body > *,
+.house-door > *,
+.house-window > *,
+.house-pane > *,
+.outside-ground > * {
+  position: absolute;
+}
+
+.outside-sky {
+  inset: 0;
+}
+
+.outside-sun,
+.outside-moon {
+  right: 9%;
+  top: 14%;
+  width: clamp(56px, 10vmin, 112px);
   aspect-ratio: 1;
   border-radius: 50%;
 }
 
-.room-sun {
+.outside-sun {
   background: var(--sun);
 }
 
-.room-moon {
+.outside-moon,
+.outside-star {
   display: none;
+}
+
+.outside-moon {
   background: var(--paper);
 }
 
-/* Crescent: a sky-coloured disc bites the moon. */
-.room-moon::after {
+.outside-moon::after {
   content: "";
   position: absolute;
   inset: -8% -30% 18% 30%;
@@ -319,61 +520,481 @@ a {
   background: var(--sky-night);
 }
 
-.room-star {
+.outside-star {
+  width: clamp(8px, 1.2vmin, 14px);
+  aspect-ratio: 1;
+  background: var(--paper);
+  transform: rotate(45deg);
+}
+
+.outside-star--a {
+  right: 34%;
+  top: 7%;
+}
+
+.outside-star--b {
+  right: 15%;
+  top: 34%;
+}
+
+.outside-star--c {
+  left: 46%;
+  top: 9%;
+}
+
+[data-sky="night"] .outside {
+  background: var(--sky-night);
+}
+
+[data-sky="night"] .outside-sun {
   display: none;
+}
+
+[data-sky="night"] .outside-moon,
+[data-sky="night"] .outside-star {
+  display: block;
+}
+
+.outside-hill {
+  border-radius: 50%;
+}
+
+.outside-hill--back {
+  left: -25%;
+  right: 35%;
+  bottom: 14%;
+  height: 24%;
+  background: var(--leaf-2);
+}
+
+.outside-hill--front {
+  left: 40%;
+  right: -30%;
+  bottom: 12%;
+  height: 21%;
+  background: var(--accent);
+}
+
+.outside-ground {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--ground-h);
+  background: var(--floor);
+  border-top: 10px solid var(--baseboard);
+}
+
+.outside-path {
+  left: var(--house-x);
+  top: 0;
+  bottom: 0;
+  width: calc(var(--house-w) * 0.9);
+  translate: -50% 0;
+  background: var(--paper-2);
+  clip-path: polygon(39% 0, 61% 0, 100% 100%, 0 100%);
+}
+
+.house {
+  left: var(--house-x);
+  bottom: var(--ground-h);
+  width: var(--house-w);
+  aspect-ratio: 1.15;
+  translate: -50% 0;
+}
+
+.house-chimney {
+  left: 68%;
+  top: 6%;
+  width: 9%;
+  height: 26%;
+  background: var(--pot);
+}
+
+.house-roof {
+  left: -6%;
+  right: -6%;
+  top: 0;
+  height: 45%;
+  background: var(--rug);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.house-eave {
+  left: -4%;
+  right: -4%;
+  top: 43%;
+  height: 4%;
+  background: var(--pot);
+}
+
+.house-body {
+  left: 6%;
+  right: 6%;
+  top: 47%;
+  bottom: 0;
+  background: var(--frame-paper);
+}
+
+.house-window {
+  top: 18%;
+  width: 25%;
+  height: 44%;
+  background: var(--paper);
+}
+
+.house-window--left {
+  left: 8%;
+}
+
+.house-window--right {
+  right: 8%;
+}
+
+.house-pane {
+  inset: 9%;
+  overflow: hidden;
+  background: var(--sky);
+}
+
+[data-sky="night"] .house-pane {
+  background: var(--sun);
+}
+
+.house-cat {
+  left: 50%;
+  top: 14%;
+  width: auto;
+  height: 175%;
+  max-width: none;
+  translate: -50% 0;
+}
+
+.house-mullion {
+  left: 50%;
+  top: 9%;
+  bottom: 9%;
+  width: 7%;
+  translate: -50% 0;
+  background: var(--paper);
+}
+
+.house-window--left .house-mullion {
+  display: none;
+}
+
+.house-door {
+  left: 50%;
+  bottom: 0;
+  width: 23%;
+  height: 64%;
+  translate: -50% 0;
+  background: var(--paper);
+}
+
+/* Left empty: Journey.tsx cuts this rectangle out of the scene so the room shows
+   through, and places the door panel over it. */
+.house-doorway {
+  inset: 7% 9% 0;
+}
+
+/* Swings open on its left hinge; Journey.tsx sizes it to the doorway and sets the
+   angle from the scroll. */
+.house-door-panel {
   position: absolute;
+  background: var(--leaf);
+  transform-origin: 0 50%;
+  transform: perspective(520px) rotateY(var(--door-angle, 0deg));
+}
+
+.house-door-panel > * {
+  position: absolute;
+}
+
+.house-door-inset {
+  left: 18%;
+  right: 18%;
+  background: var(--leaf-2);
+}
+
+.house-door-inset--top {
+  top: 10%;
+  height: 30%;
+}
+
+.house-door-inset--bottom {
+  top: 50%;
+  height: 38%;
+}
+
+.house-door-knob {
+  right: 9%;
+  top: 50%;
+  width: 11%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--sun);
+}
+
+.house-step {
+  left: 50%;
+  top: 100%;
+  width: 26%;
+  height: 3%;
+  translate: -50% 0;
+  background: var(--pot);
+}
+
+.house-mat {
+  left: 50%;
+  top: 104%;
+  width: 24%;
+  padding-block: 1.2%;
+  translate: -50% 0;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 4px;
+  font-family: var(--font-hand), cursive;
+  font-weight: 700;
+  font-size: max(12px, calc(var(--house-w) * 0.036));
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bush {
+  bottom: -3%;
+  aspect-ratio: 1.6;
+  border-radius: 50% 50% 40% 40% / 62% 62% 38% 38%;
+}
+
+.bush--left {
+  left: -9%;
+  width: 22%;
+  background: var(--leaf);
+}
+
+.bush--left-small {
+  left: 9%;
+  width: 12%;
+  background: var(--leaf-2);
+}
+
+.bush--right {
+  right: -10%;
+  width: 25%;
+  background: var(--leaf-2);
+}
+
+/* ---------- The room ---------- */
+
+.room-cam {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 55%;
+}
+
+.world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: max(100%, 160vh);
+  aspect-ratio: 16 / 10;
+  background: var(--room-wall, var(--wall));
+  transform-origin: 0 0;
+  transition:
+    transform 1300ms var(--ease-out),
+    background-color 900ms var(--ease-out);
+  will-change: transform;
+}
+
+@supports (height: 1svh) {
+  .world {
+    width: max(100%, 160svh);
+  }
+}
+
+.world > *,
+.world > * > *,
+.rs-sky > * {
+  position: absolute;
+}
+
+.rs-floor {
+  left: 0;
+  right: 0;
+  top: 70%;
+  bottom: 0;
+  background: var(--floor);
+}
+
+.rs-baseboard {
+  left: -150%;
+  right: -150%;
+  top: 70%;
+  height: 1.3%;
+  background: var(--baseboard);
+  transition: left 900ms var(--ease-out), right 900ms var(--ease-out);
+}
+
+/* The floor carries on past the room's edges so the camera can pull back freely.
+   On the last stop it folds away and the room shows as one lit box in the dark. */
+.rs-floor-ext {
+  left: -150%;
+  right: -150%;
+  top: 70%;
+  bottom: -150%;
+  background: var(--floor);
+  transition: opacity 900ms var(--ease-out);
+}
+
+.journey-stage[data-view="fit"] .rs-floor-ext {
+  opacity: 0;
+}
+
+.journey-stage[data-view="fit"] .rs-baseboard {
+  left: 0;
+  right: 0;
+}
+
+/* The door you came in by */
+
+.rs-door {
+  left: 4%;
+  top: 24%;
+  width: 10%;
+  height: 46%;
+  background: var(--paper);
+}
+
+.rs-door-panel {
+  inset: 5% 8% 0;
+  background: var(--leaf);
+}
+
+.rs-door-panel > * {
+  position: absolute;
+}
+
+.rs-door-inset {
+  left: 18%;
+  right: 18%;
+  background: var(--leaf-2);
+}
+
+.rs-door-inset--top {
+  top: 9%;
+  height: 30%;
+}
+
+.rs-door-inset--bottom {
+  top: 48%;
+  height: 40%;
+}
+
+.rs-door-knob {
+  right: 9%;
+  top: 50%;
+  width: 12%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--sun);
+}
+
+/* Window: follows the visitor's time of day */
+
+.rs-window {
+  left: 18%;
+  top: 12%;
+  width: 15%;
+  aspect-ratio: 4 / 5;
+  background: var(--paper);
+}
+
+.rs-sky {
+  inset: 8%;
+  overflow: hidden;
+  background: var(--sky);
+}
+
+.rs-sun,
+.rs-moon {
+  right: 12%;
+  top: 10%;
+  width: 30%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.rs-sun {
+  background: var(--sun);
+}
+
+.rs-moon {
+  display: none;
+  background: var(--paper);
+}
+
+/* Crescent: a sky-coloured disc bites the moon. */
+.rs-moon::after {
+  content: "";
+  position: absolute;
+  inset: -8% -30% 18% 30%;
+  border-radius: 50%;
+  background: var(--sky-night);
+}
+
+.rs-star {
+  display: none;
   width: 5%;
   aspect-ratio: 1;
   background: var(--paper);
   transform: rotate(45deg);
 }
 
-.room-star--a {
+.rs-star--a {
   left: 18%;
   top: 22%;
 }
 
-.room-star--b {
+.rs-star--b {
   left: 40%;
   top: 62%;
 }
 
-[data-sky="night"] .room-sky {
+[data-sky="night"] .rs-sky {
   background: var(--sky-night);
 }
 
-[data-sky="night"] .room-sun {
+[data-sky="night"] .rs-sun {
   display: none;
 }
 
-[data-sky="night"] .room-moon,
-[data-sky="night"] .room-star {
+[data-sky="night"] .rs-moon,
+[data-sky="night"] .rs-star {
   display: block;
 }
 
-.room-mullion {
-  position: absolute;
+.rs-mullion {
   background: var(--paper);
 }
 
-.room-mullion--v {
+.rs-mullion--v {
   left: 50%;
   top: 8%;
   bottom: 8%;
   width: 5%;
-  transform: translateX(-50%);
+  translate: -50% 0;
 }
 
-.room-mullion--h {
+.rs-mullion--h {
   top: 50%;
   left: 8%;
   right: 8%;
   height: 4%;
-  transform: translateY(-50%);
+  translate: 0 -50%;
 }
 
-.room-sill {
-  position: absolute;
+.rs-sill {
   left: -8%;
   right: -8%;
   bottom: -5%;
@@ -381,45 +1002,16 @@ a {
   background: var(--paper-2);
 }
 
-.room-frame {
-  right: 3%;
-  top: 9%;
-  width: 22%;
-  aspect-ratio: 5 / 6;
-  background: #e3d9bc;
-  border: 6px solid var(--ink);
-  overflow: hidden;
-}
+/* Plant */
 
-.room-frame-hill {
-  position: absolute;
-  left: -20%;
-  right: -20%;
-  bottom: -30%;
-  height: 70%;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.room-frame-sun {
-  position: absolute;
-  left: 22%;
-  top: 18%;
-  width: 26%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--rug);
-}
-
-.room-plant {
-  right: 0;
-  bottom: calc(var(--floor-h) * 0.5);
-  width: 17%;
+.rs-plant {
+  left: 26.5%;
+  top: 57%;
+  width: 5.5%;
   aspect-ratio: 1 / 1.7;
 }
 
-.room-pot {
-  position: absolute;
+.rs-pot {
   left: 14%;
   right: 14%;
   bottom: 0;
@@ -428,8 +1020,7 @@ a {
   clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%);
 }
 
-.room-leaf {
-  position: absolute;
+.rs-leaf {
   left: 32%;
   bottom: 28%;
   width: 36%;
@@ -439,27 +1030,276 @@ a {
   background: var(--leaf);
 }
 
-.room-leaf--l {
+.rs-leaf--l {
   transform: rotate(-30deg);
   background: var(--leaf-2);
 }
 
-.room-leaf--r {
+.rs-leaf--r {
   transform: rotate(30deg);
   background: var(--leaf-2);
 }
 
-.room-rug {
-  left: 55%;
-  bottom: calc(var(--floor-h) * 0.14);
-  width: 84%;
-  height: calc(var(--floor-h) * 0.56);
-  transform: translateX(-50%);
+/* Clock: shows the visitor's own time */
+
+.rs-clock {
+  left: 41.5%;
+  top: 9%;
+  width: 7%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.rs-clock::before {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.rs-clock-tick {
+  background: var(--ink);
+}
+
+.rs-clock-tick--12,
+.rs-clock-tick--6 {
+  left: 47%;
+  width: 6%;
+  height: 11%;
+}
+
+.rs-clock-tick--12 {
+  top: 15%;
+}
+
+.rs-clock-tick--6 {
+  bottom: 15%;
+}
+
+.rs-clock-tick--3,
+.rs-clock-tick--9 {
+  top: 47%;
+  width: 11%;
+  height: 6%;
+}
+
+.rs-clock-tick--3 {
+  right: 15%;
+}
+
+.rs-clock-tick--9 {
+  left: 15%;
+}
+
+.rs-clock-hand {
+  left: 50%;
+  bottom: 50%;
+  border-radius: 999px;
+  background: var(--ink);
+  transform-origin: 50% 100%;
+}
+
+.rs-clock-hand--hour {
+  width: 7%;
+  height: 24%;
+  transform: translateX(-50%) rotate(var(--clock-hour, 300deg));
+}
+
+.rs-clock-hand--minute {
+  width: 5%;
+  height: 33%;
+  transform: translateX(-50%) rotate(var(--clock-minute, 60deg));
+}
+
+.rs-clock-pin {
+  left: 50%;
+  top: 50%;
+  width: 12%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  translate: -50% -50%;
+  background: var(--rug);
+}
+
+/* Frame: a shared session card */
+
+.rs-frame {
+  left: 54%;
+  top: 13%;
+  width: 9%;
+  aspect-ratio: 5 / 6;
+  background: var(--ink);
+}
+
+.rs-frame-card {
+  inset: 7%;
+  overflow: hidden;
+  background: var(--frame-paper);
+}
+
+.rs-frame-card > * {
+  position: absolute;
+}
+
+.rs-frame-pet {
+  left: 50%;
+  bottom: 20%;
+  width: auto;
+  height: 70%;
+  max-width: none;
+  translate: -50% 0;
+}
+
+.rs-frame-caption {
+  left: 16%;
+  right: 16%;
+  bottom: 8%;
+  height: 6%;
+  background: var(--accent);
+}
+
+/* Calendar: a streak */
+
+.rs-calendar {
+  left: 67%;
+  top: 9%;
+  width: 10.5%;
+  aspect-ratio: 1 / 0.95;
+  background: var(--paper);
+}
+
+.rs-calendar-head {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 22%;
+  background: var(--rug);
+}
+
+.rs-calendar-grid {
+  left: 9%;
+  right: 9%;
+  top: 32%;
+  bottom: 10%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10% 8%;
+}
+
+.rs-day {
+  position: static;
+  background: var(--paper-2);
+  border-radius: 2px;
+}
+
+.rs-day--done {
+  background: var(--accent);
+}
+
+/* Shelf: radio and notepad */
+
+.rs-shelf {
+  left: 80%;
+  top: 40%;
+  width: 17%;
+  height: 1.8%;
+  background: var(--pot);
+}
+
+.rs-radio {
+  left: 82%;
+  top: 30.5%;
+  width: 7.5%;
+  height: 9.5%;
+  border-radius: 12% / 18%;
+  background: var(--rug);
+}
+
+.rs-radio-speaker {
+  left: 10%;
+  top: 20%;
+  width: 46%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.rs-radio-speaker::after {
+  content: "";
+  position: absolute;
+  inset: 26%;
+  border-radius: 50%;
+  background: var(--paper-2);
+}
+
+.rs-radio-dial {
+  right: 11%;
+  top: 30%;
+  width: 20%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--sun);
+}
+
+.rs-radio-antenna {
+  right: 22%;
+  bottom: 96%;
+  width: 3%;
+  height: 48%;
+  background: var(--ink);
+  transform-origin: 50% 100%;
+  transform: rotate(24deg);
+}
+
+.rs-notepad {
+  left: 91%;
+  top: 29%;
+  width: 4.6%;
+  height: 11%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10%;
+  /* Percent padding resolves against the world's width, so keep it small. */
+  padding: 1.5% 0.6% 0;
+  background: var(--paper);
+}
+
+.rs-notepad::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 12%;
+  background: var(--rug);
+}
+
+.rs-notepad-line {
+  position: static;
+  height: 5%;
+  background: var(--ink-2);
+}
+
+.rs-notepad-line--done {
+  width: 70%;
+  background: var(--accent);
+}
+
+/* Rug, gift and pet */
+
+.rs-rug {
+  left: 34%;
+  top: 73.5%;
+  width: 32%;
+  height: 13%;
   border-radius: 50%;
   background: var(--rug);
 }
 
-.room-rug::after {
+.rs-rug::after {
   content: "";
   position: absolute;
   inset: 16% 10%;
@@ -467,16 +1307,1606 @@ a {
   background: var(--rug-2);
 }
 
-.room-pet {
-  left: 55%;
-  bottom: calc(var(--floor-h) * 0.32);
-  height: 64%;
-  width: auto;
-  max-width: none;
-  transform: translateX(-50%);
+.rs-gift {
+  left: 68%;
+  top: 71%;
+  width: 6%;
+  aspect-ratio: 1;
+  background: var(--sun);
 }
 
+.rs-gift-lid {
+  left: -7%;
+  right: -7%;
+  top: 0;
+  height: 24%;
+  background: var(--rug-2);
+}
+
+.rs-gift-ribbon {
+  left: 42%;
+  width: 16%;
+  top: 0;
+  bottom: 0;
+  background: var(--rug);
+}
+
+.rs-gift-bow {
+  top: -24%;
+  width: 28%;
+  height: 30%;
+  border-radius: 50%;
+  background: var(--rug);
+}
+
+.rs-gift-bow--l {
+  left: 22%;
+  transform: rotate(-24deg);
+}
+
+.rs-gift-bow--r {
+  right: 22%;
+  transform: rotate(24deg);
+}
+
+.rs-pet {
+  left: 41%;
+  top: 38%;
+  width: 18%;
+  height: 42%;
+}
+
+.rs-pet-img {
+  left: 50%;
+  bottom: 0;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  translate: -50% 0;
+  opacity: 0;
+  transition: opacity 450ms var(--ease-out);
+}
+
+.rs-pet-img--cat-sleep {
+  height: 58%;
+}
+
+.world[data-pet="cat-sit"] .rs-pet-img--cat-sit,
+.world[data-pet="cat-sleep"] .rs-pet-img--cat-sleep,
+.world[data-pet="cat-celebrating"] .rs-pet-img--cat-celebrating,
+.world[data-pet="cat-disappointed"] .rs-pet-img--cat-disappointed,
+.world[data-pet="dog-sit"] .rs-pet-img--dog-sit {
+  opacity: 1;
+}
+
+/* ---------- Room changes the demos make ---------- */
+
+/* Customize demo: slate wallpaper, striped rug, night window. */
+.journey-stage[data-wall="slate"] {
+  --room-wall: var(--slate);
+}
+
+.rs-rug,
+.rs-rug-striped {
+  transition: opacity 600ms var(--ease-out);
+}
+
+.rs-rug-striped {
+  left: 37%;
+  top: 74.5%;
+  width: 26%;
+  height: 11%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+}
+
+.rs-rug-striped > span {
+  position: static;
+  flex: 1;
+  background: var(--paper);
+}
+
+.rs-rug-striped > span:nth-child(2),
+.rs-rug-striped > span:nth-child(4) {
+  background: var(--navy);
+}
+
+.rs-rug-striped > span:nth-child(3) {
+  background: var(--rug);
+}
+
+.journey-stage[data-rug="striped"] .rs-rug {
+  opacity: 0;
+}
+
+.journey-stage[data-rug="striped"] .rs-rug-striped {
+  opacity: 1;
+}
+
+.journey-stage[data-night] .rs-sky {
+  background: var(--sky-night);
+}
+
+.journey-stage[data-night] .rs-sun {
+  display: none;
+}
+
+.journey-stage[data-night] .rs-moon,
+.journey-stage[data-night] .rs-star {
+  display: block;
+}
+
+.rs-pet-img--rabbit-sit {
+  height: 52%;
+}
+
+.world[data-pet="rabbit-sit"] .rs-pet-img--rabbit-sit {
+  opacity: 1;
+}
+
+/* "Works on big screens": the lit room is framed as a tablet, a foldable, then a phone. */
+.rs-bezel {
+  inset: 0;
+  border: 14px solid var(--paper);
+  border-radius: 40px;
+  opacity: 0;
+  transition: opacity 600ms var(--ease-out);
+}
+
+.journey-stage[data-view="fit"] .rs-bezel {
+  opacity: 1;
+  animation: bezel-devices 9s var(--ease-out) 0.6s infinite;
+}
+
+.journey-stage[data-view="fit"] .world {
+  animation: room-devices 9s var(--ease-out) 0.6s infinite;
+}
+
+@keyframes room-devices {
+  0%,
+  28%,
+  100% {
+    clip-path: inset(0 0 0 0 round 40px);
+  }
+  36%,
+  61% {
+    clip-path: inset(0 22% 0 22% round 40px);
+  }
+  69%,
+  94% {
+    clip-path: inset(0 34% 0 34% round 40px);
+  }
+}
+
+@keyframes bezel-devices {
+  0%,
+  28%,
+  100% {
+    left: 0;
+    right: 0;
+  }
+  36%,
+  61% {
+    left: 22%;
+    right: 22%;
+  }
+  69%,
+  94% {
+    left: 34%;
+    right: 34%;
+  }
+}
+
+/* ---------- Demos: the app's screens, re-created live ---------- */
+
+.demo-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Journey.tsx places and scales each demo beside the room. All stay mounted so they
+   can be measured; only the active one shows. */
+.demo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: max-content;
+  transform-origin: 0 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 400ms var(--ease-out),
+    visibility 0s linear 400ms;
+}
+
+.demo[data-active] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 500ms var(--ease-out) 250ms;
+}
+
+/* Wall HUD: the timer screen, drawn on the wall like in the app */
+
+.hud {
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-top: 4px;
+  color: var(--ink);
+}
+
+.hud-time {
+  display: flex;
+  font-family: var(--font-hand), cursive;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2.5px var(--ink);
+}
+
+.hud-time > span {
+  width: 0.62em;
+  text-align: center;
+}
+
+.hud-time > span[data-colon] {
+  width: 0.3em;
+}
+
+@supports not (-webkit-text-stroke: 1px black) {
+  .hud-time {
+    color: var(--ink);
+  }
+}
+
+.hud-note {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px 9px 12px;
+  background: var(--paper);
+  font-family: var(--font-hand), cursive;
+  font-weight: 600;
+  font-size: 18px;
+  transform: rotate(-1.5deg);
+}
+
+/* A second slip under the note: depth by overlap, never a shadow. */
+.hud-note::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--paper-2);
+  transform: translate(5px, 5px) rotate(1deg);
+}
+
+.hud-note-pin {
+  width: 18px;
+  height: 18px;
+}
+
+.hud-toggle {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--paper-2);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.hud-toggle > span {
+  padding: 7px 16px;
+  border-radius: 999px;
+  transition:
+    background-color 350ms var(--ease-out),
+    color 350ms var(--ease-out);
+  color: var(--ink-2);
+}
+
+.hud-toggle[data-mode="single"] > span:first-child,
+.hud-toggle[data-mode="pomodoro"] > span:last-child {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.hud-pill {
+  padding: 7px 30px 8px;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  font-family: var(--font-hand), cursive;
+  font-weight: 700;
+  font-size: 20px;
+  transition:
+    transform 220ms var(--ease-out),
+    background-color 220ms var(--ease-out);
+}
+
+.hud-pill[data-pressed] {
+  transform: scale(0.93);
+  background: var(--paper);
+}
+
+.hud-chip {
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--paper-2);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 300ms var(--ease-out);
+}
+
+.hud-chip[data-kind="short"],
+.hud-chip[data-kind="long"] {
+  background: var(--paper);
+}
+
+.hud--pets {
+  padding-top: 24px;
+}
+
+.hud-chip--name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 8px 18px;
+  background: var(--paper);
+  animation: chip-in 450ms var(--ease-out);
+}
+
+.hud-chip--name strong {
+  font-family: var(--font-hand), cursive;
+  font-size: 19px;
+}
+
+.hud-chip--name span {
+  color: var(--ink-2);
+}
+
+.hud-chip-coin {
+  width: 18px;
+  height: 18px;
+  align-self: center;
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.hud-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hud-track > li {
+  position: relative;
+  height: 12px;
+  width: 46px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.hud-track > li[data-kind="short"] {
+  width: 16px;
+}
+
+.hud-track > li[data-kind="long"] {
+  width: 30px;
+}
+
+.hud-track > li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(var(--fill));
+  background: var(--floor);
+}
+
+.hud-track > li[data-kind="short"]::after,
+.hud-track > li[data-kind="long"]::after {
+  background: var(--accent);
+}
+
+.hud-track > li[data-current] {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* App sheets: the app's dark panels */
+
+.app-sheet {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 18px 18px;
+  border-radius: 24px;
+  background: var(--dark);
+  color: var(--on-floor);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.app-sheet--list {
+  align-items: stretch;
+}
+
+.app-hand {
+  font-family: var(--font-hand), cursive;
+  font-weight: 700;
+}
+
+.app-sheet-title {
+  font-size: 18px;
+  text-align: center;
+}
+
+.app-muted {
+  color: var(--on-dark-2);
+  font-size: 13px;
+}
+
+.app-item {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100px;
+  height: 100px;
+}
+
+.app-item-art {
+  width: 54px;
+  height: 54px;
+  transform: scale(0);
+  transition: transform 650ms var(--ease-out);
+}
+
+.app-item[data-shown] .app-item-art {
+  transform: scale(1);
+}
+
+.app-rays {
+  position: absolute;
+  inset: 0;
+}
+
+.app-rays > i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 12px;
+  margin: -6px 0 0 -1.5px;
+  border-radius: 2px;
+  background: var(--on-dark-2);
+  opacity: 0;
+  transition: opacity 500ms var(--ease-out) 250ms;
+}
+
+.app-item[data-shown] .app-rays > i {
+  opacity: 0.9;
+}
+
+.demo[data-active] .app-rays {
+  animation: rays-turn 14s linear infinite;
+}
+
+@keyframes rays-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.app-rarity {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--on-dark-2);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+}
+
+.app-item-name {
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.app-quote {
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--card);
+  font-style: italic;
+  text-align: center;
+}
+
+.app-stats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.app-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.app-stat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--on-dark-2);
+  font-size: 12.5px;
+}
+
+.app-stat-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.app-stat--icon {
+  align-items: flex-start;
+}
+
+.app-stat--icon .app-stat-label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.app-stat-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.app-coin {
+  width: 18px;
+  height: 18px;
+}
+
+.app-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-hand), cursive;
+  font-weight: 700;
+  font-size: 17px;
+  text-align: center;
+}
+
+.app-link {
+  color: var(--on-dark-2);
+  font-family: var(--font-hand), cursive;
+  font-size: 13px;
+}
+
+/* Leaving the app: the system notice, then what the pet dragged in */
+
+.app-leave {
+  position: relative;
+  width: 340px;
+}
+
+.app-notice {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 22px;
+  background: var(--paper);
+  color: var(--ink);
+  transform: translateY(-14px);
+  opacity: 0;
+  transition:
+    transform 500ms var(--ease-out),
+    opacity 400ms var(--ease-out);
+}
+
+.demo[data-active] .app-notice {
+  transform: none;
+  opacity: 1;
+}
+
+.demo[data-active] .app-leave[data-over] .app-notice {
+  transform: translateY(-14px);
+  opacity: 0;
+}
+
+.app-notice-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.app-notice-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.app-notice-text strong {
+  display: block;
+  font-size: 14px;
+}
+
+.app-notice-text em {
+  color: var(--ink-2);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.app-notice-text > span {
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.app-notice-count {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 2.5px solid var(--ink);
+  border-radius: 50%;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.app-sheet--leave {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 500ms var(--ease-out),
+    transform 600ms var(--ease-out);
+}
+
+.app-leave[data-over] .app-sheet--leave {
+  opacity: 1;
+  transform: none;
+}
+
+/* List sheets: Customize, Collection, Sound Mix, Tasks, Stats */
+
+.app-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-head-title {
+  flex: 1;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.app-back {
+  width: 22px;
+  height: 22px;
+  color: var(--on-dark-2);
+}
+
+.app-balance,
+.app-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--card);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.app-count {
+  color: var(--accent);
+}
+
+.app-round {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--card);
+}
+
+.app-round svg {
+  width: 18px;
+  height: 18px;
+}
+
+.app-round--light {
+  background: var(--on-floor);
+  color: var(--dark);
+}
+
+.app-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.app-tabs > span {
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--on-dark-2);
+  font-size: 12.5px;
+  font-weight: 600;
+  transition:
+    background-color 300ms var(--ease-out),
+    color 300ms var(--ease-out);
+}
+
+.app-tabs > span[data-on] {
+  background: var(--on-floor);
+  color: var(--dark);
+}
+
+.app-label {
+  margin-top: 4px;
+  color: var(--on-dark-2);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.app-label--split {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-label--split > span:last-child {
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.app-label--tight {
+  margin: 0;
+}
+
+.app-foot {
+  color: var(--on-dark-2);
+  font-size: 12.5px;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.app-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 6px 10px;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background: var(--card);
+  font-size: 11.5px;
+  text-align: center;
+  transition: border-color 300ms var(--ease-out);
+}
+
+.app-tile strong {
+  font-size: 13px;
+}
+
+.app-tile > span:last-child {
+  color: var(--on-dark-2);
+}
+
+.app-tile[data-on] {
+  border-color: var(--accent);
+}
+
+.app-tile[data-on] > span:last-child {
+  color: var(--accent);
+}
+
+.app-tile-check {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.app-tile-check svg {
+  width: 12px;
+  height: 12px;
+}
+
+.app-tile-lock {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 13px;
+  height: 13px;
+  color: var(--on-dark-2);
+}
+
+.app-swatch {
+  position: relative;
+  width: 54px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.app-swatch--sage {
+  background: var(--wall);
+}
+
+.app-swatch--slate {
+  background: var(--slate);
+}
+
+.app-swatch--linen {
+  background: var(--paper);
+}
+
+.app-swatch--oval {
+  height: 20px;
+  margin-block: 10px;
+  border-radius: 50%;
+  background: var(--rug);
+}
+
+.app-swatch--striped {
+  height: 24px;
+  margin-block: 8px;
+  border-radius: 2px;
+  border-block: 6px solid var(--navy);
+  background: var(--paper);
+}
+
+.app-swatch--striped::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--rug);
+}
+
+.app-swatch--fish {
+  height: 20px;
+  margin-block: 10px;
+  width: 40px;
+  border-radius: 50%;
+  background: var(--teal);
+  transform: translateX(-6px);
+}
+
+.app-swatch--fish::after {
+  content: "";
+  position: absolute;
+  right: -14px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background: var(--teal);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+.app-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-summary > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-summary strong {
+  font-size: 16px;
+}
+
+.app-ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+}
+
+.app-ring svg {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.app-ring circle {
+  fill: none;
+  stroke: var(--card);
+  stroke-width: 5;
+}
+
+.app-ring circle + circle {
+  stroke: var(--accent);
+  stroke-linecap: round;
+  transition: stroke-dasharray 700ms var(--ease-out);
+}
+
+.app-ring b {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+}
+
+.app-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.app-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--card);
+}
+
+.app-row > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-row strong {
+  font-size: 14px;
+}
+
+.app-row > span > span {
+  color: var(--on-dark-2);
+  font-size: 12px;
+}
+
+.app-row em {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-style: normal;
+}
+
+.app-row-art {
+  width: 38px;
+  height: 38px;
+  padding: 4px;
+  border-radius: 50%;
+  background: var(--dark);
+}
+
+.app-row-art--locked {
+  opacity: 0.55;
+}
+
+.app-bar {
+  position: relative;
+  display: block;
+  height: 5px;
+  margin-top: 7px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.app-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(var(--p));
+  transition: transform 1100ms var(--ease-out);
+}
+
+.app-bar--epic::after {
+  background: var(--rarity-epic);
+}
+
+.app-bar--legendary::after {
+  background: var(--rarity-legendary);
+}
+
+.rarity-epic {
+  color: var(--rarity-epic);
+}
+
+.rarity-legendary {
+  color: var(--rarity-legendary);
+}
+
+.rarity-rare {
+  color: var(--rarity-rare);
+}
+
+.rarity-uncommon {
+  color: var(--accent);
+}
+
+.rarity-common {
+  color: var(--on-dark-2);
+}
+
+.app-finds {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.app-find {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 9px 4px 8px;
+  border: 1.5px dashed var(--card);
+  border-radius: 12px;
+  color: var(--on-dark-2);
+  font-size: 11.5px;
+  text-align: center;
+}
+
+.app-find strong {
+  font-weight: 600;
+}
+
+.app-find > span:last-child {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.app-find[data-found] {
+  border-style: solid;
+  background: var(--card);
+  color: var(--on-floor);
+  animation: find-pop 600ms var(--ease-out);
+}
+
+@keyframes find-pop {
+  from {
+    transform: scale(0.85);
+  }
+}
+
+.app-find-q {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--card);
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.app-find-art {
+  width: 28px;
+  height: 28px;
+}
+
+.app-row--sound {
+  grid-template-columns: auto 1fr auto;
+}
+
+.app-row-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--dark);
+}
+
+.app-row-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.app-slider {
+  position: relative;
+  display: block;
+  height: 5px;
+  margin: 9px 6px 4px 0;
+  border-radius: 999px;
+  background: var(--dark);
+}
+
+.app-slider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: calc(var(--p) * 100%);
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.app-slider::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--p) * 100%);
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--on-floor);
+  transform: translate(-50%, -50%);
+}
+
+.app-pct {
+  align-self: start;
+  color: var(--on-dark-2);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+}
+
+.app-chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.app-chips > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  border-radius: 12px;
+  background: var(--card);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.app-chips svg {
+  width: 18px;
+  height: 18px;
+}
+
+.app-chips em {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.app-chips > span:first-child em {
+  color: var(--on-dark-2);
+}
+
+.app-chips em svg {
+  width: 10px;
+  height: 10px;
+}
+
+.app-rows--tasks {
+  gap: 8px;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.app-task {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--card);
+  transition: background-color 400ms var(--ease-out);
+}
+
+.app-task strong {
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.app-task > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.app-task[data-pinned] {
+  background: var(--card-pinned);
+}
+
+.app-task--new {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 400ms var(--ease-out),
+    transform 400ms var(--ease-out);
+}
+
+.app-task--new[data-new] {
+  opacity: 1;
+  transform: none;
+}
+
+.app-task-box {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--on-dark-2);
+  border-radius: 50%;
+}
+
+.app-task-pin {
+  width: 16px;
+  height: 16px;
+  color: var(--on-dark-2);
+  transition: color 300ms var(--ease-out);
+}
+
+.app-task[data-pinned] .app-task-pin {
+  color: var(--accent);
+}
+
+.app-task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-task-meta em {
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app-tag {
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--dark);
+  color: var(--on-dark-2);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.app-card {
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--card);
+}
+
+.app-big {
+  margin-top: 4px;
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.app-bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: end;
+  gap: 8px;
+  height: 120px;
+  margin-top: 12px;
+}
+
+.app-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  height: 100%;
+}
+
+.app-bar-col > i {
+  display: block;
+  width: 100%;
+  height: calc(var(--h) * 80px);
+  border-radius: 6px 6px 3px 3px;
+  background: var(--floor);
+}
+
+.app-bar-col[data-today] > i {
+  background: var(--accent);
+}
+
+.app-bar-col > b {
+  color: var(--on-dark-2);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.app-bar-col[data-today] > b {
+  color: var(--accent);
+}
+
+.app-bar-col > em {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-style: normal;
+}
+
+.app-reward {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--card);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 500ms var(--ease-out),
+    transform 500ms var(--ease-out);
+}
+
+.app-reward[data-shown] {
+  opacity: 1;
+  transform: none;
+}
+
+.app-reward > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-reward > span > span {
+  color: var(--on-dark-2);
+  font-size: 12px;
+}
+
+.app-reward em {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-style: normal;
+}
+
+/* Share card: a picture card of the session, then the share targets */
+
+.app-share {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.share-card {
+  width: 260px;
+  padding: 12px 12px 14px;
+  border-radius: 18px;
+  background: var(--paper);
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(30px) rotate(-5deg) scale(0.9);
+  transition:
+    opacity 600ms var(--ease-out),
+    transform 800ms var(--ease-out);
+}
+
+.app-share:not([data-step="0"]) .share-card {
+  opacity: 1;
+  transform: rotate(-2deg);
+}
+
+.share-scene {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--wall);
+}
+
+.share-scene > * {
+  position: absolute;
+}
+
+.share-floor {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34%;
+  background: var(--floor);
+  border-top: 4px solid var(--baseboard);
+}
+
+.share-rug {
+  left: 22%;
+  right: 22%;
+  bottom: 8%;
+  height: 16%;
+  border-radius: 50%;
+  background: var(--rug);
+}
+
+.share-pet {
+  left: 50%;
+  bottom: 14%;
+  width: auto;
+  height: 78%;
+  max-width: none;
+  translate: -50% 0;
+}
+
+.share-time {
+  margin-top: 10px;
+  font-family: var(--font-hand), cursive;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.share-line {
+  color: var(--ink-2);
+  font-family: var(--font-hand), cursive;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.share-task {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.share-pin {
+  width: 13px;
+  height: 13px;
+}
+
+.share-mark {
+  margin-top: 8px;
+  font-family: var(--font-hand), cursive;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: right;
+}
+
+.share-targets {
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 450ms var(--ease-out),
+    transform 450ms var(--ease-out);
+}
+
+.app-share[data-step="2"] .share-targets {
+  opacity: 1;
+  transform: none;
+}
+
+.share-targets > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.share-targets i {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--on-floor);
+}
+
+.share-targets svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo,
+  .demo *,
+  .rs-bezel,
+  .rs-rug,
+  .rs-rug-striped {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Journey.tsx sets data-cut for a single frame when the camera must jump, not glide. */
+.journey-stage[data-cut],
+.journey-stage[data-cut] .world,
+.journey-stage[data-cut] .rs-pet-img,
+.journey-stage[data-cut] .rs-floor-ext,
+.journey-stage[data-cut] .rs-baseboard {
+  transition: none;
+}
+
+/* Reduced motion: the door fades instead of zooming (Journey.tsx), the camera
+   cuts instead of gliding, and nothing bobs. */
+@media (prefers-reduced-motion: reduce) {
+  .world,
+  .journey-stage,
+  .rs-floor-ext,
+  .rs-baseboard {
+    transition: none;
+  }
+
+  .intro-cue-arrow {
+    animation: none;
+  }
+}
+
+
 /* ---------- Sections ---------- */
+
+/* The journey's last stop sets the room on the dark floor of the next section. */
+.journey + .section--dark {
+  padding-top: clamp(16px, 3vw, 40px);
+}
 
 .section {
   padding-block: clamp(64px, 10vw, 120px);
@@ -485,115 +2915,6 @@ a {
 .section--dark {
   background: var(--dark);
   color: var(--on-floor);
-}
-
-/* How it works */
-
-.steps {
-  list-style: none;
-  padding: 0;
-  margin: 48px 0 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.step {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 28px 28px 32px;
-}
-
-.step-art {
-  height: 180px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-.step-art img {
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-}
-
-.step-num {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
-.step-title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.step-body {
-  color: var(--on-dark-2);
-}
-
-/* Features */
-
-.feature-lead {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: end;
-  gap: 32px;
-  padding-bottom: 40px;
-  border-bottom: 10px solid var(--floor);
-}
-
-.feature-lead-body {
-  margin-top: 18px;
-  max-width: 46ch;
-  font-size: 1.2rem;
-  color: var(--ink-2);
-}
-
-.feature-lead-art {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 8px;
-  height: 230px;
-}
-
-.feature-lead-art img {
-  height: 100%;
-  width: auto;
-  min-width: 0;
-  object-fit: contain;
-}
-
-.feature-lead-art img:last-child {
-  height: 66%;
-}
-
-.features {
-  list-style: none;
-  padding: 0;
-  margin: 56px 0 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 44px 48px;
-}
-
-.feature {
-  border-top: 2px solid var(--ink);
-  padding-top: 18px;
-}
-
-.feature-title {
-  font-size: 1.35rem;
-  margin-bottom: 8px;
-}
-
-.feature-body {
-  color: var(--ink-2);
-  font-size: 1.05rem;
 }
 
 /* Privacy + Plus */
@@ -611,10 +2932,6 @@ a {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.card .eyebrow {
-  margin-bottom: 0;
 }
 
 .card-title {
@@ -660,6 +2977,12 @@ a {
   line-height: 1.35;
 }
 
+.faq-item summary:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+}
+
 .faq-item summary::-webkit-details-marker {
   display: none;
 }
@@ -696,11 +3019,28 @@ a {
   gap: 14px;
 }
 
+.site-footer-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.4em;
+}
+
+.site-footer-credit::before {
+  content: "· ";
+}
+
+/* Links keep a 44px touch target; the negative margin keeps the visual rhythm. */
 .site-footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 24px;
+  gap: 0 24px;
+  margin-block: -10px;
   font-weight: 600;
+}
+
+.site-footer-links a {
+  padding-block: 10px;
 }
 
 .site-footer-legal {
@@ -736,6 +3076,11 @@ a {
   margin: 0 0 16px;
 }
 
+.legal ul,
+.legal ol {
+  padding-left: 1.4em;
+}
+
 .legal li + li {
   margin-top: 6px;
 }
@@ -749,12 +3094,22 @@ a {
 
 /* ---------- 404 ---------- */
 
+/* The note sits in the middle of the wall, between header and floor. */
+main:has(> .not-found) {
+  display: grid;
+  align-content: center;
+}
+
 .not-found {
   display: grid;
   justify-items: center;
   text-align: center;
   gap: 16px;
   padding-block: clamp(40px, 8vw, 96px);
+}
+
+.not-found p {
+  max-width: 36ch;
 }
 
 .not-found img {
@@ -774,44 +3129,158 @@ a {
 }
 
 .button:hover {
-  background: #9bbb7d;
+  background: var(--accent-hover);
 }
 
 /* ---------- Narrow screens ---------- */
 
 @media (max-width: 860px) {
-  .hero-inner,
-  .feature-lead,
-  .faq-layout,
-  .cards {
+  .faq-layout {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-copy {
-    padding-bottom: 8px;
-  }
-
-  .room {
-    max-width: 420px;
-    justify-self: center;
-  }
-
-  .steps,
-  .features {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .step-art {
-    height: 140px;
-  }
-
-  .feature-lead-art {
-    height: 180px;
   }
 }
 
-@media (min-width: 561px) and (max-width: 860px) {
-  .features {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Stacked journey (portrait, narrow): notes sit at the bottom and the camera frames
+   the top half. Same query as STACKED in Journey.tsx. */
+@media (max-width: 860px) and (max-aspect-ratio: 8/5) {
+  .beat--stop {
+    align-items: flex-end;
+    padding-block: 12vh 4vh;
+  }
+
+  .note {
+    max-width: none;
+  }
+
+  .intro {
+    text-align: center;
+  }
+
+  .intro-lede {
+    margin-inline: auto;
+  }
+}
+
+/* Side-by-side journey (desktop, landscape phones): the house stands right of the
+   words and notes sit beside the camera's frame. */
+@media (min-width: 861px), (min-aspect-ratio: 8/5) {
+  .outside {
+    --house-x: 68%;
+  }
+
+  .intro-title {
+    font-size: clamp(2.75rem, 5.6vw, 5.25rem);
+  }
+
+  .beat--stop[data-side="right"] {
+    justify-content: flex-end;
+  }
+}
+
+/* Short screens (landscape phones): tighter notes so the welcome fits. */
+@media (max-height: 500px) {
+  .beat--stop {
+    padding-block: 4vh;
+  }
+
+  .note {
+    padding: 18px 22px;
+  }
+
+  .note-headline {
+    font-size: 1.6rem;
+  }
+
+  .note-lede {
+    margin-top: 8px;
+  }
+
+  .note .store-list {
+    margin-top: 14px;
+  }
+
+  .intro {
+    padding-top: 76px;
+  }
+
+  .intro-title {
+    font-size: 2.4rem;
+  }
+
+  .intro-tagline {
+    font-size: 1.3rem;
+    margin-top: 4px;
+  }
+
+  .intro-lede {
+    max-width: 36ch;
+    margin-top: 8px;
+    font-size: 1rem;
+  }
+
+  .intro-cue {
+    margin-top: 12px;
+  }
+
+  /* Lower ground and hills so the words stay on open sky. */
+  .outside {
+    --ground-h: 17%;
+  }
+
+  .outside-hill--back {
+    bottom: 10%;
+    height: 19%;
+  }
+
+  .outside-hill--front {
+    bottom: 9%;
+    height: 16%;
+  }
+}
+
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .intro {
+    padding-top: 112px;
+  }
+
+  .intro-lede {
+    max-width: 32ch;
+  }
+
+  /* Phones: a slightly smaller house, and the sun moves up beside the wordmark
+     so it never sits behind the title. */
+  .outside {
+    --house-w: min(60vh, 84vw);
+  }
+
+  .outside-sun,
+  .outside-moon {
+    top: 2.5%;
+    right: 6%;
+    width: 52px;
+  }
+
+  .note-body {
+    font-size: 1rem;
+  }
+
+  /* One badge per row, so both read the same way. */
+  .store-badge {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .site-footer-credit {
+    flex-basis: 100%;
+  }
+
+  .site-footer-credit::before {
+    content: none;
   }
 }

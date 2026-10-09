@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container site-footer-inner">
             <p className="site-footer-name">
               <span className="wordmark wordmark--floor">Pets on Focus</span>
-              <span> · Made by {AUTHOR} in Thailand</span>
+              <span className="site-footer-credit">Made by {AUTHOR} in Thailand</span>
             </p>
             <nav aria-label="Footer" className="site-footer-links">
               <Link href="/privacy/">Privacy Policy</Link>
