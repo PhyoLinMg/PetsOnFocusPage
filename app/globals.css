@@ -48,15 +48,9 @@
   box-sizing: border-box;
 }
 
+/* No smooth scrolling: it made page changes and Back glide through the whole journey. */
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
 }
 
 body {
@@ -243,8 +237,9 @@ a {
 
 /* ---------- Journey: garden → door → room ---------- */
 
-/* A sticky stage behind a column of notes. Journey.tsx drives the door, the zoom and
-   the room camera from the scroll; the notes are ordinary content in the flow. */
+/* A sticky stage behind a column of beats. Journey.tsx drives the door, the zoom and
+   the room camera from the scroll. Each beat holds its stop's note; once the script
+   runs, notes dock at the bottom of the screen (see "Docked notes" below). */
 .journey {
   position: relative;
 }
@@ -275,18 +270,46 @@ a {
   min-height: 100svh;
 }
 
+/* Beat lengths set how much scrolling each part takes: the walk through the door runs
+   over the intro and the door beat, then each stop gets under half a screen (its note
+   swaps on a timer, so it needs no runway). The last stop holds a little longer, so
+   the whole lit room settles before the sections below. */
 .beat--door {
-  height: 110vh;
-  height: 110svh;
+  height: 70vh;
+  height: 70svh;
 }
 
 .beat--stop {
-  min-height: 96vh;
-  min-height: 96svh;
+  min-height: 45vh;
+  min-height: 45svh;
   display: flex;
   align-items: center;
   padding-inline: max(var(--gutter), calc((100% - 1160px) / 2 + var(--gutter)));
   padding-block: 8vh;
+}
+
+.beat--stop:last-child {
+  min-height: 75vh;
+  min-height: 75svh;
+}
+
+/* Phones (stacked, and landscape phones): a swipe carries further than a wheel, so
+   each part gets more scrolling there. */
+@media (max-width: 860px) and (max-aspect-ratio: 8/5), (max-height: 500px) {
+  .beat--door {
+    height: 90vh;
+    height: 90svh;
+  }
+
+  .beat--stop {
+    min-height: 70vh;
+    min-height: 70svh;
+  }
+
+  .beat--stop:last-child {
+    min-height: 90vh;
+    min-height: 90svh;
+  }
 }
 
 /* Intro, written on the sky */
@@ -358,9 +381,12 @@ a {
 
 /* Paper notes */
 
-.note {
+.note-slot {
   width: 100%;
   max-width: 27rem;
+}
+
+.note {
   padding: clamp(22px, 3vw, 34px);
   background: var(--paper);
   color: var(--ink);
@@ -414,6 +440,162 @@ a {
   margin-top: 20px;
   padding-top: 18px;
   border-top: 2px solid var(--ink);
+}
+
+/* Docked notes. Once Journey.tsx runs (data-ready), each note waits in a slot fixed to
+   the bottom of the screen and only the active stop's note is shown (data-shown), so a
+   note never slides across the room. The old note sinks away; the new one rises and
+   settles like a card laid down, its lines following one by one. At the journey's end
+   the last slot (data-end) drops back into its beat and scrolls away with the room.
+   Without the script, notes stay in the flow of their beats. */
+.journey[data-ready] .beat--stop {
+  position: relative;
+}
+
+.journey[data-ready] .note-slot {
+  --dock-gap: clamp(24px, 6vh, 64px);
+  position: fixed;
+  z-index: 1;
+  bottom: calc(var(--dock-gap) + env(safe-area-inset-bottom, 0px));
+  left: max(var(--gutter), calc((100% - 1160px) / 2 + var(--gutter)));
+  width: min(27rem, calc(100% - 2 * var(--gutter)));
+  pointer-events: none;
+}
+
+.journey[data-ready] .beat--stop[data-side="right"] .note-slot {
+  left: auto;
+  right: max(var(--gutter), calc((100% - 1160px) / 2 + var(--gutter)));
+}
+
+.journey[data-ready] .note-slot[data-end] {
+  position: absolute;
+}
+
+.journey[data-ready] .note-slot[data-shown] {
+  pointer-events: auto;
+}
+
+.journey[data-ready] .note {
+  opacity: 0;
+  transform: translateY(56px) rotate(-1.5deg);
+  transform-origin: 25% 100%;
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 260ms var(--ease-out);
+}
+
+.journey[data-ready] .note-slot[data-shown] .note {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 360ms var(--ease-out) 180ms,
+    transform 760ms var(--ease-out) 180ms;
+}
+
+/* Same list as NOTE_LINES in Journey.tsx, which numbers them (--k). */
+.journey[data-ready] .note :is(.eyebrow, .note-headline, .note-lede, .note-title, .note-body, .store-badge) {
+  opacity: 0;
+  translate: 0 14px;
+  transition:
+    opacity 160ms var(--ease-out),
+    translate 160ms var(--ease-out);
+}
+
+.journey[data-ready] .note-slot[data-shown] .note :is(.eyebrow, .note-headline, .note-lede, .note-title, .note-body, .store-badge) {
+  opacity: 1;
+  translate: none;
+  transition:
+    opacity 420ms var(--ease-out),
+    translate 620ms var(--ease-out);
+  transition-delay: calc(300ms + var(--k, 0) * 90ms);
+}
+
+/* Stacked: the dock spans the screen, just above its bottom edge. */
+@media (max-width: 860px) and (max-aspect-ratio: 8/5) {
+  .journey[data-ready] .note-slot,
+  .journey[data-ready] .beat--stop[data-side="right"] .note-slot {
+    --dock-gap: clamp(12px, 2.4vh, 24px);
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+  }
+}
+
+/* Band (desktop, landscape tablets): the note spans the site's container along the
+   bottom as one wide sheet of paper, title on the left and its words on the right, so
+   the room and any app sheet get the whole width above it. Same query as BAND in
+   Journey.tsx; landscape phones and short screens keep the side note. */
+@media (min-width: 861px) and (min-height: 560px) {
+  .journey[data-ready] .note-slot,
+  .journey[data-ready] .beat--stop[data-side="right"] .note-slot {
+    --dock-gap: clamp(20px, 3.6vh, 40px);
+    left: max(var(--gutter), calc((100% - 1160px) / 2 + var(--gutter)));
+    right: max(var(--gutter), calc((100% - 1160px) / 2 + var(--gutter)));
+    width: auto;
+    max-width: none;
+  }
+
+  .journey[data-ready] .note {
+    --band-cols: minmax(0, 5fr) minmax(0, 7fr);
+    --band-gap: clamp(32px, 4.5vw, 72px);
+    display: grid;
+    grid-template-columns: var(--band-cols);
+    column-gap: var(--band-gap);
+    align-items: center;
+    padding: clamp(26px, 3.4vh, 38px) clamp(28px, 3vw, 48px);
+    transform: translateY(48px) rotate(-0.5deg);
+  }
+
+  .journey[data-ready] .note-slot[data-shown] .note {
+    transform: none;
+  }
+
+  /* Feature notes hold a list: each item splits on the same two columns. */
+  .journey[data-ready] .note > .note-features {
+    grid-column: 1 / -1;
+  }
+
+  .journey[data-ready] .note-features li {
+    display: grid;
+    grid-template-columns: var(--band-cols);
+    column-gap: var(--band-gap);
+    align-items: center;
+  }
+
+  .journey[data-ready] .note-headline {
+    font-size: clamp(2.4rem, 3.4vw, 3.1rem);
+  }
+
+  .journey[data-ready] :is(.note-title, .note-title--step) {
+    font-size: clamp(1.75rem, 2.3vw, 2.25rem);
+    margin-bottom: 0;
+  }
+
+  .journey[data-ready] :is(.note-body, .note-lede) {
+    max-width: 58ch;
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+
+  .journey[data-ready] .note .store-list {
+    margin-top: 22px;
+  }
+}
+
+/* Reduced motion: notes swap with a short fade, nothing travels. */
+@media (prefers-reduced-motion: reduce) {
+  .journey[data-ready] .note,
+  .journey[data-ready] .note-slot[data-shown] .note {
+    transform: none;
+    transition: opacity 200ms var(--ease-out);
+  }
+
+  .journey[data-ready] .note :is(.eyebrow, .note-headline, .note-lede, .note-title, .note-body, .store-badge),
+  .journey[data-ready] .note-slot[data-shown] .note :is(.eyebrow, .note-headline, .note-lede, .note-title, .note-body, .store-badge) {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
 }
 
 .visually-hidden {
@@ -2825,9 +3007,13 @@ html:has(.journey) {
   text-align: right;
 }
 
+/* A paper tray, so the labels read on the wall or the floor alike. */
 .share-targets {
   display: flex;
   gap: 20px;
+  padding: 10px 18px 8px;
+  border-radius: 16px;
+  background: var(--paper);
   opacity: 0;
   transform: translateY(8px);
   transition:
@@ -2902,6 +3088,18 @@ html:has(.journey) {
 
 
 /* ---------- Sections ---------- */
+
+/* Text blocks below the journey rise in as they arrive (components/Reveal.tsx). */
+[data-reveal] {
+  transition:
+    opacity 520ms var(--ease-out),
+    translate 720ms var(--ease-out);
+}
+
+[data-reveal="wait"] {
+  opacity: 0;
+  translate: 0 28px;
+}
 
 /* The journey's last stop sets the room on the dark floor of the next section. */
 .journey + .section--dark {
@@ -3148,7 +3346,7 @@ main:has(> .not-found) {
     padding-block: 12vh 4vh;
   }
 
-  .note {
+  .note-slot {
     max-width: none;
   }
 

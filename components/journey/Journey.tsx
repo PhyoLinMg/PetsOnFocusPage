@@ -16,17 +16,20 @@ export type Stop = {
   pet: PetPose;
   /** "fit" pulls back to show the whole room. */
   view?: "fit";
-  /** On wide screens the note sits on this side and the camera frames the other. */
+  /** In the side arrangement (landscape phones) the note sits on this side and the camera frames the other. */
   side?: "left" | "right";
   /** A live re-creation of the app screen this stop is about (see demos/Demos.tsx). */
   demo?: DemoKey;
   content: ReactNode;
 };
 
-// Portrait and narrow screens stack: notes at the bottom, the camera frames the top.
-// Everything else (desktop, landscape phones) puts notes beside the camera's frame.
-// Keep in step with the matching media queries in globals.css.
+// Three arrangements, kept in step with the matching media queries in globals.css:
+// - stacked (portrait, narrow): the note spans the bottom, the camera frames the top;
+// - band (desktop, landscape tablets): a wide two-column note along the bottom, the room
+//   and any app sheet share the whole width above it;
+// - side (landscape phones, short wide screens): the note sits beside the frame.
 const STACKED = "(max-width: 860px) and (max-aspect-ratio: 8/5)";
+const BAND = "(min-width: 861px) and (min-height: 560px)";
 
 const clamp = (v: number, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, v));
 const easeOut = (t: number) => 1 - (1 - t) ** 3;
@@ -66,6 +69,10 @@ function boxWithParts(el: HTMLElement, ancestor: HTMLElement): Box {
 // Gap kept between an object brought wholly into view and the edge it was cut by.
 const EDGE_MARGIN = 16;
 
+// The lines of a note that rise in one after another when it docks.
+// Keep in step with the matching selector in globals.css.
+const NOTE_LINES = ".eyebrow, .note-headline, .note-lede, .note-title, .note-body, .store-badge";
+
 export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -103,12 +110,18 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
     const doorway = outside.querySelector<HTMLElement>("[data-doorway]")!;
     const doorBeat = root.querySelector<HTMLElement>(".beat--door")!;
     const stopBeats = Array.from(root.querySelectorAll<HTMLElement>("[data-stop]"));
-    const notes = stopBeats.map((beat) => beat.querySelector<HTMLElement>(".note")!);
+    // Each note waits in a slot docked at the bottom of the screen (globals.css); only
+    // the active stop's note is shown, so notes never slide across the room.
+    const slots = stopBeats.map((beat) => beat.querySelector<HTMLElement>(".note-slot")!);
+    for (const slot of slots) {
+      slot.querySelectorAll<HTMLElement>(NOTE_LINES).forEach((line, k) => line.style.setProperty("--k", String(k)));
+    }
     const objectNames = [
       ...new Set(Array.from(world.querySelectorAll<HTMLElement>("[data-obj]"), (el) => el.dataset.obj!)),
     ];
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     const stacked = window.matchMedia(STACKED);
+    const band = window.matchMedia(BAND);
     const demoEls = new Map(
       Array.from(stage.querySelectorAll<HTMLElement>("[data-demo]"), (el) => [el.dataset.demo as DemoKey, el]),
     );
@@ -117,6 +130,9 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
     );
 
     let active = 0;
+    // The note in the dock (-1 for none) and whether the last one has left it.
+    let shownSlot = -1;
+    let endedSlot = false;
     // When the camera last started a glide (0 once it has been cut into place).
     let framedAt = 0;
     const GLIDE_MS = 1300; // matches the .world transition in globals.css
@@ -140,15 +156,19 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
       const sh = stage.clientHeight;
       const W = world.offsetWidth;
       const H = world.offsetHeight;
-      // The camera frames the space the stop's note leaves free.
-      const note = notes[index];
-      const r = note.getBoundingClientRect();
-      // Where the note's top edge sits while its stop is active: stacked notes rest at
-      // the bottom of their beat (about 94% down), side notes are centred.
-      const noteTop = stacked.matches ? sh * 0.94 - note.offsetHeight : (sh - note.offsetHeight) / 2;
+      // The camera frames the space the stop's note leaves free. The slot is the note's
+      // resting place in the dock: the card inside it may be mid-swap, the slot is not.
+      const r = slots[index].getBoundingClientRect();
+      const stageTop = stage.getBoundingClientRect().top;
+      const noteTop = r.top - stageTop;
+      const noteBottom = r.bottom - stageTop;
+      // Stacked and band notes span the bottom; the camera gets everything above them.
+      const docked = stacked.matches || band.matches;
       let focus: Box;
       if (stacked.matches) {
         focus = { x: sw * 0.04, y: sh * 0.07, w: sw * 0.92, h: Math.max(sh * 0.25, noteTop - 20 - sh * 0.07) };
+      } else if (band.matches) {
+        focus = { x: sw * 0.03, y: sh * 0.06, w: sw * 0.94, h: Math.max(sh * 0.3, noteTop - 24 - sh * 0.06) };
       } else {
         const x = stop.side === "right" ? sw * 0.03 : r.right + 32;
         const right = stop.side === "right" ? r.left - 32 : sw * 0.97;
@@ -157,9 +177,13 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
 
       // A demo takes its share of the frame first; the camera gets the rest.
       // Wall HUDs (the timer) sit above the pet; app sheets sit on the outer side on
-      // wide screens and at the bottom when stacked, like the app's own sheets.
+      // wide screens and at the bottom when stacked, like the app's own sheets. Above a
+      // band there is room to show a sheet a little larger than its phone size.
       const demoEl = stop.demo ? demoEls.get(stop.demo) : undefined;
       const layout = stop.demo ? DEMO_LAYOUT[stop.demo] : undefined;
+      // A sheet goes under the room when the frame is taller than wide (phones, and
+      // portrait tablets above a band); beside it otherwise.
+      const sheetBelow = stacked.matches || (band.matches && focus.h > focus.w);
       let area = focus;
       let demoBox: Box | undefined;
       if (demoEl && layout) {
@@ -173,14 +197,18 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
           dx = focus.x + (focus.w - w * k) / 2;
           dy = focus.y;
           area = { x: focus.x, y: dy + h * k + 16, w: focus.w, h: focus.h - h * k - 16 };
-        } else if (stacked.matches) {
-          k = Math.min(1, focus.w / w, (focus.h * 0.72) / h);
+        } else if (sheetBelow) {
+          k = stacked.matches
+            ? Math.min(1, focus.w / w, (focus.h * 0.72) / h)
+            : Math.min(1.3, (focus.w * 0.9) / w, (focus.h * 0.55) / h);
           dx = focus.x + (focus.w - w * k) / 2;
           dy = focus.y + focus.h - h * k;
           area = { x: focus.x, y: focus.y, w: focus.w, h: Math.max(48, focus.h - h * k - 12) };
         } else {
-          k = Math.min(1, (focus.w * 0.56) / w, focus.h / h);
-          const outerRight = stop.side !== "right";
+          k = band.matches
+            ? Math.min(1.3, (focus.w * 0.4) / w, focus.h / h)
+            : Math.min(1, (focus.w * 0.56) / w, focus.h / h);
+          const outerRight = band.matches || stop.side !== "right";
           dx = outerRight ? focus.x + focus.w - w * k : focus.x;
           dy = focus.y + (focus.h - h * k) / 2;
           area = outerRight
@@ -208,12 +236,14 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
         const boxes = boxesOf(names);
         const x0 = Math.min(...boxes.map((b) => b.x));
         // Under a wall HUD the frame takes in the whole wall band, so no wall object ends
-        // up behind the timer.
-        const y0 = layout === "hud" ? wallTop : Math.min(...boxes.map((b) => b.y));
+        // up behind the timer. Above a band it always does: the wide, short frame would
+        // otherwise zoom in on the pet far enough to slice the window and pictures.
+        const wholeWall = layout === "hud" || band.matches;
+        const y0 = wholeWall ? wallTop : Math.min(...boxes.map((b) => b.y));
         const x1 = Math.max(...boxes.map((b) => b.x + b.w));
         const y1 = Math.max(...boxes.map((b) => b.y + b.h));
         const padX = 1.45;
-        const padY = layout === "hud" ? 1.08 : 1.45;
+        const padY = wholeWall ? 1.08 : 1.45;
         // The floor runs on past the room's edges (RoomScene), so the camera may pull
         // back and frame an object near the edge without showing a gap.
         // Capped so neighbours stay readable instead of turning into giant fragments.
@@ -226,7 +256,6 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
         // as the target stays inside its frame. `inside` is the visible side (+1 after
         // the edge, -1 before it); `from`/`to` limit the edge along the other axis.
         type Edge = { axis: "x" | "y"; pos: number; inside: 1 | -1; from: number; to: number };
-        const noteBottom = noteTop + note.offsetHeight;
         const edges: Edge[] = [
           { axis: "y", pos: 0, inside: 1, from: -Infinity, to: Infinity },
           { axis: "x", pos: 0, inside: 1, from: -Infinity, to: Infinity },
@@ -235,13 +264,13 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
         ];
         if (demoBox && layout === "sheet") {
           // The sheet is solid, like the note: nothing should be half-hidden behind it.
-          if (stacked.matches) edges.push({ axis: "y", pos: demoBox.y, inside: -1, from: demoBox.x, to: demoBox.x + demoBox.w });
-          else if (stop.side === "right")
+          if (sheetBelow) edges.push({ axis: "y", pos: demoBox.y, inside: -1, from: demoBox.x, to: demoBox.x + demoBox.w });
+          else if (!band.matches && stop.side === "right")
             edges.push({ axis: "x", pos: demoBox.x + demoBox.w, inside: 1, from: demoBox.y, to: demoBox.y + demoBox.h });
           else edges.push({ axis: "x", pos: demoBox.x, inside: -1, from: demoBox.y, to: demoBox.y + demoBox.h });
         }
-        if (!stacked.matches) {
-          edges.push({ axis: "y", pos: sh, inside: -1, from: -Infinity, to: Infinity });
+        if (!stacked.matches) edges.push({ axis: "y", pos: sh, inside: -1, from: -Infinity, to: Infinity });
+        if (!docked) {
           edges.push(
             stop.side === "right"
               ? { axis: "x", pos: r.left, inside: -1, from: noteTop, to: noteBottom }
@@ -250,7 +279,7 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
         }
         const limits = {
           x: [area.x - 8, area.x + area.w + 8],
-          y: [area.y - 8, stacked.matches ? Math.min(noteTop, area.y + area.h + 8) : sh],
+          y: [area.y - 8, docked ? Math.min(noteTop, area.y + area.h + 8) : sh],
         };
         // The guard only fine-tunes: it may move the frame at most this far from the
         // composed position, so a stray object never drags the target off-centre.
@@ -262,6 +291,7 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
           .flatMap((name) =>
             Array.from(world.querySelectorAll<HTMLElement>(`[data-obj="${name}"]`), (el) => boxWithParts(el, world)),
           );
+        const visited = [{ x: tx, y: ty }];
         for (let pass = 0; pass < 6; pass++) {
           let moved = false;
           for (const b of others) {
@@ -287,11 +317,35 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
               if (best === undefined) continue;
               if (e.axis === "x") tx += best;
               else ty += best;
+              visited.push({ x: tx, y: ty });
               moved = true;
               break;
             }
           }
           if (!moved) break;
+        }
+        // Above a band two objects can pull the frame back and forth (the window off the
+        // left edge, then the shelf out from behind the app sheet), so keep whichever
+        // visited frame slices least. An object cut by the screen counts more than one
+        // tucked behind the note or the sheet: paper over paper is how this room shows depth.
+        if (band.matches) {
+          const slicing = (cx: number, cy: number) => {
+            let total = 0;
+            for (const b of others) {
+              const span = { x: [cx + b.x * s, cx + (b.x + b.w) * s], y: [cy + b.y * s, cy + (b.y + b.h) * s] };
+              for (const e of edges) {
+                const [start, end] = span[e.axis];
+                const [crossStart, crossEnd] = span[e.axis === "x" ? "y" : "x"];
+                if (crossEnd <= e.from || crossStart >= e.to) continue;
+                if (!(start < e.pos - 2 && end > e.pos + 2)) continue;
+                total += Math.min(e.pos - start, end - e.pos) * (e.from === -Infinity ? 1 : 0.3);
+              }
+            }
+            return total;
+          };
+          const least = visited.reduce((a, c) => (slicing(c.x, c.y) < slicing(a.x, a.y) ? c : a));
+          tx = least.x;
+          ty = least.y;
         }
       }
       world.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${s})`;
@@ -366,6 +420,23 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
         frameStop(active);
       }
 
+      // The dock shows the active stop's note once the room is wholly in view, so the
+      // welcome (the download badges) is the first thing seen inside. At the journey's end
+      // the last note leaves the dock for its beat and scrolls away with the room.
+      const docked = fade <= 0.001 && roomIn >= 0.999 ? active : -1;
+      const ended = root.getBoundingClientRect().bottom <= window.innerHeight;
+      if (docked !== shownSlot) {
+        if (shownSlot >= 0) delete slots[shownSlot].dataset.shown;
+        if (docked >= 0) slots[docked].dataset.shown = "";
+        shownSlot = docked;
+      }
+      if (ended !== endedSlot) {
+        const last = slots[slots.length - 1];
+        if (ended) last.dataset.end = "";
+        else delete last.dataset.end;
+        endedSlot = ended;
+      }
+
       stage.style.setProperty("--door-angle", `${angle}deg`);
       outside.style.transform = `translate3d(${doorShift.x * travel}px, ${doorShift.y * travel}px, 0) scale(${zoom})`;
       outside.style.opacity = String(fade);
@@ -396,8 +467,9 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
     resize.observe(stage);
     window.addEventListener("scroll", onScroll, { passive: true });
     reduce.addEventListener("change", update);
-    measure();
+    // Ready first: it docks the notes, and the camera frames around the dock.
     root.dataset.ready = "true";
+    measure();
 
     return () => {
       resize.disconnect();
@@ -433,7 +505,9 @@ export function Journey({ intro, stops }: { intro: ReactNode; stops: Stop[] }) {
         <div className="beat beat--door" />
         {stops.map((stop, i) => (
           <div key={stop.key} id={stop.anchor} className="beat beat--stop" data-stop={i} data-side={stop.side}>
-            <div className="note">{stop.content}</div>
+            <div className="note-slot">
+              <div className="note">{stop.content}</div>
+            </div>
           </div>
         ))}
       </div>

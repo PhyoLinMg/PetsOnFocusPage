@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Journey, type Stop } from "@/components/journey/Journey";
+import { Reveal } from "@/components/Reveal";
 import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, OG_IMAGE, SITE_NAME, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -104,20 +105,24 @@ const stops: Stop[] = [
     pet: "cat-sit",
     content: (
       <>
-        <h2 className="note-headline">Make yourself at home.</h2>
-        <p className="note-lede">
-          Stay focused and it stays happy. Finish, and you earn coins to make its room your own.
-        </p>
-        <ul className="store-list" aria-label="Download">
-          <li className="store-badge">
-            <span className="store-badge-soon">Coming soon on</span>
-            <span className="store-badge-name">Google Play</span>
-          </li>
-          <li className="store-badge">
-            <span className="store-badge-soon">Coming soon on the</span>
-            <span className="store-badge-name">App Store</span>
-          </li>
-        </ul>
+        <div className="note-head">
+          <h2 className="note-headline">Make yourself at home.</h2>
+        </div>
+        <div className="note-text">
+          <p className="note-lede">
+            Stay focused and it stays happy. Finish, and you earn coins to make its room your own.
+          </p>
+          <ul className="store-list" aria-label="Download">
+            <li className="store-badge">
+              <span className="store-badge-soon">Coming soon on</span>
+              <span className="store-badge-name">Google Play</span>
+            </li>
+            <li className="store-badge">
+              <span className="store-badge-soon">Coming soon on the</span>
+              <span className="store-badge-name">App Store</span>
+            </li>
+          </ul>
+        </div>
       </>
     ),
   },
@@ -132,11 +137,15 @@ const stops: Stop[] = [
       content: (
         <>
           {i === 0 && <h2 className="visually-hidden">How it works</h2>}
-          <p className="eyebrow">
-            How it works <span className="note-count">{`0${i + 1} / 03`}</span>
-          </p>
-          <h3 className="note-title note-title--step">{step.title}</h3>
-          <p className="note-body">{step.body}</p>
+          <div className="note-head">
+            <p className="eyebrow">
+              How it works <span className="note-count">{`0${i + 1} / 03`}</span>
+            </p>
+            <h3 className="note-title note-title--step">{step.title}</h3>
+          </div>
+          <div className="note-text">
+            <p className="note-body">{step.body}</p>
+          </div>
         </>
       ),
     }),
@@ -150,12 +159,16 @@ const stops: Stop[] = [
     content: (
       <>
         <h2 className="visually-hidden">Features</h2>
-        <h3 className="note-title note-title--step">A pet who keeps you company</h3>
-        <p className="note-body">
-          A hand-drawn cat or dog lives in your room. It sits, naps, stretches, wakes up and cheers when you
-          finish. Pick a short-hair or an orange tabby cat, or a golden retriever. More pets can join with coins,
-          starting with a Holland Lop rabbit.
-        </p>
+        <div className="note-head">
+          <h3 className="note-title note-title--step">A pet who keeps you company</h3>
+        </div>
+        <div className="note-text">
+          <p className="note-body">
+            A hand-drawn cat or dog lives in your room. It sits, naps, stretches, wakes up and cheers when you
+            finish. Pick a short-hair or an orange tabby cat, or a golden retriever. More pets can join with
+            coins, starting with a Holland Lop rabbit.
+          </p>
+        </div>
       </>
     ),
   },
@@ -244,7 +257,7 @@ export default function Home() {
 
       <section className="section section--dark" aria-label="Privacy and Plus">
         <div className="container cards">
-          <article className="card" aria-labelledby="privacy-title">
+          <article className="card" aria-labelledby="privacy-title" data-reveal>
             <h2 id="privacy-title" className="card-title">
               Privacy, in short
             </h2>
@@ -258,7 +271,7 @@ export default function Home() {
               </Link>
             </p>
           </article>
-          <article className="card" aria-labelledby="plus-title">
+          <article className="card" aria-labelledby="plus-title" data-reveal>
             <h2 id="plus-title" className="card-title">
               Pets on Focus Plus
             </h2>
@@ -273,14 +286,14 @@ export default function Home() {
 
       <section id="faq" className="section" aria-labelledby="faq-title">
         <div className="container faq-layout">
-          <div>
+          <div data-reveal>
             <h2 id="faq-title" className="section-title">
               Questions, answered
             </h2>
           </div>
           <div className="faq">
             {faqs.map((f) => (
-              <details key={f.q} className="faq-item">
+              <details key={f.q} className="faq-item" data-reveal>
                 <summary>{f.q}</summary>
                 <p>{f.a}</p>
               </details>
@@ -288,6 +301,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Reveal />
     </>
   );
 }
