@@ -4,7 +4,7 @@ title: Privacy Policy
 
 # Pets on Focus — Privacy Policy
 
-_Last updated: 15 October 2026_
+_Last updated: 16 October 2026_
 
 Pets on Focus ("the app") is made by Phyo Lin Mg ("we"). This policy explains what the app collects, why,
 and what stays on your device. Questions: [phyolinmg.dev@gmail.com](mailto:phyolinmg.dev@gmail.com).
@@ -17,6 +17,8 @@ and what stays on your device. Questions: [phyolinmg.dev@gmail.com](mailto:phyol
 - The app sends usage statistics to Google Analytics for Firebase, such as when a focus session starts and ends,
   so we can see how many people use the app and how. This is on by default; you can turn it off at any time in
   Settings > Privacy > "Share usage stats". It never includes anything you type.
+- The app never asks for or uses your device's precise location (GPS). Google Analytics works out an approximate
+  location (country, region or city) from your IP address.
 - Purchases are handled by Google Play or the App Store. We never see your payment details.
 - We do not sell your data, show ads, or track you across other apps or websites.
 
@@ -47,9 +49,11 @@ how it is used, so we can count how many people use it each month and improve it
 - events the app sends: a focus session starting and ending (the planned and focused minutes, single or Pomodoro, and
   whether it was finished, stopped early or ended by leaving the app); opening the Shop, the Plus screen or the room
   editor; and buying something with coins or from the store (which item or product, and whether it went through);
-- with each event: your country, device model, operating system version, app version, and a random app-instance ID
-  made by Firebase. The ID is created when you install the app, is reset when you reinstall it, and is not linked to
-  your name, email or any account.
+- with each event: your approximate location (country, region or city), device model, operating system version,
+  app version, and a random app-instance ID made by Firebase. Google works out the approximate location from your
+  IP address and does not keep the IP address itself. The app never asks for location permission and never uses
+  your device's precise (GPS) location. The ID is created when you install the app, is reset when you reinstall
+  it, and is not linked to your name, email or any account.
 
 Usage statistics never include anything you type (task names or notes), your coin balance, transaction numbers,
 purchase tokens or payment details. The app does not use your device's advertising ID, turns off ad
