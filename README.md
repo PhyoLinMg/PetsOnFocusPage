@@ -11,11 +11,13 @@ npm run build   # static site in out/
 
 ## Content
 
-- `/` — `app/page.tsx`
+- `/` — `app/page.tsx`. The scroll tour of the pet's room is `components/room/RoomTour.tsx` (camera, scroll
+  timing in `SEGS`) and `components/room/Walls.tsx` (the room, redrawn from the app's screenshots).
 - `/privacy/`, `/terms/` — rendered from `docs/privacy.md` and `docs/terms.md` at build time. Edit the Markdown only.
 - 404 — `app/not-found.tsx`
 - Social card — `app/og.png/route.tsx` (built to `out/og.png`; fetches Shantell Sans from Google Fonts at build time)
-- Pet art — `assets/pets/*.webp`, cropped from the app's `composeResources/drawable` PNGs
+- Pet art — `assets/pets/*.webp`, the app's short-hair cat stills in their in-app colours
+- App icon — `app/icon.png`, `app/apple-icon.png` and `assets/app-icon.webp` (header)
 
 ## Deploy
 
@@ -34,4 +36,3 @@ To build for another host, set both yourself, e.g.
 
 - App Store id exists → add the Smart App Banner in `app/layout.tsx` (`apple-itunes-app`).
 - Store listings live → replace the "Coming soon" badges in `app/page.tsx` with links.
-- App icon designed → add `app/icon.png` and `app/apple-icon.png`.

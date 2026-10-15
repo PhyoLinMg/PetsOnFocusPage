@@ -4,7 +4,7 @@ title: Privacy Policy
 
 # Pets on Focus — Privacy Policy
 
-_Last updated: 8 October 2026_
+_Last updated: 15 October 2026_
 
 Pets on Focus ("the app") is made by Phyo Lin Mg ("we"). This policy explains what the app collects, why,
 and what stays on your device. Questions: [phyolinmg.dev@gmail.com](mailto:phyolinmg.dev@gmail.com).
@@ -12,15 +12,19 @@ and what stays on your device. Questions: [phyolinmg.dev@gmail.com](mailto:phyol
 ## The short version
 
 - There are no accounts. We never ask for your name, email or phone number.
-- Your focus sessions, tasks, coins, pets and room stay on your device.
+- Your focus history, tasks, coins, pets and room are stored on your device, not on a server of ours.
 - If the app crashes, a crash report is sent to Google's Firebase Crashlytics so we can fix it.
+- The app sends usage statistics to Google Analytics for Firebase, such as when a focus session starts and ends,
+  so we can see how many people use the app and how. This is on by default; you can turn it off at any time in
+  Settings > Privacy > "Share usage stats". It never includes anything you type.
 - Purchases are handled by Google Play or the App Store. We never see your payment details.
 - We do not sell your data, show ads, or track you across other apps or websites.
 
 ## What stays on your device
 
 Your focus history, tasks, streaks, coin balance, the pets and room items you own or equip, your settings and a
-local copy of what you have bought are stored only on your device. We have no server that receives them.
+local copy of what you have bought are stored only on your device. We have no server that receives them. (The
+usage statistics described below are separate events, sent to Google, not a copy of this data.)
 
 Your phone's own backup may copy this data: Android Auto Backup (to your Google account) and iCloud Backup (to your
 Apple account). Those backups are run by Google and Apple under their privacy policies, and you can turn them off
@@ -34,6 +38,27 @@ installation ID made by Firebase, and short notes about the purchase step that w
 in-app product was being bought and whether the store answered). Reports never include payment details, prices,
 your coin balance, transaction numbers or anything that identifies you by name. We use them only to find and fix
 bugs. See [Google's Firebase privacy information](https://firebase.google.com/support/privacy).
+
+**Usage statistics (Google Analytics for Firebase, by Google).** Unless you turn it off, the app sends events about
+how it is used, so we can count how many people use it each month and improve it:
+
+- events Firebase records by itself: the first time the app opens, when it is in use and for how long, app updates,
+  and in-app purchases (which product, and the price the store charged);
+- events the app sends: a focus session starting and ending (the planned and focused minutes, single or Pomodoro, and
+  whether it was finished, stopped early or ended by leaving the app); opening the Shop, the Plus screen or the room
+  editor; and buying something with coins or from the store (which item or product, and whether it went through);
+- with each event: your country, device model, operating system version, app version, and a random app-instance ID
+  made by Firebase. The ID is created when you install the app, is reset when you reinstall it, and is not linked to
+  your name, email or any account.
+
+Usage statistics never include anything you type (task names or notes), your coin balance, transaction numbers,
+purchase tokens or payment details. The app does not use your device's advertising ID, turns off ad
+personalisation, and does not track you across other apps or websites (so iPhone never asks you about tracking).
+
+You can turn usage statistics off at any time in **Settings > Privacy > "Share usage stats"**. From then on the app
+sends no usage events. Events already sent are kept until they expire (see "Keeping and deleting data"). Crash
+reports are separate and stay on, because they keep the app working. See
+[Google's Firebase privacy information](https://firebase.google.com/support/privacy).
 
 **Pet downloads (Cloudflare).** Some pets are downloaded the first time you use them, from a file server run by
 Cloudflare. Like any website, that server receives your IP address and the name of the file requested. We do not
@@ -58,7 +83,8 @@ When you tap "Share with friends", the app makes a picture and opens your device
 until you pick where to share it, and then it goes only where you choose.
 
 We do not sell, rent or share your data with anyone else, except the service providers named above (Google
-Firebase, Cloudflare, Google Play, Apple) for the purposes described, or if required by law.
+Firebase Crashlytics and Analytics, Cloudflare, Google Play, Apple) for the purposes described, or if required by
+law.
 
 ## Children
 
@@ -68,15 +94,17 @@ The app collects no names, emails or contact details from anyone.
 ## Keeping and deleting data
 
 Data on your device is deleted when you uninstall the app (and from your backups when you delete those). Crash
-reports are kept by Firebase Crashlytics for 90 days and then deleted. To ask about or delete crash reports linked
-to your installation, email [phyolinmg.dev@gmail.com](mailto:phyolinmg.dev@gmail.com).
+reports are kept by Firebase Crashlytics for 90 days and then deleted. Usage statistics are kept by Google Analytics
+for Firebase for at most 14 months and then deleted. To ask about or delete crash reports or usage statistics
+linked to your installation, email [phyolinmg.dev@gmail.com](mailto:phyolinmg.dev@gmail.com).
 
 ## Your rights
 
 Depending on where you live (for example under Thailand's Personal Data Protection Act, the GDPR or the CCPA),
 you may have the right to access, correct or delete personal data about you, or to object to its use. Because we
-hold no account data, most of these requests can be met by uninstalling the app; for crash reports, email
-[phyolinmg.dev@gmail.com](mailto:phyolinmg.dev@gmail.com).
+hold no account data, most of these requests can be met by uninstalling the app. You can object to usage
+statistics at any time with the "Share usage stats" switch. For crash reports or usage statistics already sent,
+email [phyolinmg.dev@gmail.com](mailto:phyolinmg.dev@gmail.com).
 
 ## Changes
 

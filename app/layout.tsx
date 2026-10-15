@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { JetBrains_Mono, Shantell_Sans, Source_Sans_3 } from "next/font/google";
+import appIcon from "@/assets/app-icon.webp";
 import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -24,20 +26,9 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#C0C39F" };
 
-// Runs before paint so the room window shows the visitor's own time of day.
-const skyScript = `(function(){var h=new Date().getHours();document.documentElement.dataset.sky=h>=6&&h<18?"day":"night";})();`;
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      data-sky="day"
-      suppressHydrationWarning
-      className={`${hand.variable} ${body.variable} ${mono.variable}`}
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: skyScript }} />
-      </head>
+    <html lang="en" className={`${hand.variable} ${body.variable} ${mono.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
@@ -45,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="site-header">
           <div className="container site-header-inner">
             <Link href="/" className="wordmark">
+              <Image src={appIcon} alt="" width={32} height={32} className="wordmark-icon" loading="eager" />
               Pets on Focus
             </Link>
             <nav aria-label="Main" className="site-nav">

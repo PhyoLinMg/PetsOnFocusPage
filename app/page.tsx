@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Journey, type Stop } from "@/components/journey/Journey";
 import { Reveal } from "@/components/Reveal";
+import { Devices } from "@/components/room/Devices";
+import { RoomTour } from "@/components/room/RoomTour";
 import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, OG_IMAGE, SITE_NAME, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -11,176 +12,107 @@ export const metadata: Metadata = {
   openGraph: { title: HOME_TITLE, description: HOME_DESCRIPTION, url: absoluteUrl("/"), images: [OG_IMAGE] },
 };
 
-const steps: { title: string; body: string }[] = [
+// What the tour shows, one note per stop (components/room/RoomTour.tsx).
+const tourNotes: { anchor?: string; content: React.ReactNode }[] = [
   {
-    title: "Pick your time.",
-    body: "Choose how long you want to focus, or switch to Pomodoro for work and break cycles.",
+    content: (
+      <>
+        <h1 className="eyebrow">Pets on Focus</h1>
+        <p className="tour-headline">Focus together.</p>
+        <p className="tour-body">A calm focus timer with a hand-drawn pet who sits with you in a small, cosy room.</p>
+        <ul className="tour-stores" aria-label="Download">
+          <li>Android</li>
+          <li>iPhone and iPad</li>
+          <li className="tour-stores-soon">Coming soon</li>
+        </ul>
+      </>
+    ),
   },
   {
-    title: "Stay with your pet.",
-    body:
-      "Your pet curls up beside you while the timer runs. Leave the app for more than 10 seconds and the " +
-      "session ends, and your pet looks a little let down.",
+    anchor: "how-it-works",
+    content: (
+      <>
+        <h2 className="visually-hidden">How it works</h2>
+        <p className="eyebrow">How it works · 01 / 03</p>
+        <h3 className="tour-title">Start, and your pet settles in.</h3>
+        <p className="tour-body">
+          Five minutes to four hours, or Pomodoro cycles. Your pet naps and stretches beside you. Step away for
+          more than 10 seconds and the session ends; you get a heads-up the moment you leave.
+        </p>
+      </>
+    ),
   },
   {
-    title: "Celebrate and collect.",
-    body:
-      "Finish the session and your pet celebrates. You earn coins and a surprise gift for the collection.",
+    content: (
+      <>
+        <p className="eyebrow">How it works · 02 / 03</p>
+        <h3 className="tour-title">Finish, and your pet brings a gift.</h3>
+        <p className="tour-body">
+          Your pet celebrates, you earn coins for the room, and a find goes into your collection. The rarest
+          gifts come from streaks.
+        </p>
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        <p className="eyebrow">How it works · 03 / 03</p>
+        <h3 className="tour-title">Turn around. Your progress is on the wall.</h3>
+        <p className="tour-body">
+          Today&rsquo;s sessions on the chalkboard, your streak on the calendar, and a pennant for every milestone
+          from 1 to 100 days.
+        </p>
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        <p className="eyebrow">Collection</p>
+        <h3 className="tour-title">Seven gifts to find.</h3>
+        <p className="tour-body">
+          Five turn up after sessions, Common to Rare. An Epic waits at a 7-day streak and a Legendary at 30 days.
+        </p>
+      </>
+    ),
   },
 ];
 
-type Feature = { title: string; body: string };
-
-const features = {
-  pomodoro: {
+// What the app does beyond the tour. Facts from the redesign brief (2026-10-15).
+const features: { title: string; body: string }[] = [
+  {
     title: "Focus or Pomodoro",
     body:
-      "Run one focus session at a time, or a Pomodoro run with work cycles, short breaks and a longer " +
-      "break. Set the lengths in Settings.",
+      "Run one session from 5 minutes to 4 hours, or a Pomodoro run of work cycles, short breaks and a " +
+      "long break. Set the lengths in Settings.",
   },
-  honest: {
-    title: "Honest focus",
-    body:
-      "Leaving the app is what ends a session, not a long list of blocked apps. Step away for more than " +
-      "10 seconds and the session stops. That’s the deal you make with your pet.",
+  {
+    title: "A pet who keeps you company",
+    body: "A short-hair cat, an orange tabby or a golden retriever. It sits, naps, yawns, stretches and cheers when you finish.",
   },
-  room: {
+  {
     title: "A room that’s yours",
     body:
-      "Spend coins on wallpapers, windows, wall frames, rugs, beds, plants, lamps, floor patterns and " +
-      "lighting. The window follows the real time of day: sun in the daytime, moon at night.",
+      "Tap Customize, then tap any spot in the room to swap it: the window, a frame, the rug, the bed, a " +
+      "lamp. Try things in the room before you spend your coins.",
   },
-  gifts: {
-    title: "Gifts after every session",
-    body: "Every finished session opens a gift for your collection, from Common to Legendary.",
-  },
-  sounds: {
+  {
     title: "Ambient sounds",
-    body: "Mix gentle background sounds while you focus: cat purring, rain, fireplace, café.",
+    body: "Cat purring, rain, fireplace and café. Mix up to three, each at its own volume, and save the mix.",
   },
-  progress: {
-    title: "See your progress",
-    body:
-      "Stats, a timeline of past sessions, and streaks for focusing day after day. Reach a 7-day or " +
-      "30-day streak for a reward.",
-  },
-  tasks: {
+  {
     title: "Tasks",
-    body: "Write down what you’re working on and pick it before you start, so each session has a purpose.",
+    body: "Write down what you’re working on and pin it before you start, so each session has a purpose.",
   },
-  share: {
+  {
+    title: "Stats and timeline",
+    body: "Your week at a glance, every past session on a timeline, and your streak.",
+  },
+  {
     title: "Share with friends",
-    body: "Finished a session? Share a picture card of your session and your pet with whoever you like.",
+    body: "Finished a session? Share a picture card of it and your pet with whoever you like.",
   },
-  screens: {
-    title: "Works on big screens",
-    body: "Built for phones, foldables and tablets.",
-  },
-} satisfies Record<string, Feature>;
-
-// A feature stop: its note, what the camera frames, the pet's pose and the app demo it plays.
-// On narrow screens the camera keeps to the pet, since the demo takes most of the frame.
-function feature(key: keyof typeof features, target: string[], pet: Stop["pet"], demo: Stop["demo"]): Stop {
-  return { key, target, narrowTarget: ["pet", "rug"], pet, demo, content: <FeatureNote items={[features[key]]} /> };
-}
-
-function FeatureNote({ items }: { items: Feature[] }) {
-  return (
-    <ul className="note-features">
-      {items.map((f) => (
-        <li key={f.title}>
-          <h3 className="note-title">{f.title}</h3>
-          <p className="note-body">{f.body}</p>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-const stops: Stop[] = [
-  {
-    key: "welcome",
-    target: ["window", "clock", "rug", "pet"],
-    narrowTarget: ["rug", "pet"],
-    pet: "cat-sit",
-    content: (
-      <>
-        <div className="note-head">
-          <h2 className="note-headline">Make yourself at home.</h2>
-        </div>
-        <div className="note-text">
-          <p className="note-lede">
-            Stay focused and it stays happy. Finish, and you earn coins to make its room your own.
-          </p>
-          <ul className="store-list" aria-label="Download">
-            <li className="store-badge">
-              <span className="store-badge-soon">Coming soon on</span>
-              <span className="store-badge-name">Google Play</span>
-            </li>
-            <li className="store-badge">
-              <span className="store-badge-soon">Coming soon on the</span>
-              <span className="store-badge-name">App Store</span>
-            </li>
-          </ul>
-        </div>
-      </>
-    ),
-  },
-  ...steps.map(
-    (step, i): Stop => ({
-      key: `step-${i + 1}`,
-      anchor: i === 0 ? "how-it-works" : undefined,
-      target: [["pet", "rug"], ["pet", "rug"], ["pet", "gift"]][i],
-      narrowTarget: ["pet", "rug"],
-      pet: (["cat-sit", "cat-sleep", "cat-celebrating"] as const)[i],
-      demo: (["pick", "session", "gift"] as const)[i],
-      content: (
-        <>
-          {i === 0 && <h2 className="visually-hidden">How it works</h2>}
-          <div className="note-head">
-            <p className="eyebrow">
-              How it works <span className="note-count">{`0${i + 1} / 03`}</span>
-            </p>
-            <h3 className="note-title note-title--step">{step.title}</h3>
-          </div>
-          <div className="note-text">
-            <p className="note-body">{step.body}</p>
-          </div>
-        </>
-      ),
-    }),
-  ),
-  {
-    key: "pet",
-    anchor: "features",
-    target: ["pet", "rug"],
-    pet: "cat-sit",
-    demo: "pets",
-    content: (
-      <>
-        <h2 className="visually-hidden">Features</h2>
-        <div className="note-head">
-          <h3 className="note-title note-title--step">A pet who keeps you company</h3>
-        </div>
-        <div className="note-text">
-          <p className="note-body">
-            A hand-drawn cat or dog lives in your room. It sits, naps, stretches, wakes up and cheers when you
-            finish. Pick a short-hair or an orange tabby cat, or a golden retriever. More pets can join with
-            coins, starting with a Holland Lop rabbit.
-          </p>
-        </div>
-      </>
-    ),
-  },
-  feature("pomodoro", ["pet", "rug"], "cat-sit", "pomodoro"),
-  feature("honest", ["pet", "rug"], "cat-sleep", "leave"),
-  feature("room", ["window", "rug", "pet"], "cat-sit", "customize"),
-  feature("gifts", ["gift", "pet"], "cat-celebrating", "collection"),
-  feature("sounds", ["radio", "pet"], "cat-sleep", "sounds"),
-  feature("tasks", ["notepad", "pet"], "cat-sit", "tasks"),
-  feature("progress", ["calendar", "pet"], "cat-sit", "stats"),
-  feature("share", ["frame", "pet"], "cat-celebrating", "share"),
-  { key: "screens", target: [], pet: "cat-sit", view: "fit", content: <FeatureNote items={[features.screens]} /> },
 ];
 
 const faqs: { q: string; a: React.ReactNode }[] = [
@@ -240,20 +172,36 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <Journey
-        stops={stops}
-        intro={
-          <div className="container intro">
-            <h1 className="intro-title">Pets on Focus</h1>
-            <p className="intro-tagline">Focus together.</p>
-            <p className="intro-lede">A calm focus timer with a pet who sits with you while you work.</p>
-            <p className="intro-cue">
-              Scroll to step inside
-              <span className="intro-cue-arrow" aria-hidden="true" />
-            </p>
-          </div>
-        }
-      />
+      <RoomTour notes={tourNotes} />
+
+      <section id="screens" className="section" aria-labelledby="screens-title">
+        <div className="container">
+          <h2 id="screens-title" className="section-title" data-reveal>
+            At home on every screen.
+          </h2>
+          <p className="section-lede" data-reveal>
+            Phones, foldables and tablets, on Android and on iPhone and iPad. On a bigger screen the room opens
+            up around your pet.
+          </p>
+          <Devices />
+        </div>
+      </section>
+
+      <section id="features" className="section" aria-labelledby="features-title">
+        <div className="container">
+          <h2 id="features-title" className="section-title" data-reveal>
+            More in the app
+          </h2>
+          <ul className="features">
+            {features.map((f) => (
+              <li key={f.title} className="feature" data-reveal>
+                <h3 className="feature-title">{f.title}</h3>
+                <p>{f.body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <section className="section section--dark" aria-label="Privacy and Plus">
         <div className="container cards">
@@ -262,8 +210,9 @@ export default function Home() {
               Privacy, in short
             </h2>
             <p>
-              No account. No sign-up. Your sessions, tasks, coins and room stay on your device. The app only sends
-              crash reports so bugs can be fixed, and it never sells your data.
+              No account. No sign-up. Your tasks, coins and room stay on your device. The app sends crash reports so
+              bugs can be fixed, and usage stats (on by default, off in Settings) so it can get better. Never
+              anything you type, and it never sells your data.
             </p>
             <p>
               <Link href="/privacy/" className="link-accent">
@@ -276,9 +225,7 @@ export default function Home() {
               Pets on Focus Plus
             </h2>
             <p>
-              The free app is the whole app: the timer, Pomodoro, your pet, the room and the collection. Plus is
-              an optional upgrade, monthly, yearly or once for life, that adds the extra ambient sounds and more
-              as they arrive.
+              The free app is the whole app. Plus is an optional upgrade, with more Plus features as they ship.
             </p>
           </article>
         </div>

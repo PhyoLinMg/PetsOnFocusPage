@@ -13,3 +13,6 @@ next-env.d.ts
 
 # Internal site brief (kept local, not published)
 docs/home.md
+
+# Redesign hand-off (screenshots, source art); copy used assets into assets/ as .webp
+/redesign/
