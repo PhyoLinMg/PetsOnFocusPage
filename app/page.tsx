@@ -3,13 +3,13 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { Devices } from "@/components/room/Devices";
 import { RoomTour } from "@/components/room/RoomTour";
-import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, OG_IMAGE, SITE_NAME, absoluteUrl } from "@/lib/site";
+import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, LOGO, OG_IMAGE, SITE_NAME, absoluteUrl, openGraphFor } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
   description: HOME_DESCRIPTION,
   alternates: { canonical: absoluteUrl("/") },
-  openGraph: { title: HOME_TITLE, description: HOME_DESCRIPTION, url: absoluteUrl("/"), images: [OG_IMAGE] },
+  openGraph: openGraphFor({ title: HOME_TITLE, description: HOME_DESCRIPTION, path: "/" }),
 };
 
 // What the tour shows, one note per stop (components/room/RoomTour.tsx).
@@ -155,22 +155,49 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
 ];
 
+// Structured data for search engines: who makes the app, what this site is, and what the app is.
+// Organization.logo and WebSite.name are what Google reads to show the icon and site name in results.
+const ORG_ID = absoluteUrl("/#organization");
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: SITE_NAME,
-  description: HOME_DESCRIPTION,
-  url: absoluteUrl("/"),
-  applicationCategory: "ProductivityApplication",
-  operatingSystem: "Android, iOS, iPadOS",
-  author: { "@type": "Person", name: AUTHOR },
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: SITE_NAME,
+      url: absoluteUrl("/"),
+      logo: { "@type": "ImageObject", url: LOGO.url, width: LOGO.width, height: LOGO.height },
+      email: CONTACT_EMAIL,
+      founder: { "@type": "Person", name: AUTHOR },
+    },
+    {
+      "@type": "WebSite",
+      "@id": absoluteUrl("/#website"),
+      name: SITE_NAME,
+      url: absoluteUrl("/"),
+      inLanguage: "en",
+      publisher: { "@id": ORG_ID },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": absoluteUrl("/#app"),
+      name: SITE_NAME,
+      description: HOME_DESCRIPTION,
+      url: absoluteUrl("/"),
+      image: OG_IMAGE.url,
+      applicationCategory: "ProductivityApplication",
+      operatingSystem: "Android, iOS, iPadOS",
+      author: { "@type": "Person", name: AUTHOR },
+      publisher: { "@id": ORG_ID },
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    },
+  ],
 };
 
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       <RoomTour notes={tourNotes} />
 

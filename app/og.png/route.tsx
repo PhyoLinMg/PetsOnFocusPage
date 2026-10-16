@@ -1,8 +1,10 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
+import { SITE_NAME, TAGLINE } from "@/lib/site";
 
-// Served as /og.png (a real file name, so GitHub Pages sends image/png). Wired up in app/layout.tsx.
+// Served as /og.png (a real file name, so GitHub Pages sends image/png). Every page points at it through
+// openGraphFor() in lib/site.ts. Shows the app icon so a shared link carries the logo.
 export const dynamic = "force-static";
 
 const size = { width: 1200, height: 630 };
@@ -23,10 +25,14 @@ async function loadShantell(text: string): Promise<ArrayBuffer> {
 }
 
 export async function GET() {
-  const wordmark = "Pets on Focus";
-  const tagline = "Focus together.";
-  const cat = await readFile(path.join(process.cwd(), "assets", "og-cat.png"));
+  const wordmark = SITE_NAME;
+  const tagline = TAGLINE;
+  const [cat, icon] = await Promise.all([
+    readFile(path.join(process.cwd(), "assets", "og-cat.png")),
+    readFile(path.join(process.cwd(), "app", "icon.png")),
+  ]);
   const catSrc = `data:image/png;base64,${cat.toString("base64")}`;
+  const iconSrc = `data:image/png;base64,${icon.toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -73,10 +79,13 @@ export async function GET() {
           }}
         />
         <img src={catSrc} width={250} height={415} style={{ position: "absolute", right: 145, bottom: 70 }} alt="" />
-        {/* wordmark on the wall */}
-        <div style={{ position: "absolute", left: 80, top: 176, display: "flex", flexDirection: "column" }}>
-          <div style={{ fontFamily: "Shantell", fontSize: 80, color: INK, lineHeight: 1.05 }}>{wordmark}</div>
-          <div style={{ fontFamily: "Shantell", fontSize: 40, color: INK, marginTop: 18 }}>{tagline}</div>
+        {/* app icon, wordmark and tagline on the wall */}
+        <div style={{ position: "absolute", left: 80, top: 92, display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", width: 124, height: 124, padding: 8, background: PAPER, borderRadius: 32 }}>
+            <img src={iconSrc} width={108} height={108} style={{ borderRadius: 26 }} alt="" />
+          </div>
+          <div style={{ fontFamily: "Shantell", fontSize: 80, color: INK, lineHeight: 1.05, marginTop: 26 }}>{wordmark}</div>
+          <div style={{ fontFamily: "Shantell", fontSize: 40, color: INK, marginTop: 12 }}>{tagline}</div>
         </div>
       </div>
     ),

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
 import { readLegalDoc } from "@/lib/legal";
-import { OG_IMAGE, absoluteUrl } from "@/lib/site";
+import { absoluteUrl, openGraphFor } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { title } = await readLegalDoc("privacy");
+  const description = `${title} for the Pets on Focus app.`;
   return {
     title,
-    description: `${title} for the Pets on Focus app.`,
+    description,
     alternates: { canonical: absoluteUrl("/privacy/") },
-    openGraph: { title, url: absoluteUrl("/privacy/"), images: [OG_IMAGE] },
+    openGraph: openGraphFor({ title, description, path: "/privacy/" }),
   };
 }
 

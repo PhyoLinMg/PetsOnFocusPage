@@ -15,9 +15,13 @@ npm run build   # static site in out/
   timing in `SEGS`) and `components/room/Walls.tsx` (the room, redrawn from the app's screenshots).
 - `/privacy/`, `/terms/` — rendered from `docs/privacy.md` and `docs/terms.md` at build time. Edit the Markdown only.
 - 404 — `app/not-found.tsx`
-- Social card — `app/og.png/route.tsx` (built to `out/og.png`; fetches Shantell Sans from Google Fonts at build time)
+- Social card — `app/og.png/route.tsx` (built to `out/og.png`; fetches Shantell Sans from Google Fonts at build time).
+  App icon, wordmark and the cat; every page points at it through `openGraphFor()` in `lib/site.ts`.
+- Search engines — `app/sitemap.ts`, `app/robots.ts`, and JSON-LD on `/` (`app/page.tsx`: Organization with the
+  logo, WebSite, SoftwareApplication).
 - Pet art — `assets/pets/*.webp`, the app's short-hair cat stills in their in-app colours
-- App icon — `app/icon.png`, `app/apple-icon.png` and `assets/app-icon.webp` (header)
+- App icon — `app/icon.png` (also the logo in JSON-LD), `app/favicon.ico`, `app/apple-icon.png` and
+  `assets/app-icon.webp` (header)
 
 ## Deploy
 
@@ -31,6 +35,14 @@ The workflow passes two values from `actions/configure-pages` to the build:
 
 To build for another host, set both yourself, e.g.
 `SITE_URL=https://petsonfocus.app npm run build`.
+
+### Google Search Console
+
+Add the site at <https://search.google.com/search-console> (URL-prefix property for `https://petsonfocus.app/`),
+pick the **HTML tag** method and copy the tag's `content` value into a repository variable named
+`GOOGLE_SITE_VERIFICATION` (Settings → Secrets and variables → Actions → Variables). The next deploy emits the
+tag on every page; verify, then submit `https://petsonfocus.app/sitemap.xml` under Sitemaps. Without the
+variable nothing is emitted.
 
 ## Later
 
