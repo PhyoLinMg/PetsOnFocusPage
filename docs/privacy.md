@@ -4,7 +4,7 @@ title: Privacy Policy
 
 # Pets on Focus — Privacy Policy
 
-_Last updated: 16 October 2026_
+_Last updated: 17 October 2026_
 
 Pets on Focus ("the app") is made by Phyo Lin Mg ("we"). This policy explains what the app collects, why,
 and what stays on your device. Questions: [phyolinmg.dev@gmail.com](mailto:phyolinmg.dev@gmail.com).
@@ -47,8 +47,9 @@ how it is used, so we can count how many people use it each month and improve it
 - events Firebase records by itself: the first time the app opens, when it is in use and for how long, app updates,
   and in-app purchases (which product, and the price the store charged);
 - events the app sends: a focus session starting and ending (the planned and focused minutes, single or Pomodoro, and
-  whether it was finished, stopped early or ended by leaving the app); opening the Shop, the Plus screen or the room
-  editor; and buying something with coins or from the store (which item or product, and whether it went through);
+  whether it was finished, stopped early or ended by leaving the app); a streak freeze being used (the streak length it
+  kept); opening the Shop, the Plus screen or the room editor; and buying something with coins or from the store (which
+  item or product, and whether it went through);
 - with each event: your approximate location (country, region or city), device model, operating system version,
   app version, and a random app-instance ID made by Firebase. Google works out the approximate location from your
   IP address and does not keep the IP address itself. The app never asks for location permission and never uses
@@ -78,8 +79,9 @@ name, email, card or other payment details. See Google's and Apple's privacy pol
   so the session can end after 10 seconds away. The app checks which app is in front and nothing else: it does not
   read the screen, what you type, or your messages, and nothing it sees leaves your device. You can turn it off at
   any time in Android's Accessibility settings.
-- **Notifications.** Used to tell you, during a session, that you left the app. Notifications are created on your
-  device; no notification data is sent anywhere.
+- **Notifications.** Used to tell you, during a session, that you left the app, and for one evening streak reminder:
+  a notification at 8 pm on a day you have a streak going and no finished session yet. The reminder is on by default;
+  you can turn it off in Settings. Notifications are created on your device; no notification data is sent anywhere.
 
 ## Sharing
 
