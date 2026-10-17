@@ -38,6 +38,10 @@ const SEGS = [
   { len: 90, ease: [0.3, 0.7] }, // close in on the gift box
 ];
 
+/** Scales every SEGS length. A phone's swipe moves the page about as far as the thumb travels, so the
+ *  full-length tour took too many swipes there (owner, 2026-10-17); wide screens keep the full length. */
+const PACE = { narrow: 0.5, wide: 1 };
+
 /** Band height every whole-wall stop is sized for; the wall is made as wide as the screen at that scale. */
 const BAND = { narrow: 1810, wide: 1900 };
 /** Facing each wall, in degrees of turn. */
@@ -52,16 +56,17 @@ const smooth = (a: number, b: number, v: number) => {
 const clock = (sec: number) => `${Math.floor(sec / 60)}:${String(Math.floor(sec % 60)).padStart(2, "0")}`;
 
 /** Scroll in screen heights x 100 to a stop position, 0 .. STOPS.length - 1. */
-function stopAt(units: number) {
+function stopAt(units: number, pace: number) {
   for (let i = 0; i < SEGS.length; i++) {
-    if (units <= SEGS[i].len) return i + Math.max(0, units) / SEGS[i].len;
-    units -= SEGS[i].len;
+    const len = SEGS[i].len * pace;
+    if (units <= len) return i + Math.max(0, units) / len;
+    units -= len;
   }
   return SEGS.length;
 }
 
 /** Scroll offset (screen heights x 100) of a stop, where its hold is centred. */
-const unitsTo = (stop: number) => SEGS.slice(0, stop).reduce((n, g) => n + g.len, 0);
+const unitsTo = (stop: number, pace: number) => SEGS.slice(0, stop).reduce((n, g) => n + g.len * pace, 0);
 
 export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNode }[] }) {
   const tourRef = useRef<HTMLDivElement>(null);
@@ -96,6 +101,7 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       W: 966,
       shift: 0,
       spread: 1,
+      pace: 1,
       trackTop: 0,
     };
 
@@ -130,10 +136,11 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       walls[2].style.transform = `translate3d(${W / 2}px, 0, 0) rotateY(-90deg)`;
 
       // Lengths in px, from the stage's own height, so a phone's sliding toolbar never shifts the tour.
-      track.style.height = `${(unitsTo(SEGS.length) / 100) * screen + screen}px`;
-      for (const a of anchors) a.style.top = `${(unitsTo(Number(a.dataset.stop)) / 100) * screen}px`;
+      const pace = PACE[isWide ? "wide" : "narrow"];
+      track.style.height = `${(unitsTo(SEGS.length, pace) / 100) * screen + screen}px`;
+      for (const a of anchors) a.style.top = `${(unitsTo(Number(a.dataset.stop), pace) / 100) * screen}px`;
       const trackTop = track.getBoundingClientRect().top + window.scrollY;
-      L = { isWide, screen, rect, W, shift, spread, trackTop };
+      L = { isWide, screen, rect, W, shift, spread, pace, trackTop };
     }
 
     function cameraFor(i: number, scale: number, cx: number, cy: number) {
@@ -158,7 +165,7 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       const at = /^#at=([\d.]+)$/.exec(location.hash);
       const raw = at
         ? clamp(parseFloat(at[1]), 0, STOPS.length - 1)
-        : stopAt(((window.scrollY - L.trackTop) / L.screen) * 100);
+        : stopAt(((window.scrollY - L.trackTop) / L.screen) * 100, L.pace);
       const k = Math.min(STOPS.length - 2, Math.floor(raw));
       const seg = SEGS[k];
       const t = reduce.matches ? (raw - k < 0.5 ? 0 : 1) : smooth(seg.ease[0], seg.ease[1], raw - k);
