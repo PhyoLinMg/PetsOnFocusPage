@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DoubleCoins, FiveWeeks, FrozenCalendar } from "@/components/PlusArt";
 import { Reveal } from "@/components/Reveal";
 import { Devices } from "@/components/room/Devices";
 import { RoomTour } from "@/components/room/RoomTour";
@@ -110,15 +111,75 @@ const features: { title: string; body: string }[] = [
     body: "Your week at a glance, every past session on a timeline, and your streak.",
   },
   {
+    title: "A streak reminder",
+    body:
+      "Got a streak going and no session yet today? One notification at 8 pm lets you know. Never while " +
+      "you’re in the app, and you can turn it off in Settings.",
+  },
+  {
     title: "Share with friends",
     body: "Finished a session? Share a picture card of it and your pet with whoever you like.",
   },
 ];
 
+// Pets on Focus Plus. Titles are the app's own benefit lines (PlusPerks.benefitLines); facts from the Plus perks
+// spec (2026-10-17). No prices, no trial, nothing free moved behind Plus.
+const plusPerks: { title: string; body: string; art: React.ReactNode }[] = [
+  {
+    title: "Double coins from every finished session",
+    body: "Pomodoro work cycles too. A 25-minute session pays 10 coins for the room instead of 5.",
+    art: <DoubleCoins />,
+  },
+  {
+    title: "Miss a day a week, keep your streak",
+    body: "A day off that doesn’t cost you your streak, once in any seven days. Finish a session the next day and Plus covers it.",
+    art: <FrozenCalendar />,
+  },
+  {
+    title: "Five-week calendar and best hours in Stats",
+    body: "The last 35 days, shaded by how long you focused, and the two hours when most of your focus starts.",
+    art: <FiveWeeks />,
+  },
+];
+
+const plusPlans: { name: string; body: string }[] = [
+  { name: "Monthly or annual", body: "A subscription through Google Play or the App Store. Cancel anytime in the store." },
+  { name: "Lifetime", body: "One payment, no subscription." },
+  { name: "New phone or a reinstall", body: "Plus comes back with Restore Purchases in Settings, on the same store account." },
+];
+
 const faqs: { q: string; a: React.ReactNode }[] = [
   {
     q: "Is it free?",
-    a: "Yes. Pets on Focus is free to download and use. Plus and coin packs are optional purchases.",
+    a: "Yes. Pets on Focus is free to download and use. Plus and coin packs are optional purchases on top.",
+  },
+  {
+    q: "What does Plus add?",
+    a:
+      "Double coins from every finished session and Pomodoro work cycle. A streak freeze: miss one day in any " +
+      "seven, finish a session the next day, and your streak carries on. The day off gets a snowflake and doesn’t " +
+      "add to the count, and two missed days in a row still end a streak. And two more cards in Stats: a " +
+      "five-week calendar and your best hours.",
+  },
+  {
+    q: "Is the free app limited?",
+    a:
+      "No. The free app is the whole app: the timer and Pomodoro, your pet and its room, gifts, sounds, tasks, " +
+      "stats, streaks and the streak reminder. Plus only adds on top; nothing that was free moved behind it.",
+  },
+  {
+    q: "What happens to my streak and coins if Plus ends?",
+    a:
+      "Freezes Plus already used stay in place, so your streak doesn’t change, and the coins you earned are still " +
+      "yours. After that, new sessions pay the usual coins, a missed day isn’t covered, and the five-week calendar " +
+      "and best hours cards lock again.",
+  },
+  {
+    q: "Can I cancel?",
+    a:
+      "Yes, anytime, in your Google Play or App Store subscriptions. Plus stays on until the end of the period you " +
+      "paid for, and deleting the app doesn’t cancel it. Lifetime is a one-time purchase, so there’s nothing to " +
+      "cancel; if you switch to it from a subscription, cancel the subscription in the store too.",
   },
   { q: "Do I need an account?", a: "No. There is no sign-up and no login." },
   {
@@ -230,30 +291,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--dark" aria-label="Privacy and Plus">
-        <div className="container cards">
-          <article className="card" aria-labelledby="privacy-title" data-reveal>
+      <section id="plus" className="section section--dark" aria-label="Plus and privacy">
+        <div className="container">
+          <div className="plus-head" data-reveal>
+            <h2 className="section-title">Pets on Focus Plus</h2>
+            <p className="plus-lede">The free app is the whole app. Plus is for anyone who’d like a little more.</p>
+          </div>
+          <ul className="plus-perks">
+            {plusPerks.map((p) => (
+              <li key={p.title} className="plus-perk" data-reveal>
+                <div className="plus-art">{p.art}</div>
+                <div>
+                  <h3 className="plus-perk-title">{p.title}</h3>
+                  <p>{p.body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <dl className="plus-plans" data-reveal>
+            {plusPlans.map((p) => (
+              <div key={p.name}>
+                <dt>{p.name}</dt>
+                <dd>{p.body}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <article className="card card--split" aria-labelledby="privacy-title" data-reveal>
             <h2 id="privacy-title" className="card-title">
               Privacy, in short
             </h2>
-            <p>
-              No account. No sign-up. Your tasks, coins and room stay on your device. The app sends crash reports so
-              bugs can be fixed, and usage stats (on by default, off in Settings) so it can get better. Never
-              anything you type, and it never sells your data.
-            </p>
-            <p>
-              <Link href="/privacy/" className="link-accent">
-                Read the Privacy Policy →
-              </Link>
-            </p>
-          </article>
-          <article className="card" aria-labelledby="plus-title" data-reveal>
-            <h2 id="plus-title" className="card-title">
-              Pets on Focus Plus
-            </h2>
-            <p>
-              The free app is the whole app. Plus is an optional upgrade, with more Plus features as they ship.
-            </p>
+            <div className="card-text">
+              <p>
+                No account. No sign-up. Your tasks, coins and room stay on your device. The app sends crash reports so
+                bugs can be fixed, and usage stats (on by default, off in Settings) so it can get better. Never
+                anything you type, and it never sells your data.
+              </p>
+              <p>
+                <Link href="/privacy/" className="link-accent">
+                  Read the Privacy Policy →
+                </Link>
+              </p>
+            </div>
           </article>
         </div>
       </section>
