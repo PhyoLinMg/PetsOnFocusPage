@@ -44,7 +44,7 @@ function LeftWall() {
   return (
     <>
       <svg className="room-o" style={box(0, 60, 1080, 120)} viewBox="0 0 1080 120" preserveAspectRatio="none">
-        <path d="M20 15 Q540 125 1060 15" fill="none" stroke="#c9a978" strokeWidth="5" vectorEffect="non-scaling-stroke" />
+        <path className="room-rope" d="M20 15 Q540 125 1060 15" fill="none" stroke="#c9a978" vectorEffect="non-scaling-stroke" />
       </svg>
       {PENNANTS.map((n, i) => {
         const cx = 95 + i * 148;

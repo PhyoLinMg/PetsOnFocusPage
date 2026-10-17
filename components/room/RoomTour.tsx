@@ -42,6 +42,11 @@ const SEGS = [
  *  full-length tour took too many swipes there (owner, 2026-10-17); wide screens keep the full length. */
 const PACE = { narrow: 0.5, wide: 1 };
 
+/** Touch devices (phones, tablets) lay the room out at the size it is shown (--u, see globals.css), so the
+ *  browser paints about one screen's worth of it. Laid out larger, Android Chrome left part of the floor
+ *  undrawn at the corners mid-turn (2026-10-17). Not CSS zoom: iPhone Safari zooms boxes but not their text. */
+const TOUCH = "(pointer: coarse)";
+
 /** Band height every whole-wall stop is sized for; the wall is made as wide as the screen at that scale. */
 const BAND = { narrow: 1810, wide: 1900 };
 /** Facing each wall, in degrees of turn. */
@@ -88,6 +93,7 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
     const noteEls = Array.from(stage.querySelectorAll<HTMLElement>(".tour-note"));
     const anchors = Array.from(track.querySelectorAll<HTMLElement>(".tour-anchor"));
     const wide = matchMedia(WIDE);
+    const touch = matchMedia(TOUCH);
     const reduce = matchMedia("(prefers-reduced-motion: reduce)");
     const set = (els: HTMLElement[], prop: "opacity" | "transform", value: string) => {
       for (const el of els) el.style[prop] = value;
@@ -102,6 +108,7 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       shift: 0,
       spread: 1,
       pace: 1,
+      z: 1,
       trackTop: 0,
     };
 
@@ -130,17 +137,22 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       const band = BAND[isWide ? "wide" : "narrow"];
       const W = Math.round(Math.max(isWide ? 1500 : 966, (rect.w + 2 * shift) / (rect.h / band)));
       stage.style.setProperty("--W", String(W));
+      // The room is laid out at z px per room unit, so every room length in the world is times z.
+      // Desktops keep z = 1: their memory has room for it, and the gift close-up stays sharp.
+      const z = touch.matches ? (rect.w + 2 * shift) / W : 1;
+      stage.style.setProperty("--u", `${z}px`);
       // A square room: the walls meet at right angles around the visitor.
-      walls[0].style.transform = `translate3d(${-W / 2}px, 0, 0) rotateY(90deg)`;
-      walls[1].style.transform = `translate3d(0, 0, ${-W / 2}px)`;
-      walls[2].style.transform = `translate3d(${W / 2}px, 0, 0) rotateY(-90deg)`;
+      const half = (W / 2) * z;
+      walls[0].style.transform = `translate3d(${-half}px, 0, 0) rotateY(90deg)`;
+      walls[1].style.transform = `translate3d(0, 0, ${-half}px)`;
+      walls[2].style.transform = `translate3d(${half}px, 0, 0) rotateY(-90deg)`;
 
       // Lengths in px, from the stage's own height, so a phone's sliding toolbar never shifts the tour.
       const pace = PACE[isWide ? "wide" : "narrow"];
       track.style.height = `${(unitsTo(SEGS.length, pace) / 100) * screen + screen}px`;
       for (const a of anchors) a.style.top = `${(unitsTo(Number(a.dataset.stop), pace) / 100) * screen}px`;
       const trackTop = track.getBoundingClientRect().top + window.scrollY;
-      L = { isWide, screen, rect, W, shift, spread, pace, trackTop };
+      L = { isWide, screen, rect, W, shift, spread, pace, z, trackTop };
     }
 
     function cameraFor(i: number, scale: number, cx: number, cy: number) {
@@ -177,14 +189,17 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       const cy = rect.y + rect.h / 2;
       const a = cameraFor(k, scale, cx, cy);
       const b = cameraFor(k + 1, scale, cx, cy);
-      const yaw = lerp(a.yaw, b.yaw, t);
+      // iPhone Safari leaves out the front wall's half at a turn of exactly 45 degrees (iOS 18 and 26,
+      // 2026-10-17); a thousandth of a degree off, it draws it.
+      const turn = lerp(a.yaw, b.yaw, t);
+      const yaw = Math.abs(Math.abs(turn) - 45) < 1e-3 ? Math.sign(turn) * (45 + 1e-3) : turn;
       const camY = lerp(a.camY, b.camY, t);
       const persp = (W * scale) / 2; // a 90 degree field of view across the wall
       scene.style.perspective = `${persp}px`;
       scene.style.perspectiveOrigin = `${cx}px ${cy}px`;
       world.style.transform =
-        `translate(${cx}px, ${cy}px) translateZ(${persp}px) scale3d(${scale}, ${scale}, ${scale}) ` +
-        `rotateY(${yaw}deg) translateY(${-camY}px)`;
+        `translate(${cx}px, ${cy}px) translateZ(${persp}px) scale3d(${scale / L.z}, ${scale / L.z}, ${scale / L.z}) ` +
+        `rotateY(${yaw}deg) translateY(${-camY * L.z}px)`;
       const zoom = lerp(a.zoom, b.zoom, t);
       scene.style.transform =
         zoom === 1 ? "" : `translate(${cx}px, ${cy}px) scale(${zoom}) translate(${-lerp(a.tx, b.tx, t)}px, ${-lerp(a.ty, b.ty, t)}px)`;
@@ -215,7 +230,7 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       set(starts, "opacity", String(clamp(1 - session * 2 - weight(2) * 2)));
       set(taskAlts, "opacity", String(clamp(session + weight(2))));
       set(sheets, "opacity", String(gift));
-      set(sheets, "transform", `translateY(${(1 - gift) * 160}px)`);
+      set(sheets, "transform", `translateY(${(1 - gift) * 160 * L.z}px)`);
 
       // The timer runs through the session's hold: from the end of the move in to the start of the move out.
       const runFrom = SEGS[0].ease[1];
@@ -245,6 +260,7 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
     addEventListener("resize", relayout);
     addEventListener("hashchange", request);
     wide.addEventListener("change", relayout);
+    touch.addEventListener("change", relayout);
     reduce.addEventListener("change", request);
     document.fonts?.ready.then(relayout);
     return () => {
@@ -253,6 +269,7 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       removeEventListener("resize", relayout);
       removeEventListener("hashchange", request);
       wide.removeEventListener("change", relayout);
+      touch.removeEventListener("change", relayout);
       reduce.removeEventListener("change", request);
     };
   }, []);
