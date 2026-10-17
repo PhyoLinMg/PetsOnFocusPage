@@ -110,6 +110,12 @@ const features: { title: string; body: string }[] = [
     body: "Your week at a glance, every past session on a timeline, and your streak.",
   },
   {
+    title: "A streak reminder",
+    body:
+      "Got a streak going and no session yet today? One notification at 8 pm lets you know. Never while " +
+      "you’re in the app, and you can turn it off in Settings.",
+  },
+  {
     title: "Share with friends",
     body: "Finished a session? Share a picture card of it and your pet with whoever you like.",
   },
@@ -118,7 +124,35 @@ const features: { title: string; body: string }[] = [
 const faqs: { q: string; a: React.ReactNode }[] = [
   {
     q: "Is it free?",
-    a: "Yes. Pets on Focus is free to download and use. Plus and coin packs are optional purchases.",
+    a: "Yes. Pets on Focus is free to download and use. Plus and coin packs are optional purchases on top.",
+  },
+  {
+    q: "What does Plus add?",
+    a:
+      "Double coins from every finished session and Pomodoro work cycle. A streak freeze: miss one day in any " +
+      "seven, finish a session the next day, and your streak carries on. The day off gets a snowflake and doesn’t " +
+      "add to the count, and two missed days in a row still end a streak. And two more cards in Stats: a " +
+      "five-week calendar and your best hours.",
+  },
+  {
+    q: "Is the free app limited?",
+    a:
+      "No. The free app is the whole app: the timer and Pomodoro, your pet and its room, gifts, sounds, tasks, " +
+      "stats, streaks and the streak reminder. Plus only adds on top; nothing that was free moved behind it.",
+  },
+  {
+    q: "What happens to my streak and coins if Plus ends?",
+    a:
+      "Freezes Plus already used stay in place, so your streak doesn’t change, and the coins you earned are still " +
+      "yours. After that, new sessions pay the usual coins, a missed day isn’t covered, and the five-week calendar " +
+      "and best hours cards lock again.",
+  },
+  {
+    q: "Can I cancel?",
+    a:
+      "Yes, anytime, in your Google Play or App Store subscriptions. Plus stays on until the end of the period you " +
+      "paid for, and deleting the app doesn’t cancel it. Lifetime is a one-time purchase, so there’s nothing to " +
+      "cancel.",
   },
   { q: "Do I need an account?", a: "No. There is no sign-up and no login." },
   {
