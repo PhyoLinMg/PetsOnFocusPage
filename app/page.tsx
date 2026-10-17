@@ -179,7 +179,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
     a:
       "Yes, anytime, in your Google Play or App Store subscriptions. Plus stays on until the end of the period you " +
       "paid for, and deleting the app doesn’t cancel it. Lifetime is a one-time purchase, so there’s nothing to " +
-      "cancel.",
+      "cancel; if you switch to it from a subscription, cancel the subscription in the store too.",
   },
   { q: "Do I need an account?", a: "No. There is no sign-up and no login." },
   {
