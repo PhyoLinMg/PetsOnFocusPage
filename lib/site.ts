@@ -10,23 +10,41 @@ export const TAGLINE = "Focus together.";
 export const CONTACT_EMAIL = "phyolinmg.dev@gmail.com";
 export const AUTHOR = "Phyo Lin Mg";
 
-export const HOME_TITLE = "Pets on Focus — a cosy focus timer with a pet who keeps you company";
+// Search engines weigh the title most and cut it near 60 characters, and the description near 155:
+// the phrases people search ("focus timer", "Pomodoro app") go first.
+export const HOME_TITLE = "Pets on Focus — cosy focus timer & Pomodoro app with a pet";
 export const HOME_DESCRIPTION =
-  "Start a focus session and your pet settles in beside you. Stay in the app and it stays happy; " +
-  "finish and you earn coins for its room. A calm focus timer and Pomodoro app for Android and iPhone.";
+  "A calm focus timer and Pomodoro app for Android and iPhone, with a hand-drawn pet who keeps you " +
+  "company. Stay focused, earn coins and make its room your own.";
 
 // What people type when they look for an app like this. Google ignores the keywords tag; Bing and
 // others still read it, and it costs nothing.
 export const KEYWORDS = [
+  "Pets on Focus",
+  "focus app",
   "focus timer",
+  "focus timer app",
   "Pomodoro timer",
+  "Pomodoro app",
   "study timer",
-  "virtual pet",
+  "study app",
+  "study with a pet",
   "focus app with a pet",
+  "cute focus timer",
+  "cosy focus app",
+  "concentration timer",
+  "deep work timer",
+  "productivity timer",
   "productivity app",
-  "Android",
-  "iPhone",
-  "iPad",
+  "stay focused app",
+  "phone distraction",
+  "virtual pet",
+  "cat focus app",
+  "focus streak",
+  "ambient sounds for focus",
+  "focus timer for Android",
+  "focus timer for iPhone",
+  "Pomodoro app for iPad",
 ];
 
 /** Absolute URL for a site path, e.g. absoluteUrl("/privacy/"). */

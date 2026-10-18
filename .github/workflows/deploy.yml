@@ -32,6 +32,8 @@ jobs:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
           # Optional. Repository variable holding the Google Search Console HTML-tag value (see README).
           GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+          # Optional. Repository variable holding the Bing Webmaster Tools msvalidate.01 value (see README).
+          BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
