@@ -2,6 +2,7 @@
 title: How to stop checking your phone while studying
 description: Put the phone out of reach, turn off what pings, and give yourself a clear point when you're allowed to look. Practical ways to study without picking it up.
 published: 2026-10-19
+updated: 2026-10-19
 keywords: how to stop checking your phone while studying, phone distraction, stop using phone while studying, study without phone, focus app
 ---
 
@@ -54,6 +55,8 @@ Every notification is an invitation to check. For a study session:
 urge has somewhere to go. This is why timed sessions work so well. With the
 [Pomodoro technique](/guides/pomodoro-technique-for-studying/), you study for a set block, often 25 minutes, then
 take a short break. The phone can belong to the break.
+
+A steady background sound, like [rain or a quiet café mix](/guides/best-sounds-for-focus/), can also make the room feel less empty without a screen.
 
 Two tips for keeping breaks short:
 

@@ -2,6 +2,7 @@
 title: How long should a focus session be?
 description: For most people, 25 to 50 minutes of focus followed by a short break works well. How to find your own length, and when to go shorter or longer.
 published: 2026-10-19
+updated: 2026-10-19
 keywords: how long should a focus session be, focus session length, how long to focus, best focus timer length, deep work session length
 ---
 
@@ -99,6 +100,8 @@ Most focus timers let you set your own length. In Pets on Focus, a single sessio
 hours, or you can run Pomodoro cycles of work, short breaks and a long break, with each length set in Settings. A
 hand-drawn pet sits with you while the timer runs, and if you leave the app for more than 10 seconds the session
 ends, so a short session stays a real one.
+
+If you like sound while you work, see [the best sounds for focus](/guides/best-sounds-for-focus/).
 
 ## In short
 

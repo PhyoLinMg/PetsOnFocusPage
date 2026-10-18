@@ -11,7 +11,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to use the Pomodoro technique for studying — pomodoro technique for studying (2026-10-19, pomodoro-technique-for-studying)
 - [x] How long should a focus session be? — how long should a focus session be (2026-10-19, how-long-should-a-focus-session-be)
 - [x] How to stop checking your phone while studying — stop checking phone while studying (2026-10-19, how-to-stop-checking-your-phone-while-studying)
-- [ ] Best sounds for focus: rain, café, fireplace or silence? — sounds for focus
+- [x] Best sounds for focus: rain, café, fireplace or silence? — sounds for focus (2026-10-19, best-sounds-for-focus)
 - [ ] How to build a study streak (and keep it going) — study streak
 - [ ] Pomodoro vs 52/17 vs 90-minute blocks — pomodoro vs 52 17
 - [ ] Forest app alternatives: focus apps with a pet or plant — forest app alternative
