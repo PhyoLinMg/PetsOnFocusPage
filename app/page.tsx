@@ -4,7 +4,7 @@ import { DoubleCoins, FiveWeeks, FrozenCalendar } from "@/components/PlusArt";
 import { Reveal } from "@/components/Reveal";
 import { Devices } from "@/components/room/Devices";
 import { RoomTour } from "@/components/room/RoomTour";
-import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, LOGO, OG_IMAGE, SITE_NAME, absoluteUrl, openGraphFor } from "@/lib/site";
+import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, KEYWORDS, LOGO, OG_IMAGE, SITE_NAME, absoluteUrl, openGraphFor } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -83,7 +83,7 @@ const tourNotes: { anchor?: string; content: React.ReactNode }[] = [
 // What the app does beyond the tour. Facts from the redesign brief (2026-10-15).
 const features: { title: string; body: string }[] = [
   {
-    title: "Focus or Pomodoro",
+    title: "Focus timer or Pomodoro",
     body:
       "Run one session from 5 minutes to 4 hours, or a Pomodoro run of work cycles, short breaks and a " +
       "long break. Set the lengths in Settings.",
@@ -149,6 +149,19 @@ const plusPlans: { name: string; body: string }[] = [
 ];
 
 const faqs: { q: string; a: React.ReactNode }[] = [
+  {
+    q: "What is Pets on Focus?",
+    a:
+      "A focus timer and Pomodoro app for Android, iPhone and iPad. Start a session and a hand-drawn pet sits " +
+      "with you in a cosy room while you work or study. Stay in the app and it stays happy; finish and you earn " +
+      "coins and a gift for its room.",
+  },
+  {
+    q: "Can I use it as a study timer?",
+    a:
+      "Yes. Pick a session from 5 minutes to 4 hours, or run Pomodoro cycles with short breaks and a long break. " +
+      "Pin what you’re studying as a task, add rain or café sounds, and watch your streak grow in Stats.",
+  },
   {
     q: "Is it free?",
     a: "Yes. Pets on Focus is free to download and use. Plus and coin packs are optional purchases on top.",
@@ -247,10 +260,21 @@ const jsonLd = {
       url: absoluteUrl("/"),
       image: OG_IMAGE.url,
       applicationCategory: "ProductivityApplication",
+      applicationSubCategory: "Focus timer",
       operatingSystem: "Android, iOS, iPadOS",
+      keywords: KEYWORDS.join(", "),
+      featureList: features.map((f) => f.title),
       author: { "@type": "Person", name: AUTHOR },
       publisher: { "@id": ORG_ID },
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    },
+    // The FAQ below as structured data, word for word. Answers with links (contact) stay out: the text must be plain.
+    {
+      "@type": "FAQPage",
+      "@id": absoluteUrl("/#faq"),
+      mainEntity: faqs
+        .filter((f): f is { q: string; a: string } => typeof f.a === "string")
+        .map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
   ],
 };

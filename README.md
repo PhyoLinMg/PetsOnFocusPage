@@ -44,6 +44,13 @@ pick the **HTML tag** method and copy the tag's `content` value into a repositor
 tag on every page; verify, then submit `https://petsonfocus.app/sitemap.xml` under Sitemaps. Without the
 variable nothing is emitted.
 
+### Bing Webmaster Tools
+
+Bing also feeds DuckDuckGo, Yahoo and ChatGPT search. Add the site at <https://www.bing.com/webmasters> (or import it
+from Search Console once that is verified). For the **HTML Meta Tag** method, copy the `msvalidate.01` tag's `content`
+value into a repository variable named `BING_SITE_VERIFICATION`, deploy, verify, then submit
+`https://petsonfocus.app/sitemap.xml`.
+
 ## Later
 
 - App Store id exists → add the Smart App Banner in `app/layout.tsx` (`apple-itunes-app`).

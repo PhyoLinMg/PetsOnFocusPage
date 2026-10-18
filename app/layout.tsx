@@ -32,8 +32,12 @@ export const metadata: Metadata = {
   },
   // Google Search Console → Settings → Ownership verification → HTML tag. Put the tag's content value in
   // the GOOGLE_SITE_VERIFICATION repository variable (read by .github/workflows/deploy.yml) and the tag
-  // is on every page; leave it unset and nothing is emitted.
-  verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
+  // is on every page; leave it unset and nothing is emitted. Bing Webmaster Tools → Add site → HTML Meta Tag works
+  // the same way through BING_SITE_VERIFICATION (the msvalidate.01 content value).
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION && { google: process.env.GOOGLE_SITE_VERIFICATION }),
+    ...(process.env.BING_SITE_VERIFICATION && { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } }),
+  },
   // Add the iOS Smart App Banner once the App Store id exists:
   // other: { "apple-itunes-app": "app-id=<id>" },
 };
