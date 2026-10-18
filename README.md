@@ -51,6 +51,17 @@ from Search Console once that is verified). For the **HTML Meta Tag** method, co
 value into a repository variable named `BING_SITE_VERIFICATION`, deploy, verify, then submit
 `https://petsonfocus.app/sitemap.xml`.
 
+## Guides
+
+`/guides/<slug>/` pages render from `docs/guides/<slug>.md` (front matter, Markdown body, one `<!-- cta -->` line for
+the middle download box). The sitemap, the guides index and each guide's "More guides" links pick new files up on
+their own. Rules for writing one: `docs/seo/WRITING.md`; topics waiting: `docs/seo/BACKLOG.md`.
+`npm run lint` and the deploy run `scripts/check-guides.mjs` (`npm run check:guides`), so a guide that breaks the rules never ships.
+
+A daily Claude Code routine (claude.ai/code/routines) writes the next backlog topic, runs lint and build, and pushes
+to `main`. When the store listings are live, put their URLs in `STORE_LINKS` (`lib/site.ts`) and every download box
+shows store buttons instead of "Coming soon".
+
 ## Later
 
 - App Store id exists → add the Smart App Banner in `app/layout.tsx` (`apple-itunes-app`).

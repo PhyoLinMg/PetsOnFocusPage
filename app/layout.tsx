@@ -72,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="site-footer-credit">Made by {AUTHOR} in Thailand</span>
             </p>
             <nav aria-label="Footer" className="site-footer-links">
+              <Link href="/guides/">Guides</Link>
               <Link href="/privacy/">Privacy Policy</Link>
               <Link href="/terms/">Terms of Use</Link>
               <a href={`mailto:${CONTACT_EMAIL}`}>Contact</a>

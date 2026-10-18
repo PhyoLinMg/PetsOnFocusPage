@@ -26,6 +26,8 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
       - run: npm ci
+      # A guide that breaks docs/seo/WRITING.md stops the deploy; the live site stays as it was.
+      - run: npm run check:guides
       - run: npm run build
         env:
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
