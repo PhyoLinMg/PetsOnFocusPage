@@ -103,6 +103,8 @@ ends, so a short session stays a real one.
 
 If you like sound while you work, see [the best sounds for focus](/guides/best-sounds-for-focus/).
 
+If you're trying to study daily, a short session is also the easiest way to start a streak: see [how to build a study streak](/guides/how-to-build-a-study-streak/).
+
 ## In short
 
 - Start with 25 minutes of focus and a 5-minute break.

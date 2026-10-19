@@ -12,7 +12,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How long should a focus session be? — how long should a focus session be (2026-10-19, how-long-should-a-focus-session-be)
 - [x] How to stop checking your phone while studying — stop checking phone while studying (2026-10-19, how-to-stop-checking-your-phone-while-studying)
 - [x] Best sounds for focus: rain, café, fireplace or silence? — sounds for focus (2026-10-19, best-sounds-for-focus)
-- [ ] How to build a study streak (and keep it going) — study streak
+- [x] How to build a study streak (and keep it going) — study streak (2026-10-19, how-to-build-a-study-streak)
 - [ ] Pomodoro vs 52/17 vs 90-minute blocks — pomodoro vs 52 17
 - [ ] Forest app alternatives: focus apps with a pet or plant — forest app alternative
 - [ ] How to focus when you have ADHD: timers and short sessions — adhd focus timer
