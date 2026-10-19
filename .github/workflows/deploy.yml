@@ -49,3 +49,18 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tell Bing and the other IndexNow engines which pages this push changed (scripts/indexnow.mjs). Best effort:
+  # a failure here never marks the deploy as failed.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/indexnow.mjs "${{ github.event.before }}" "${{ github.sha }}"

@@ -41,7 +41,8 @@ for (const file of files) {
   if (!title) say("title is missing");
   else if (titles.has(title.toLowerCase())) say(`same title as ${titles.get(title.toLowerCase())}`);
   else titles.set(title.toLowerCase(), file);
-  if (title && title.length > 70) say(`title is ${title.length} characters; keep it under 70`);
+  // Google shows about 60 characters; the page adds " — Pets on Focus" when there is room.
+  if (title && title.length > 60) say(`title is ${title.length} characters; keep it to 60 or fewer`);
 
   const description = field("description");
   if (!description) say("description is missing");

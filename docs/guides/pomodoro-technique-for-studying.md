@@ -118,6 +118,20 @@ distraction. Finish, and your pet celebrates.
 
 Want to turn daily blocks into a habit? See [how to build a study streak](/guides/how-to-build-a-study-streak/).
 
+## Common questions
+
+### How long is a Pomodoro?
+
+A standard Pomodoro is 25 minutes of focused work followed by a 5-minute break. After four Pomodoros you take a longer break of 15 to 30 minutes.
+
+### How many Pomodoros should I do when studying?
+
+Four to eight Pomodoros a day is plenty for most students, which is about two to three and a half hours of focused study. Quality matters more than the count, so fill each block with active work like practice questions.
+
+### Can I change the 25-minute length?
+
+Yes. Try 10 to 15 minutes if starting is hard, or 40 to 50 minutes for work that needs a long run-up, such as essays or maths. Keep the breaks whatever length you choose.
+
 ## In short
 
 - Pick one clear task, set 25 minutes, work only on that, then take 5 minutes off.

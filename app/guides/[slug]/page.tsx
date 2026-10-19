@@ -16,8 +16,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const g = await readGuide(slug);
   const path = `/guides/${slug}/`;
+  // Google cuts titles near 60 characters: keep " — Pets on Focus" only when the whole thing still fits.
+  const branded = `${g.title} — ${SITE_NAME}`;
   return {
-    title: g.title,
+    title: { absolute: branded.length <= 60 ? branded : g.title },
     description: g.description,
     keywords: g.keywords,
     alternates: { canonical: absoluteUrl(path) },
@@ -59,6 +61,16 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           { "@type": "ListItem", position: 3, name: g.title, item: url },
         ],
       },
+      // The guide's "Common questions" section, word for word.
+      ...(g.faq.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${url}#faq`,
+              mainEntity: g.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+            },
+          ]
+        : []),
     ],
   };
 

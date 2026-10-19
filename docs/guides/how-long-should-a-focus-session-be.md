@@ -105,6 +105,20 @@ If you like sound while you work, see [the best sounds for focus](/guides/best-s
 
 If you're trying to study daily, a short session is also the easiest way to start a streak: see [how to build a study streak](/guides/how-to-build-a-study-streak/).
 
+## Common questions
+
+### Is 25 minutes long enough to focus?
+
+Yes, for most tasks. Twenty-five minutes is long enough to make real progress and short enough to start on a tired day, which is why it is the classic Pomodoro length.
+
+### How long can a person focus without a break?
+
+It varies with the person, the task and how rested you are. Many people work well in blocks of 25 to 50 minutes, and some deep work suits up to about 90 minutes, always followed by a real break.
+
+### How long should a break between focus sessions be?
+
+About 5 minutes after a 25-minute session and about 10 minutes after a 45 to 50 minute session. After three or four sessions, take a longer break of 15 to 30 minutes.
+
 ## In short
 
 - Start with 25 minutes of focus and a 5-minute break.

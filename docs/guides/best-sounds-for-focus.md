@@ -107,6 +107,20 @@ each one's volume separately, and save a mix you like. So "quiet rain, a little 
 Your pet sits, naps and stretches beside you while you work, and when you finish, it celebrates and you earn coins
 for its room.
 
+## Common questions
+
+### Is it better to study in silence or with background noise?
+
+Silence tends to suit reading and writing, because nothing competes with the words in your head. Steady background sound such as rain can help with other work by covering sudden noises. The best choice is the one you stop noticing.
+
+### Is rain sound good for studying?
+
+Rain is a good all-rounder for studying because it is steady, has no words and covers distracting noises. Pick a recording without loud thunder or an obvious loop.
+
+### Is music with lyrics bad for focus?
+
+Lyrics often compete with reading and writing, because your mind follows the words. For language-heavy work, wordless sound such as rain, a fireplace or a quiet café hum is usually easier to ignore.
+
 ## In short
 
 - No sound is best for everyone. Aim for steady, soft and wordless.

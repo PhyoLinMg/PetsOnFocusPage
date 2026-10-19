@@ -111,6 +111,20 @@ snowflake. It's one day off in seven, so it softens a bad day rather than replac
 5. If you miss a day, do your smallest session the next day. Never miss twice.
 6. After a week, add five minutes only if the minimum feels easy.
 
+## Common questions
+
+### How long does it take to build a study habit?
+
+It varies a lot from person to person, often several weeks or more. Keeping the daily minimum small and tied to the same cue each day makes the habit easier to keep while it forms.
+
+### What counts as a study streak day?
+
+Decide in advance, and make the bar low: for example, one finished focus session of at least 10 minutes. A small minimum you can meet on your worst day keeps the streak alive.
+
+### What should I do if I break my study streak?
+
+Start again the next day without making up for it. One missed day doesn't undo what you learned, and a plan for the miss matters more than an unbroken run.
+
 ## In short
 
 - Make the daily minimum small enough for your worst day.

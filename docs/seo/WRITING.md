@@ -26,6 +26,8 @@ thin ones: Google demotes sites that publish mass-produced pages.
   ```
 
   Add `updated: YYYY-MM-DD` when a guide is improved later; keep `published`.
+- `title` is 60 characters or fewer, the search phrase near the front: it is the H1 and the title Google shows.
+  The page adds " — Pets on Focus" when the whole fits in 60.
 - The page prints the title as the H1, so the body starts with text and uses `##` / `###` for sections. No `#`.
 - One line holding only `<!-- cta -->` after the section where a reader is most likely to want to try it (usually
   after the first or second `##` section). Exactly one. The page adds a second download box at the end itself.
@@ -39,7 +41,26 @@ thin ones: Google demotes sites that publish mass-produced pages.
   where they help the reader, and to `/` or `/#faq` at most once. Only link pages that exist.
 - Outside sources are welcome when they back a claim (a study, a university page). Link them; never invent a study,
   a number or a quote. If you are not sure a figure is right, leave it out.
+- Before the recap, a `## Common questions` section: 2–4 `###` questions people also ask about the topic (the
+  "People also ask" box in Google is a good source), each answered in 1–3 plain sentences with no links. The page
+  turns them into FAQ structured data.
 - End with a short "In short" or similar recap, not a sales pitch.
+
+## Written to be quoted
+
+AI assistants (ChatGPT, Claude, Perplexity, Gemini, Google's AI Overviews) answer questions by quoting short
+passages. Make every passage quotable on its own:
+
+- The opening two or three sentences are a complete answer, with the key numbers in them ("25 minutes of focus, then
+  a 5-minute break"). Someone who reads only that should have the answer.
+- Phrase `##` headings as the questions people ask where it reads naturally ("How long should a Pomodoro break
+  be?"), and start each section with its answer in one sentence before the detail.
+- Put specifics in lists, steps and small tables rather than long paragraphs.
+- Name things in full. Say "Pets on Focus, a focus timer app" the first time, never "our app" or "we"; say "the
+  Pomodoro technique", not "it", at the start of a section. A quoted paragraph loses everything around it.
+- Define a term the first time it appears ("attention residue: part of your attention staying on the last task").
+- Where Pets on Focus comes up, describe it the same way each time: a focus timer and Pomodoro app for Android,
+  iPhone and iPad, with a pet who keeps you company. Consistent wording is what assistants learn to repeat.
 
 ## Voice
 

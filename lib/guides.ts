@@ -14,6 +14,8 @@ export type Guide = {
   keywords: string[];
   /** The body split at each <!-- cta --> line. */
   parts: string[];
+  /** The "## Common questions" section as question and plain-text answer, for FAQ structured data. */
+  faq: { q: string; a: string }[];
 };
 
 const DIR = path.join(process.cwd(), "docs", "guides");
@@ -21,6 +23,18 @@ export const CTA_MARKER = /^<!--\s*cta\s*-->$/m;
 
 function field(front: string, name: string): string | undefined {
   return front.match(new RegExp(`^${name}:\\s*(.+)$`, "m"))?.[1].trim().replace(/^"(.*)"$/, "$1");
+}
+
+// Markdown to the plain text structured data wants: links keep their words, emphasis and code marks go.
+const plain = (md: string) =>
+  md.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/[*_`]/g, "").replace(/\s+/g, " ").trim();
+
+function commonQuestions(body: string): { q: string; a: string }[] {
+  const section = body.match(/^## Common questions[^\n]*\n([\s\S]*?)(?=^## |(?![\s\S]))/m)?.[1];
+  if (!section) return [];
+  return [...section.matchAll(/^### (.+)\n([\s\S]*?)(?=^### |(?![\s\S]))/gm)]
+    .map((m) => ({ q: plain(m[1]), a: plain(m[2]) }))
+    .filter((f) => f.q && f.a);
 }
 
 function day(value: string | undefined, file: string, name: string): Date {
@@ -47,6 +61,7 @@ export async function readGuide(slug: string): Promise<Guide> {
     updated: updatedRaw ? day(updatedRaw, file, "updated") : published,
     keywords: (field(front, "keywords") ?? "").split(",").map((k) => k.trim()).filter(Boolean),
     parts: raw.slice(match[0].length).split(CTA_MARKER).map((p) => p.trim()),
+    faq: commonQuestions(raw.slice(match[0].length)),
   };
 }
 

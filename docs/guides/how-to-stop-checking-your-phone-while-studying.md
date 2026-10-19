@@ -106,6 +106,20 @@ much easier to protect than an hour.
 4. A 5-minute break where checking the phone is allowed, with a timer to end it.
 5. Repeat three or four times, then take a longer break.
 
+## Common questions
+
+### Where should I put my phone while studying?
+
+In another room if you can, or zipped in a bag out of arm's reach. The further away it is, the more checking it becomes a decision instead of a reflex.
+
+### Does Do Not Disturb help with studying?
+
+Yes. Do Not Disturb or a Focus mode stops notifications from calling you back to the phone, while still letting chosen contacts reach you in an emergency.
+
+### Are app blockers better than a focus timer?
+
+It depends on you. App blockers lock chosen apps for a set time and suit people who want a hard limit. A focus timer that notices when you leave, like Pets on Focus, is a gentler option for people who find blockers too strict.
+
 ## In short
 
 - Distance beats willpower: put the phone out of reach.
