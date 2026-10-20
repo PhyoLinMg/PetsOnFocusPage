@@ -13,7 +13,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to stop checking your phone while studying — stop checking phone while studying (2026-10-19, how-to-stop-checking-your-phone-while-studying)
 - [x] Best sounds for focus: rain, café, fireplace or silence? — sounds for focus (2026-10-19, best-sounds-for-focus)
 - [x] How to build a study streak (and keep it going) — study streak (2026-10-19, how-to-build-a-study-streak)
-- [ ] Pomodoro vs 52/17 vs 90-minute blocks — pomodoro vs 52 17
+- [x] Pomodoro vs 52/17 vs 90-minute blocks — pomodoro vs 52 17 (2026-10-20, pomodoro-vs-52-17-vs-90-minute-blocks)
 - [ ] Forest app alternatives: focus apps with a pet or plant — forest app alternative
 - [ ] How to focus when you have ADHD: timers and short sessions — adhd focus timer
 - [ ] Why you can't focus on studying, and what helps — can't focus on studying

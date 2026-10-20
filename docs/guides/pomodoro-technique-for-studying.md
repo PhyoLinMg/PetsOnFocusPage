@@ -2,7 +2,7 @@
 title: How to use the Pomodoro technique for studying
 description: Study in 25-minute blocks with short breaks between them. How the Pomodoro technique works, how to set it up for revision, and what to do when it doesn't fit.
 published: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-20
 keywords: Pomodoro technique for studying, Pomodoro study method, how to study with Pomodoro, Pomodoro timer, study timer
 ---
 
@@ -91,7 +91,7 @@ The 25/5 rhythm is a starting point, not a rule. Some honest adjustments:
   worse fourth block, not a better day.
 
 We go into this in more detail in [how long should a focus session be?](/guides/how-long-should-a-focus-session-be/)
-Whatever you choose, keep the breaks. The method falls apart when the breaks get skipped, because the blocks start to
+To compare Pomodoro with longer patterns, read [Pomodoro vs 52/17 vs 90-minute focus blocks](/guides/pomodoro-vs-52-17-vs-90-minute-blocks/). Whatever you choose, keep the breaks. The method falls apart when the breaks get skipped, because the blocks start to
 feel endless again.
 
 ## Common mistakes
