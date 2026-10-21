@@ -2,7 +2,7 @@
 title: How to stop checking your phone while studying
 description: Put the phone out of reach, turn off what pings, and give yourself a clear point when you're allowed to look. Practical ways to study without picking it up.
 published: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 keywords: how to stop checking your phone while studying, phone distraction, stop using phone while studying, study without phone, focus app
 ---
 
@@ -119,6 +119,8 @@ Yes. Do Not Disturb or a Focus mode stops notifications from calling you back to
 ### Are app blockers better than a focus timer?
 
 It depends on you. App blockers lock chosen apps for a set time and suit people who want a hard limit. A focus timer that notices when you leave, like Pets on Focus, is a gentler option for people who find blockers too strict.
+
+If your phone isn't the only thing in the way, [why you can't focus on studying](/guides/why-you-cant-focus-on-studying/) covers the other common causes.
 
 ## In short
 

@@ -14,9 +14,9 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] Best sounds for focus: rain, café, fireplace or silence? — sounds for focus (2026-10-19, best-sounds-for-focus)
 - [x] How to build a study streak (and keep it going) — study streak (2026-10-19, how-to-build-a-study-streak)
 - [x] Pomodoro vs 52/17 vs 90-minute blocks — pomodoro vs 52 17 (2026-10-20, pomodoro-vs-52-17-vs-90-minute-blocks)
-- [ ] Forest app alternatives: focus apps with a pet or plant — forest app alternative
-- [ ] How to focus when you have ADHD: timers and short sessions — adhd focus timer
-- [ ] Why you can't focus on studying, and what helps — can't focus on studying
+- [x] Forest app alternatives: focus apps with a pet or plant — forest app alternative (skipped: couldn't verify)
+- [x] How to focus when you have ADHD: timers and short sessions — adhd focus timer (skipped: couldn't verify)
+- [x] Why you can't focus on studying, and what helps — can't focus on studying (2026-10-21, why-you-cant-focus-on-studying)
 - [ ] How to start studying when you don't feel like it — how to start studying
 - [ ] What to do in a Pomodoro break — pomodoro break ideas
 - [ ] Study with me: how to recreate it on your own — study with me

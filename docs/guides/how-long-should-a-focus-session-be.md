@@ -2,7 +2,7 @@
 title: How long should a focus session be?
 description: For most people, 25 to 50 minutes of focus followed by a short break works well. How to find your own length, and when to go shorter or longer.
 published: 2026-10-19
-updated: 2026-10-20
+updated: 2026-10-21
 keywords: how long should a focus session be, focus session length, how long to focus, best focus timer length, deep work session length
 ---
 
@@ -118,6 +118,8 @@ It varies with the person, the task and how rested you are. Many people work wel
 ### How long should a break between focus sessions be?
 
 About 5 minutes after a 25-minute session and about 10 minutes after a 45 to 50 minute session. After three or four sessions, take a longer break of 15 to 30 minutes.
+
+If focus keeps slipping whatever length you pick, see [why you can't focus on studying, and what helps](/guides/why-you-cant-focus-on-studying/).
 
 ## In short
 
