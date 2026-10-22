@@ -17,7 +17,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] Forest app alternatives: focus apps with a pet or plant — forest app alternative (skipped: couldn't verify)
 - [x] How to focus when you have ADHD: timers and short sessions — adhd focus timer (skipped: couldn't verify)
 - [x] Why you can't focus on studying, and what helps — can't focus on studying (2026-10-21, why-you-cant-focus-on-studying)
-- [ ] How to start studying when you don't feel like it — how to start studying
+- [x] How to start studying when you don't feel like it — how to start studying (2026-10-22, how-to-start-studying-when-you-dont-feel-like-it)
 - [ ] What to do in a Pomodoro break — pomodoro break ideas
 - [ ] Study with me: how to recreate it on your own — study with me
 - [ ] Is it safe to give a focus app Accessibility permission on Android? — accessibility permission android focus app

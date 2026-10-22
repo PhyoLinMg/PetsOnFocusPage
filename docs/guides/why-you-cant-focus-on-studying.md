@@ -2,6 +2,7 @@
 title: Why you can't focus on studying, and what helps
 description: Can't focus on studying? The usual causes are tiredness, a vague task, phone pulls and sessions that are too long. How to spot yours and fix it today.
 published: 2026-10-21
+updated: 2026-10-22
 keywords: can't focus on studying, why can't I focus, how to focus on studying, trouble concentrating while studying, study focus problems
 ---
 
@@ -73,6 +74,8 @@ Noise, clutter and a comfy bed all send signals. Try these changes one at a time
 - **Clear the surface** down to what the current task needs.
 - **Add steady sound** if sudden noises pull you out. Rain, a fireplace or a soft café hum work for many people; silence suits others. See [best sounds for focus](/guides/best-sounds-for-focus/).
 - **Tell people nearby** when you are working and when you will be free.
+
+If the hardest part is simply beginning, see [how to start studying when you don't feel like it](/guides/how-to-start-studying-when-you-dont-feel-like-it/).
 
 ## What if none of this helps?
 
