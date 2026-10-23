@@ -2,7 +2,7 @@
 title: How to use the Pomodoro technique for studying
 description: Study in 25-minute blocks with short breaks between them. How the Pomodoro technique works, how to set it up for revision, and what to do when it doesn't fit.
 published: 2026-10-19
-updated: 2026-10-20
+updated: 2026-10-23
 keywords: Pomodoro technique for studying, Pomodoro study method, how to study with Pomodoro, Pomodoro timer, study timer
 ---
 
@@ -52,7 +52,7 @@ low-energy jobs, such as tidying notes or making a revision plan, for the last b
 
 Five minutes goes fast. Stand up, get water, look out of a window, stretch. Scrolling your phone is the break most
 people reach for, and it's the one most likely to turn five minutes into twenty. If you can, leave the phone where
-it is. Our guide on [how to stop checking your phone while studying](/guides/how-to-stop-checking-your-phone-while-studying/)
+it is. For more ideas, see [what to do in a Pomodoro break](/guides/what-to-do-in-a-pomodoro-break/). Our guide on [how to stop checking your phone while studying](/guides/how-to-stop-checking-your-phone-while-studying/)
 has more on that.
 
 <!-- cta -->

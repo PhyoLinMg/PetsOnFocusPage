@@ -18,7 +18,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to focus when you have ADHD: timers and short sessions — adhd focus timer (skipped: couldn't verify)
 - [x] Why you can't focus on studying, and what helps — can't focus on studying (2026-10-21, why-you-cant-focus-on-studying)
 - [x] How to start studying when you don't feel like it — how to start studying (2026-10-22, how-to-start-studying-when-you-dont-feel-like-it)
-- [ ] What to do in a Pomodoro break — pomodoro break ideas
+- [x] What to do in a Pomodoro break — pomodoro break ideas (2026-10-23, what-to-do-in-a-pomodoro-break)
 - [ ] Study with me: how to recreate it on your own — study with me
 - [ ] Is it safe to give a focus app Accessibility permission on Android? — accessibility permission android focus app
 - [ ] How to focus while working from home — focus working from home

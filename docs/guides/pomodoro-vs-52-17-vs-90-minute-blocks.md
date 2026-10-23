@@ -2,6 +2,7 @@
 title: Pomodoro vs 52/17 vs 90-minute focus blocks
 description: Pomodoro is 25 minutes on, 5 off. 52/17 and 90-minute blocks run longer. What each one is, where the numbers come from, and how to pick the right one.
 published: 2026-10-20
+updated: 2026-10-23
 keywords: pomodoro vs 52 17, 52/17 rule, 90 minute focus blocks, pomodoro vs 90 minutes, best work break ratio
 ---
 
@@ -79,7 +80,7 @@ Change one thing at a time so you know what helped.
 
 ## Do the breaks matter more than the numbers?
 
-Yes. The structure is more reliable than the exact length, and a break only works if you actually rest in it.
+Yes. For ideas on what to do in them, see [what to do in a Pomodoro break](/guides/what-to-do-in-a-pomodoro-break/). The structure is more reliable than the exact length, and a break only works if you actually rest in it.
 
 - **Stand up, move, look at something far away.** A walk or a glass of water beats another screen.
 - **Keep your phone out of the break.** A scroll that starts at five minutes easily becomes twenty. See [how to stop checking your phone while studying](/guides/how-to-stop-checking-your-phone-while-studying/).
