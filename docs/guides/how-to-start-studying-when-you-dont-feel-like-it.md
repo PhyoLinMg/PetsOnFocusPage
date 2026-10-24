@@ -2,6 +2,7 @@
 title: How to start studying when you don't feel like it
 description: Shrink the first step, promise yourself five minutes and make starting automatic. A practical way to begin studying when motivation hasn't turned up.
 published: 2026-10-22
+updated: 2026-10-24
 keywords: how to start studying, study when you don't feel like it, no motivation to study, can't start studying, start studying
 ---
 
@@ -52,7 +53,7 @@ Make the start the same every day, so you aren't asking "do I feel ready?" each 
 - **Same place:** a desk or table, not your bed.
 - **Same first action:** water, phone out of the room, notes open, timer on.
 
-After a week or two, the routine does the deciding for you. If your phone is what usually pulls you away, [how to stop checking your phone while studying](/guides/how-to-stop-checking-your-phone-while-studying/) has setups that help.
+After a week or two, the routine does the deciding for you. If your phone is what usually pulls you away, [how to stop checking your phone while studying](/guides/how-to-stop-checking-your-phone-while-studying/) has setups that help. If starting alone is the hard part, [study with me](/guides/study-with-me-how-to-recreate-it-on-your-own/) shows how to borrow some company.
 
 ## What if the five minutes ends and you still can't focus?
 
