@@ -2,7 +2,7 @@
 title: Why you can't focus on studying, and what helps
 description: Can't focus on studying? The usual causes are tiredness, a vague task, phone pulls and sessions that are too long. How to spot yours and fix it today.
 published: 2026-10-21
-updated: 2026-10-22
+updated: 2026-10-25
 keywords: can't focus on studying, why can't I focus, how to focus on studying, trouble concentrating while studying, study focus problems
 ---
 
@@ -83,7 +83,7 @@ Persistent trouble concentrating, especially alongside low mood, constant worry,
 
 ## Using a focus timer to make it easier
 
-A timer gives you a start and an end, which is most of what a wandering mind needs. Pets on Focus, a focus timer and Pomodoro app for Android, iPhone and iPad, with a pet who keeps you company, lets you write the task you are working on and pin it before a session. Sessions run from 5 minutes to 4 hours, or you can use Pomodoro cycles. If you leave the app for more than 10 seconds, the session ends without a reward and you get a notification, a gentle nudge rather than a block on other apps.
+A timer gives you a start and an end, which is most of what a wandering mind needs. Pets on Focus, a focus timer and Pomodoro app for Android, iPhone and iPad, with a pet who keeps you company, lets you write the task you are working on and pin it before a session. Sessions run from 5 minutes to 4 hours, or you can use Pomodoro cycles. If you leave the app for more than 10 seconds, the session ends without a reward and you get a notification, a gentle nudge rather than a block on other apps. If you wonder about the Android permission behind that, see [is accessibility permission safe for a focus app?](/guides/is-it-safe-to-give-a-focus-app-accessibility-permission-on-android/).
 
 ## Common questions
 

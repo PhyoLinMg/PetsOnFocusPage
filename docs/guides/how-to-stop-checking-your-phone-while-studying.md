@@ -2,7 +2,7 @@
 title: How to stop checking your phone while studying
 description: Put the phone out of reach, turn off what pings, and give yourself a clear point when you're allowed to look. Practical ways to study without picking it up.
 published: 2026-10-19
-updated: 2026-10-22
+updated: 2026-10-25
 keywords: how to stop checking your phone while studying, phone distraction, stop using phone while studying, study without phone, focus app
 ---
 
@@ -89,7 +89,7 @@ That's the idea behind Pets on Focus. You start a focus session and a hand-drawn
 the app and your pet stays happy. Leave for more than 10 seconds and the session ends without a reward, but you get a
 notification the moment you leave, so a quick slip is easy to undo. It doesn't block your other apps; it just turns
 "I'll only check for a second" into a choice you notice making. Finish, and your pet celebrates and you earn coins for
-its room.
+its room. On Android it notices you left through the Accessibility Service; [is accessibility permission safe for a focus app?](/guides/is-it-safe-to-give-a-focus-app-accessibility-permission-on-android/) explains what to check first.
 
 ## 7. Be kind to yourself about slips
 
