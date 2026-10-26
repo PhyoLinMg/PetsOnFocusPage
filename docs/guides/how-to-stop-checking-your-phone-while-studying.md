@@ -2,7 +2,7 @@
 title: How to stop checking your phone while studying
 description: Put the phone out of reach, turn off what pings, and give yourself a clear point when you're allowed to look. Practical ways to study without picking it up.
 published: 2026-10-19
-updated: 2026-10-25
+updated: 2026-10-26
 keywords: how to stop checking your phone while studying, phone distraction, stop using phone while studying, study without phone, focus app
 ---
 
@@ -129,3 +129,5 @@ If you struggle to begin at all, [how to start studying when you don't feel like
 - Give the urge a time: check the phone in planned breaks.
 - Write down thoughts instead of acting on them.
 - If you slip, start the next session. Fewer checks than yesterday is a win.
+
+Working at a desk job rather than studying? See [how to focus while working from home](/guides/how-to-focus-while-working-from-home/).

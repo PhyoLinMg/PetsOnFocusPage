@@ -21,7 +21,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] What to do in a Pomodoro break — pomodoro break ideas (2026-10-23, what-to-do-in-a-pomodoro-break)
 - [x] Study with me: how to recreate it on your own — study with me (2026-10-24, study-with-me-how-to-recreate-it-on-your-own)
 - [x] Is it safe to give a focus app Accessibility permission on Android? — accessibility permission android focus app (2026-10-25, is-it-safe-to-give-a-focus-app-accessibility-permission-on-android)
-- [ ] How to focus while working from home — focus working from home
+- [x] How to focus while working from home — focus working from home (2026-10-26, how-to-focus-while-working-from-home)
 - [ ] Deep work: how to plan a deep work session — deep work session
 - [ ] Cute productivity apps that make focusing feel cosy — cute productivity apps
 - [ ] How many Pomodoros a day is enough? — how many pomodoros a day
@@ -40,3 +40,5 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [ ] How to track your focus time (and what to do with it) — track focus time
 
 ## Ideas from the routine
+- [ ] How to take a proper lunch break when you work from home — lunch break working from home
+- [ ] How to set up a distraction-free desk — distraction free desk setup
