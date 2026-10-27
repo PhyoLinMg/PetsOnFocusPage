@@ -2,7 +2,7 @@
 title: Pomodoro vs 52/17 vs 90-minute focus blocks
 description: Pomodoro is 25 minutes on, 5 off. 52/17 and 90-minute blocks run longer. What each one is, where the numbers come from, and how to pick the right one.
 published: 2026-10-20
-updated: 2026-10-23
+updated: 2026-10-27
 keywords: pomodoro vs 52 17, 52/17 rule, 90 minute focus blocks, pomodoro vs 90 minutes, best work break ratio
 ---
 
@@ -110,5 +110,6 @@ Yes. Many people use Pomodoro on low-energy days and for small tasks, and a 50 t
 
 - Pomodoro is 25/5, 52/17 is 52 minutes of focus and 17 off, and a deep-work block is up to 90 minutes with a 15 to 20 minute rest.
 - None is proven best; all three work through a clear start, a clear stop and a real break.
+- To plan a long block step by step, read [Deep work session: how to plan one that works](/guides/deep-work-session-how-to-plan/).
 - Start with Pomodoro, move to around 50 minutes when 25 keeps cutting you off, and save 90 minutes for your deepest work.
 - Test each for a week and keep whatever leaves you clear-headed.

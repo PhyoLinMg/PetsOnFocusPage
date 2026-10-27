@@ -22,7 +22,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] Study with me: how to recreate it on your own — study with me (2026-10-24, study-with-me-how-to-recreate-it-on-your-own)
 - [x] Is it safe to give a focus app Accessibility permission on Android? — accessibility permission android focus app (2026-10-25, is-it-safe-to-give-a-focus-app-accessibility-permission-on-android)
 - [x] How to focus while working from home — focus working from home (2026-10-26, how-to-focus-while-working-from-home)
-- [ ] Deep work: how to plan a deep work session — deep work session
+- [x] Deep work: how to plan a deep work session — deep work session (2026-10-27, deep-work-session-how-to-plan)
 - [ ] Cute productivity apps that make focusing feel cosy — cute productivity apps
 - [ ] How many Pomodoros a day is enough? — how many pomodoros a day
 - [ ] How to revise for exams with a timer — revision timer
