@@ -2,6 +2,7 @@
 title: What to do in a Pomodoro break: 15 ideas that work
 description: Stand up, drink water, look far away, stretch. Ideas for 5-minute and long Pomodoro breaks, plus what to avoid so your next block starts easily.
 published: 2026-10-23
+updated: 2026-10-28
 keywords: pomodoro break ideas, what to do in a pomodoro break, pomodoro break activities, 5 minute break ideas, study break ideas
 ---
 
@@ -110,6 +111,8 @@ It is better not to. Phones are hard to put down, and a 5-minute break easily be
 ### Should I keep working if I'm in flow when the timer rings?
 
 You can, but take a break soon after. If you are often in flow when the timer rings, try a longer block instead of ignoring the break.
+
+If you like a gentler, cosier setup around your timer, see [cute productivity apps that make focusing feel cosy](/guides/cute-productivity-apps-that-make-focusing-cosy/).
 
 ## In short
 

@@ -23,7 +23,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] Is it safe to give a focus app Accessibility permission on Android? — accessibility permission android focus app (2026-10-25, is-it-safe-to-give-a-focus-app-accessibility-permission-on-android)
 - [x] How to focus while working from home — focus working from home (2026-10-26, how-to-focus-while-working-from-home)
 - [x] Deep work: how to plan a deep work session — deep work session (2026-10-27, deep-work-session-how-to-plan)
-- [ ] Cute productivity apps that make focusing feel cosy — cute productivity apps
+- [x] Cute productivity apps that make focusing feel cosy — cute productivity apps (2026-10-28, cute-productivity-apps-that-make-focusing-cosy)
 - [ ] How many Pomodoros a day is enough? — how many pomodoros a day
 - [ ] How to revise for exams with a timer — revision timer
 - [ ] Body doubling: what it is and how to try it — body doubling
@@ -42,3 +42,4 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 ## Ideas from the routine
 - [ ] How to take a proper lunch break when you work from home — lunch break working from home
 - [ ] How to set up a distraction-free desk — distraction free desk setup
+- [ ] Focus app with a virtual pet: what to look for — focus app with virtual pet
