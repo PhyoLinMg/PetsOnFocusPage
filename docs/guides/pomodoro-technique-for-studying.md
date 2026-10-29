@@ -2,7 +2,7 @@
 title: How to use the Pomodoro technique for studying
 description: Study in 25-minute blocks with short breaks between them. How the Pomodoro technique works, how to set it up for revision, and what to do when it doesn't fit.
 published: 2026-10-19
-updated: 2026-10-23
+updated: 2026-10-29
 keywords: Pomodoro technique for studying, Pomodoro study method, how to study with Pomodoro, Pomodoro timer, study timer
 ---
 
@@ -117,6 +117,8 @@ Settings. Leave the app for more than 10 seconds and the session ends, so the ph
 distraction. Finish, and your pet celebrates.
 
 Want to turn daily blocks into a habit? See [how to build a study streak](/guides/how-to-build-a-study-streak/).
+
+Wondering how many blocks to aim for? See [how many Pomodoros a day is enough](/guides/how-many-pomodoros-a-day/).
 
 ## Common questions
 

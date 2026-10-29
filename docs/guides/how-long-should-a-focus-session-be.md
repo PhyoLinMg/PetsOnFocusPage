@@ -2,7 +2,7 @@
 title: How long should a focus session be?
 description: For most people, 25 to 50 minutes of focus followed by a short break works well. How to find your own length, and when to go shorter or longer.
 published: 2026-10-19
-updated: 2026-10-27
+updated: 2026-10-29
 keywords: how long should a focus session be, focus session length, how long to focus, best focus timer length, deep work session length
 ---
 
@@ -104,6 +104,8 @@ ends, so a short session stays a real one.
 If you like sound while you work, see [the best sounds for focus](/guides/best-sounds-for-focus/).
 
 If you're trying to study daily, a short session is also the easiest way to start a streak: see [how to build a study streak](/guides/how-to-build-a-study-streak/).
+
+If you are deciding how many sessions to do in a day, see [how many Pomodoros a day is enough](/guides/how-many-pomodoros-a-day/).
 
 ## Common questions
 
