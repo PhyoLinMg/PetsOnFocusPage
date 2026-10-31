@@ -2,7 +2,7 @@
 title: How to start studying when you don't feel like it
 description: Shrink the first step, promise yourself five minutes and make starting automatic. A practical way to begin studying when motivation hasn't turned up.
 published: 2026-10-22
-updated: 2026-10-24
+updated: 2026-10-31
 keywords: how to start studying, study when you don't feel like it, no motivation to study, can't start studying, start studying
 ---
 
@@ -78,6 +78,8 @@ Make the first step smaller until it feels easy, such as opening the notes or do
 ### Is it normal not to feel like studying?
 
 Yes. Almost everyone has days when studying feels unappealing. A routine that doesn't depend on mood gets you through them. If low motivation lasts for weeks or comes with low mood or constant worry, talk to a doctor or a support service at your school or university.
+
+If the thing you keep avoiding is homework, [how to stop procrastinating on homework](/guides/how-to-stop-procrastinating-on-homework/) turns these ideas into a five-step routine.
 
 ## In short
 

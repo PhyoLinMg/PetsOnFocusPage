@@ -26,8 +26,8 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] Cute productivity apps that make focusing feel cosy — cute productivity apps (2026-10-28, cute-productivity-apps-that-make-focusing-cosy)
 - [x] How many Pomodoros a day is enough? — how many pomodoros a day (2026-10-29, how-many-pomodoros-a-day)
 - [x] How to revise for exams with a timer — revision timer (2026-10-30, how-to-revise-for-exams-with-a-timer)
-- [ ] Body doubling: what it is and how to try it — body doubling
-- [ ] How to stop procrastinating on homework — stop procrastinating homework
+- [x] Body doubling: what it is and how to try it — body doubling (skipped: couldn't verify)
+- [x] How to stop procrastinating on homework — stop procrastinating homework (2026-10-31, how-to-stop-procrastinating-on-homework)
 - [ ] Apps like Focus To-Do and Flora: focus timers compared — focus timer apps compared
 - [ ] Time blocking vs Pomodoro: which suits you? — time blocking vs pomodoro
 - [ ] How to focus in a noisy room — focus in noisy environment
