@@ -28,8 +28,8 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to revise for exams with a timer — revision timer (2026-10-30, how-to-revise-for-exams-with-a-timer)
 - [x] Body doubling: what it is and how to try it — body doubling (skipped: couldn't verify)
 - [x] How to stop procrastinating on homework — stop procrastinating homework (2026-10-31, how-to-stop-procrastinating-on-homework)
-- [ ] Apps like Focus To-Do and Flora: focus timers compared — focus timer apps compared
-- [ ] Time blocking vs Pomodoro: which suits you? — time blocking vs pomodoro
+- [x] Apps like Focus To-Do and Flora: focus timers compared — focus timer apps compared (skipped: couldn't verify)
+- [x] Time blocking vs Pomodoro: which suits you? — time blocking vs pomodoro (2026-11-01, time-blocking-vs-pomodoro)
 - [ ] How to focus in a noisy room — focus in noisy environment
 - [ ] Phone addiction and studying: small changes that help — phone addiction studying
 - [ ] The best focus timer settings for reading — focus timer for reading
@@ -43,3 +43,5 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [ ] How to take a proper lunch break when you work from home — lunch break working from home
 - [ ] How to set up a distraction-free desk — distraction free desk setup
 - [ ] Focus app with a virtual pet: what to look for — focus app with virtual pet
+- [ ] How to plan your study day: a simple schedule — study schedule for a day
+- [ ] Timeboxing: what it is and how to try it — timeboxing

@@ -2,7 +2,7 @@
 title: How many Pomodoros a day is enough?
 description: Most people do well with 4 to 8 Pomodoros a day, about 2 to 4 hours of real focus. How to pick your number, and why more isn't always better.
 published: 2026-10-29
-updated: 2026-10-30
+updated: 2026-11-01
 keywords: how many pomodoros a day, how many pomodoros per day, pomodoros per day, daily pomodoro goal, pomodoro count
 ---
 
@@ -90,3 +90,4 @@ No. Only the focused work blocks count. Breaks are the rest between them.
 - Find your ceiling by counting for a week and noticing when your evening clarity drops.
 - Set a floor for bad days, a target for normal days, and a stretch for great ones.
 - Count only whole, single-task blocks, and take every break.
+- To plan where those blocks sit in your day, read [time blocking vs Pomodoro](/guides/time-blocking-vs-pomodoro/).
