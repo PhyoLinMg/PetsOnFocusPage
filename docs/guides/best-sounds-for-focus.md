@@ -2,7 +2,7 @@
 title: Best sounds for focus: rain, café, fireplace or silence?
 description: Silence, rain, café chatter or a crackling fireplace? How to pick background sound for studying, which tasks suit which, and how to test what works for you.
 published: 2026-10-19
-updated: 2026-10-28
+updated: 2026-11-02
 keywords: sounds for focus, best background sound for studying, rain sounds for studying, cafe noise focus, silence vs background noise
 ---
 
@@ -94,6 +94,8 @@ Opinions online disagree because people differ. Run a small experiment instead:
 Using a timer makes the comparison fair, because every trial is the same length. A [Pomodoro block](/guides/pomodoro-technique-for-studying/)
 works well here, and our guide to [how long a focus session should be](/guides/how-long-should-a-focus-session-be/)
 will help you choose the length.
+
+If the room itself is loud, [how to focus in a noisy room](/guides/how-to-focus-in-a-noisy-room/) covers blocking, masking and moving away from noise.
 
 ## Sound is not a substitute for a quiet phone
 

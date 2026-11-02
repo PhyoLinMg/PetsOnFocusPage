@@ -2,6 +2,7 @@
 title: How to focus while working from home: 9 things that help
 description: Working from home and can't concentrate? Set up one work spot, plan the day, use timed sessions, keep the phone away and end work on time. A practical guide.
 published: 2026-10-26
+updated: 2026-11-02
 keywords: focus working from home, how to focus while working from home, stay focused at home, work from home distractions, home office focus
 ---
 
@@ -54,6 +55,8 @@ If your home is noisy, or too quiet, steady sound helps some people. Rain, a caf
 ### 9. End the day on purpose
 
 Pick a finishing time and a closing ritual: write tomorrow's list, close the laptop, put it away. Without an end, work leaks into the evening and you feel unfocused all day because you are never fully off.
+
+If noise is the main problem, see [how to focus in a noisy room](/guides/how-to-focus-in-a-noisy-room/).
 
 ## What does a focused work-from-home day look like?
 
