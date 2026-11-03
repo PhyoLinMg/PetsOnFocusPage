@@ -31,8 +31,8 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] Apps like Focus To-Do and Flora: focus timers compared — focus timer apps compared (skipped: couldn't verify)
 - [x] Time blocking vs Pomodoro: which suits you? — time blocking vs pomodoro (2026-11-01, time-blocking-vs-pomodoro)
 - [x] How to focus in a noisy room — focus in noisy environment (2026-11-02, how-to-focus-in-a-noisy-room)
-- [ ] Phone addiction and studying: small changes that help — phone addiction studying
-- [ ] The best focus timer settings for reading — focus timer for reading
+- [x] Phone addiction and studying: small changes that help — phone addiction studying (skipped: covered by how-to-stop-checking-your-phone-while-studying)
+- [x] The best focus timer settings for reading — focus timer for reading (2026-11-03, focus-timer-settings-for-reading)
 - [ ] ADHD and the Pomodoro technique: does it work? — pomodoro adhd
 - [ ] How to study for long hours without burning out — study for long hours
 - [ ] A virtual pet that helps you focus: how it works — virtual pet focus app
