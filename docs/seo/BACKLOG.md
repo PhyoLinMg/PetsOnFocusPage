@@ -33,8 +33,8 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to focus in a noisy room — focus in noisy environment (2026-11-02, how-to-focus-in-a-noisy-room)
 - [x] Phone addiction and studying: small changes that help — phone addiction studying (skipped: covered by how-to-stop-checking-your-phone-while-studying)
 - [x] The best focus timer settings for reading — focus timer for reading (2026-11-03, focus-timer-settings-for-reading)
-- [ ] ADHD and the Pomodoro technique: does it work? — pomodoro adhd
-- [ ] How to study for long hours without burning out — study for long hours
+- [x] ADHD and the Pomodoro technique: does it work? — pomodoro adhd (skipped: couldn't verify)
+- [x] How to study for long hours without burning out — study for long hours (2026-11-04, how-to-study-for-long-hours-without-burning-out)
 - [ ] A virtual pet that helps you focus: how it works — virtual pet focus app
 - [ ] Night study: how to focus late without wrecking sleep — studying at night
 - [ ] How to track your focus time (and what to do with it) — track focus time
@@ -45,3 +45,5 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [ ] Focus app with a virtual pet: what to look for — focus app with virtual pet
 - [ ] How to plan your study day: a simple schedule — study schedule for a day
 - [ ] Timeboxing: what it is and how to try it — timeboxing
+- [ ] How to stop feeling tired while studying — tired while studying
+- [ ] How to take a study break day without guilt — rest day studying

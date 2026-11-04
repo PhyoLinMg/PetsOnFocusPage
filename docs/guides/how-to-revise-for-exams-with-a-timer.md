@@ -2,7 +2,7 @@
 title: How to revise for exams with a timer
 description: Revise in timed blocks of 25 to 50 minutes, one topic per block, with practice questions inside. A plan for the weeks before an exam and the final week.
 published: 2026-10-30
-updated: 2026-11-03
+updated: 2026-11-04
 keywords: revision timer, how to revise with a timer, revise for exams, timed revision, exam revision timetable
 ---
 
@@ -109,3 +109,4 @@ Reading a textbook rather than testing yourself? See [the best focus timer setti
 - Fill blocks with active work: recall from memory, practice questions, past papers.
 - Time past papers by minutes per mark, then mark and fix in a separate block.
 - In the last week, test yourself more and learn less, and keep the sleep.
+- If your revision days run long, [how to study for long hours without burning out](/guides/how-to-study-for-long-hours-without-burning-out/) shows how to pace them.
