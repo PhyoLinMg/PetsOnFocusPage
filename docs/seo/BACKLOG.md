@@ -35,8 +35,8 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] The best focus timer settings for reading — focus timer for reading (2026-11-03, focus-timer-settings-for-reading)
 - [x] ADHD and the Pomodoro technique: does it work? — pomodoro adhd (skipped: couldn't verify)
 - [x] How to study for long hours without burning out — study for long hours (2026-11-04, how-to-study-for-long-hours-without-burning-out)
-- [ ] A virtual pet that helps you focus: how it works — virtual pet focus app
-- [ ] Night study: how to focus late without wrecking sleep — studying at night
+- [x] A virtual pet that helps you focus: how it works — virtual pet focus app (skipped: covered by cute-productivity-apps-that-make-focusing-cosy)
+- [x] Night study: how to focus late without wrecking sleep — studying at night (2026-11-05, studying-at-night-how-to-focus-without-wrecking-sleep)
 - [ ] How to track your focus time (and what to do with it) — track focus time
 
 ## Ideas from the routine
