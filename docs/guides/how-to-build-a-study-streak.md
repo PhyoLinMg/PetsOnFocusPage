@@ -2,6 +2,7 @@
 title: How to build a study streak (and keep it going)
 description: Start with a session so small it feels silly, tie it to a daily cue, and plan for the day you miss. A calm guide to building a study streak that lasts.
 published: 2026-10-19
+updated: 2026-11-06
 keywords: study streak, how to build a study streak, daily study habit, keep a study streak, study every day
 ---
 
@@ -20,7 +21,7 @@ busy, not one that suits your best day.
 - **Better:** "One 15-minute focus session on my current subject."
 - **Also fine:** "One Pomodoro" (a single work block, no more).
 
-You can always do more. The minimum is only the line that keeps the streak alive. Most days, once you've started,
+You can always do more. The minimum is only the line that keeps the streak alive (to see your totals over time, read [how to track your focus time](/guides/how-to-track-your-focus-time/)). Most days, once you've started,
 you'll carry on. On the days you don't, the streak survives anyway.
 
 If you're not sure how long to make that session, [how long should a focus session be](/guides/how-long-should-a-focus-session-be/)

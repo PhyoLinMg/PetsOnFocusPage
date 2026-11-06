@@ -37,7 +37,7 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to study for long hours without burning out — study for long hours (2026-11-04, how-to-study-for-long-hours-without-burning-out)
 - [x] A virtual pet that helps you focus: how it works — virtual pet focus app (skipped: covered by cute-productivity-apps-that-make-focusing-cosy)
 - [x] Night study: how to focus late without wrecking sleep — studying at night (2026-11-05, studying-at-night-how-to-focus-without-wrecking-sleep)
-- [ ] How to track your focus time (and what to do with it) — track focus time
+- [x] How to track your focus time (and what to do with it) — track focus time (2026-11-06, how-to-track-your-focus-time)
 
 ## Ideas from the routine
 - [ ] How to take a proper lunch break when you work from home — lunch break working from home
