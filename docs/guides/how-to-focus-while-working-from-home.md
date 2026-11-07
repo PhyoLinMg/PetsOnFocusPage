@@ -2,7 +2,7 @@
 title: How to focus while working from home: 9 things that help
 description: Working from home and can't concentrate? Set up one work spot, plan the day, use timed sessions, keep the phone away and end work on time. A practical guide.
 published: 2026-10-26
-updated: 2026-11-02
+updated: 2026-11-07
 keywords: focus working from home, how to focus while working from home, stay focused at home, work from home distractions, home office focus
 ---
 
@@ -87,6 +87,8 @@ Put your hardest work in the part of the day when you feel most alert, and your 
 A timer helps because it makes a session a clear unit with a start and an end. Pets on Focus, a focus timer and Pomodoro app for Android, iPhone and iPad, with a pet who keeps you company, offers focus sessions from 5 minutes to 4 hours or Pomodoro work cycles with short and long breaks. If you leave the app for more than 10 seconds during a session, the session ends without a reward and you get a notification, which gives your phone a small reason to stay put. It does not block other apps; it notices you left.
 
 You can also write what you are working on and pin it before you start, so the task is in front of you when the timer begins.
+
+Midday lunch is easier to protect if you plan it ahead: see [how to take a lunch break when you work from home](/guides/lunch-break-when-working-from-home/).
 
 ## Common questions
 

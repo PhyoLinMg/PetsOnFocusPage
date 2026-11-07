@@ -40,10 +40,11 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to track your focus time (and what to do with it) — track focus time (2026-11-06, how-to-track-your-focus-time)
 
 ## Ideas from the routine
-- [ ] How to take a proper lunch break when you work from home — lunch break working from home
+- [x] How to take a proper lunch break when you work from home — lunch break working from home (2026-11-07, lunch-break-when-working-from-home)
 - [ ] How to set up a distraction-free desk — distraction free desk setup
 - [ ] Focus app with a virtual pet: what to look for — focus app with virtual pet
 - [ ] How to plan your study day: a simple schedule — study schedule for a day
 - [ ] Timeboxing: what it is and how to try it — timeboxing
 - [ ] How to stop feeling tired while studying — tired while studying
 - [ ] How to take a study break day without guilt — rest day studying
+- [ ] Afternoon slump at your desk: what actually helps — afternoon slump at work

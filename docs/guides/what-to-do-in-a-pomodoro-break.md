@@ -2,7 +2,7 @@
 title: What to do in a Pomodoro break: 15 ideas that work
 description: Stand up, drink water, look far away, stretch. Ideas for 5-minute and long Pomodoro breaks, plus what to avoid so your next block starts easily.
 published: 2026-10-23
-updated: 2026-10-28
+updated: 2026-11-07
 keywords: pomodoro break ideas, what to do in a pomodoro break, pomodoro break activities, 5 minute break ideas, study break ideas
 ---
 
@@ -97,6 +97,8 @@ Sometimes. If 5 minutes leaves you tired, or you are doing deeper work such as e
 ## Do breaks work better with a timer?
 
 A timer helps because it stops a break turning into drifting. Pets on Focus, a focus timer and Pomodoro app for Android, iPhone and iPad, with a pet who keeps you company, runs work cycles, short breaks and a long break, with the lengths set in Settings. If you want some quiet during a break, it also has ambient sounds, such as rain or a café, and [sounds for focus](/guides/best-sounds-for-focus/) explains how to choose.
+
+For the midday meal, [lunch break when working from home](/guides/lunch-break-when-working-from-home/) has a simple routine.
 
 ## Common questions
 
