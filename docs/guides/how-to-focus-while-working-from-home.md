@@ -2,7 +2,7 @@
 title: How to focus while working from home: 9 things that help
 description: Working from home and can't concentrate? Set up one work spot, plan the day, use timed sessions, keep the phone away and end work on time. A practical guide.
 published: 2026-10-26
-updated: 2026-11-07
+updated: 2026-11-08
 keywords: focus working from home, how to focus while working from home, stay focused at home, work from home distractions, home office focus
 ---
 
@@ -34,7 +34,7 @@ A timer turns a vague day into short, clear stretches. The [Pomodoro technique](
 
 ### 4. Keep your phone out of reach
 
-Your phone is the biggest distraction at home, because nobody is watching. Put it in another room, or at least face down and out of arm's reach, during a session. [How to stop checking your phone while studying](/guides/how-to-stop-checking-your-phone-while-studying/) has setups that work just as well for a desk job.
+Set up the desk first: [a distraction-free desk setup](/guides/distraction-free-desk-setup/) takes ten minutes. Your phone is the biggest distraction at home, because nobody is watching. Put it in another room, or at least face down and out of arm's reach, during a session. [How to stop checking your phone while studying](/guides/how-to-stop-checking-your-phone-while-studying/) has setups that work just as well for a desk job.
 
 ### 5. Close the tabs you don't need
 
