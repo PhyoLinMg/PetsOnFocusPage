@@ -42,8 +42,8 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 ## Ideas from the routine
 - [x] How to take a proper lunch break when you work from home — lunch break working from home (2026-11-07, lunch-break-when-working-from-home)
 - [x] How to set up a distraction-free desk — distraction free desk setup (2026-11-08, distraction-free-desk-setup)
-- [ ] Focus app with a virtual pet: what to look for — focus app with virtual pet
-- [ ] How to plan your study day: a simple schedule — study schedule for a day
+- [x] Focus app with a virtual pet: what to look for — focus app with virtual pet (skipped: covered by cute-productivity-apps-that-make-focusing-cosy)
+- [x] How to plan your study day: a simple schedule — study schedule for a day (2026-11-09, how-to-plan-your-study-day)
 - [ ] Timeboxing: what it is and how to try it — timeboxing
 - [ ] How to stop feeling tired while studying — tired while studying
 - [ ] How to take a study break day without guilt — rest day studying

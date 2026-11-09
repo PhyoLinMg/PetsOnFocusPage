@@ -2,6 +2,7 @@
 title: Time blocking vs Pomodoro: which suits you?
 description: Time blocking plans your day in chunks; Pomodoro times the work inside them. How the two differ, when to pick each, and how to combine them.
 published: 2026-11-01
+updated: 2026-11-09
 keywords: time blocking vs pomodoro, time blocking or pomodoro, time blocking and pomodoro together, time blocking method, pomodoro technique vs time blocking
 ---
 
@@ -116,4 +117,5 @@ Plan only the next one or two blocks, leave gaps, and lean on short timed rounds
 - Struggling to decide what to do: try time blocking. Struggling to begin or stay on task: try Pomodoro.
 - To combine them, schedule blocks, add buffers, and run each block in timed rounds.
 - Keep plans light. A day with four to five realistic hours of focus work beats a packed one that collapses.
+- For a full-day template, see [how to plan your study day](/guides/how-to-plan-your-study-day/).
 - For planning a single long stretch, see [deep work session: how to plan one that works](/guides/deep-work-session-how-to-plan/).
