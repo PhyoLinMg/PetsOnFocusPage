@@ -2,7 +2,7 @@
 title: Time blocking vs Pomodoro: which suits you?
 description: Time blocking plans your day in chunks; Pomodoro times the work inside them. How the two differ, when to pick each, and how to combine them.
 published: 2026-11-01
-updated: 2026-11-09
+updated: 2026-11-10
 keywords: time blocking vs pomodoro, time blocking or pomodoro, time blocking and pomodoro together, time blocking method, pomodoro technique vs time blocking
 ---
 
@@ -24,7 +24,7 @@ Because they answer different questions, they are not really rivals. A time bloc
 
 ## What is time blocking?
 
-Time blocking is giving each task a set slot in your calendar instead of working from a loose to-do list. You write "Essay draft, 9:00 to 11:00" rather than "write essay", and treat the slot like an appointment. Related ideas include timeboxing, where a task gets a fixed amount of time and you stop when it runs out.
+Time blocking is giving each task a set slot in your calendar instead of working from a loose to-do list. You write "Essay draft, 9:00 to 11:00" rather than "write essay", and treat the slot like an appointment. Related ideas include timeboxing, where a task gets a fixed amount of time and you stop when it runs out ([timeboxing: what it is and how to try it](/guides/timeboxing-what-it-is-and-how-to-try-it/)).
 
 It helps because a list never tells you whether everything fits. Putting tasks into hours shows you quickly that you have eight hours of plans and four hours of day.
 

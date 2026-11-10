@@ -44,7 +44,8 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to set up a distraction-free desk — distraction free desk setup (2026-11-08, distraction-free-desk-setup)
 - [x] Focus app with a virtual pet: what to look for — focus app with virtual pet (skipped: covered by cute-productivity-apps-that-make-focusing-cosy)
 - [x] How to plan your study day: a simple schedule — study schedule for a day (2026-11-09, how-to-plan-your-study-day)
-- [ ] Timeboxing: what it is and how to try it — timeboxing
+- [x] Timeboxing: what it is and how to try it — timeboxing (2026-11-10, timeboxing-what-it-is-and-how-to-try-it)
 - [ ] How to stop feeling tired while studying — tired while studying
 - [ ] How to take a study break day without guilt — rest day studying
 - [ ] Afternoon slump at your desk: what actually helps — afternoon slump at work
+- [ ] How to stop over-polishing your work: a perfectionism guide for students — perfectionism studying
