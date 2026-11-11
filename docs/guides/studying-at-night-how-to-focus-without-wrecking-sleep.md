@@ -2,6 +2,7 @@
 title: Studying at night: how to focus without wrecking sleep
 description: Study at night with a fixed stop time, light work late, a warm lamp and a wind-down routine. How to focus after dark and still get the sleep you need.
 published: 2026-11-05
+updated: 2026-11-11
 keywords: studying at night, night study tips, how to focus late at night, study late without losing sleep, night owl study routine
 ---
 
@@ -76,7 +77,7 @@ Go to bed at the same time most nights. A steady rhythm beats a perfect plan tha
 
 ## What if you are too tired to study?
 
-If you keep reading the same line, your blocks fall apart and the break doesn't help, you are probably past the point where studying pays off. Stop and sleep. A rested hour in the morning is usually worth more than two tired hours at night.
+If you keep reading the same line, your blocks fall apart and the break doesn't help, you are probably past the point where studying pays off. Stop and sleep. A rested hour in the morning is usually worth more than two tired hours at night. [How to stop feeling tired while studying](/guides/how-to-stop-feeling-tired-while-studying/) has quick fixes for sleepy patches.
 
 If you must study while tired, do a lighter task, such as flashcards or tidying notes, and set a firm stop time. For tired minds in general, [why you can't focus on studying](/guides/why-you-cant-focus-on-studying/) looks at the common causes. Before exams, [how to revise for exams with a timer](/guides/how-to-revise-for-exams-with-a-timer/) shows how to plan the weeks so you are not forced into all-nighters.
 
