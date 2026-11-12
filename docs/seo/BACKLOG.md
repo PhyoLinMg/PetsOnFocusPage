@@ -46,6 +46,6 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to plan your study day: a simple schedule — study schedule for a day (2026-11-09, how-to-plan-your-study-day)
 - [x] Timeboxing: what it is and how to try it — timeboxing (2026-11-10, timeboxing-what-it-is-and-how-to-try-it)
 - [x] How to stop feeling tired while studying — tired while studying (2026-11-11, how-to-stop-feeling-tired-while-studying)
-- [ ] How to take a study break day without guilt — rest day studying
+- [x] How to take a study break day without guilt — rest day studying (2026-11-12, study-rest-day-without-guilt)
 - [ ] Afternoon slump at your desk: what actually helps — afternoon slump at work
 - [ ] How to stop over-polishing your work: a perfectionism guide for students — perfectionism studying

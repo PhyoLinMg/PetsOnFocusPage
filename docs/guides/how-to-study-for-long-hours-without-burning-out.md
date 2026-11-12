@@ -2,7 +2,7 @@
 title: How to study for long hours without burning out
 description: Study in 50-minute blocks with real breaks, put hard subjects first, stop before you are empty and protect sleep. A plan for long study days that you can repeat.
 published: 2026-11-04
-updated: 2026-11-09
+updated: 2026-11-12
 keywords: study for long hours, how to study for long hours without burning out, long study day, study marathon, study stamina
 ---
 
@@ -47,7 +47,7 @@ Add time slowly. If you currently manage 2 hours of focus, aim for 2.5 next week
 
 - Add one block to your normal day every few days.
 - Keep a floor: on tired days, do your usual minimum and stop.
-- Use a rest day. One lighter day a week is part of the plan, not a lapse.
+- Use a rest day. One lighter day a week is part of the plan, not a lapse ([how to take a rest day without guilt](/guides/study-rest-day-without-guilt/)).
 
 If starting is the hard part, [how to start studying when you don't feel like it](/guides/how-to-start-studying-when-you-dont-feel-like-it/) has a first-five-minutes routine.
 
