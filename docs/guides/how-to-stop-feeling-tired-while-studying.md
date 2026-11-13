@@ -2,13 +2,13 @@
 title: How to stop feeling tired while studying
 description: Feeling sleepy at your desk? Check sleep, food and water, then change your posture, light and block length. Practical fixes for studying when tired.
 published: 2026-11-11
-updated: 2026-11-12
+updated: 2026-11-13
 keywords: tired while studying, how to stop feeling tired while studying, sleepy while studying, how to stay awake to study, study when tired
 ---
 
 To stop feeling tired while studying, check the basics first: sleep, food and water. Then change your setup: sit at a desk (not your bed), use bright light, and stand up or walk for a few minutes. Switch to shorter blocks of 15 to 25 minutes with a real break after each, and move the hardest work to the time of day when you are most alert. If you are tired every day for weeks, speak to a doctor.
 
-Tiredness at your desk usually has an ordinary cause. This guide helps you find yours and gives you quick fixes for the next hour.
+Tiredness at your desk usually has an ordinary cause. This guide helps you find yours and gives you quick fixes for the next hour. If it is the after-lunch dip at work you are fighting, see [afternoon slump at work: what actually helps](/guides/afternoon-slump-at-work-what-helps/).
 
 ## Why do you feel tired when you study?
 

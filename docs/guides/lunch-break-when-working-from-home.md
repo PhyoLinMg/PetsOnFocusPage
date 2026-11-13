@@ -2,6 +2,7 @@
 title: Lunch break when working from home: how to take a real one
 description: Working from home and skipping lunch? Set a fixed time, leave your desk, eat away from the screen and plan the first task after. A simple routine.
 published: 2026-11-07
+updated: 2026-11-13
 keywords: lunch break working from home, work from home lunch break, how to take a lunch break at home, lunch break ideas, eating at your desk
 ---
 
@@ -89,3 +90,5 @@ A short walk is one of the easiest ways to mark the middle of the day. If the we
 - Reach a stopping point, and leave a note with your next step.
 - Leave your desk, eat away from the screen and move a little.
 - Set a timer for your return and start the afternoon with something small.
+
+If the afternoon still drags, [afternoon slump at work: what actually helps](/guides/afternoon-slump-at-work-what-helps/) has quick fixes and a way to plan around the dip.
