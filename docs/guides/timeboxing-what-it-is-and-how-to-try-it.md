@@ -2,6 +2,7 @@
 title: Timeboxing: what it is and how to try it
 description: Timeboxing gives a task a fixed slot of time and stops when it runs out. How it works, hard vs soft boxes, and a simple way to try it today.
 published: 2026-11-10
+updated: 2026-11-15
 keywords: timeboxing, what is timeboxing, how to timebox, timeboxing method, timeboxing for studying, timeboxing vs time blocking
 ---
 
@@ -101,3 +102,4 @@ That is useful information. Note what is left, decide whether to start a new box
 - Set one task, one limit, a clear "done", then stop when the timer rings.
 - Use hard boxes for over-polishing, soft boxes (one short extension) for work you can't drop mid-thought.
 - Try 25 to 50 minutes for focused work, and review for two minutes afterwards.
+- If perfectionism is what keeps stretching your boxes, see [how to stop over-polishing your work](/guides/how-to-stop-over-polishing-your-work/).

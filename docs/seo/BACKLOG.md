@@ -48,6 +48,6 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to stop feeling tired while studying — tired while studying (2026-11-11, how-to-stop-feeling-tired-while-studying)
 - [x] How to take a study break day without guilt — rest day studying (2026-11-12, study-rest-day-without-guilt)
 - [x] Afternoon slump at your desk: what actually helps — afternoon slump at work (2026-11-13, afternoon-slump-at-work-what-helps)
-- [ ] How to stop over-polishing your work: a perfectionism guide for students — perfectionism studying
+- [x] How to stop over-polishing your work: a perfectionism guide for students — perfectionism studying (2026-11-15, how-to-stop-over-polishing-your-work)
 - [ ] How to get back into work after a holiday — back to work after holiday
 - [ ] How to take a proper break from screens at work — screen break at work

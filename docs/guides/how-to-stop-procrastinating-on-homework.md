@@ -2,6 +2,7 @@
 title: How to stop procrastinating on homework
 description: Shrink the first step, set a start time and a 10-minute timer, and clear your phone away. A practical way to start homework you keep putting off.
 published: 2026-10-31
+updated: 2026-11-15
 keywords: stop procrastinating homework, how to stop procrastinating on homework, homework procrastination, can't start homework, put off homework
 ---
 
@@ -16,7 +17,7 @@ Homework gets delayed because starting feels worse than the work itself. The tas
 Three things make it worse:
 
 - **A vague task.** "Do history" has no first step. "Write the first sentence of the essay" does.
-- **Perfectionism.** If it has to be good straight away, starting feels risky.
+- **Perfectionism.** If it has to be good straight away, starting feels risky. [How to stop over-polishing your work](/guides/how-to-stop-over-polishing-your-work/) covers that side.
 - **Easy distractions.** A phone within reach wins against a task you don't want to do.
 
 None of this says anything about your ability. It means the setup needs changing, not you.
