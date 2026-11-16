@@ -2,7 +2,7 @@
 title: How to focus while working from home: 9 things that help
 description: Working from home and can't concentrate? Set up one work spot, plan the day, use timed sessions, keep the phone away and end work on time. A practical guide.
 published: 2026-10-26
-updated: 2026-11-08
+updated: 2026-11-16
 keywords: focus working from home, how to focus while working from home, stay focused at home, work from home distractions, home office focus
 ---
 
@@ -89,6 +89,8 @@ A timer helps because it makes a session a clear unit with a start and an end. P
 You can also write what you are working on and pin it before you start, so the task is in front of you when the timer begins.
 
 Midday lunch is easier to protect if you plan it ahead: see [how to take a lunch break when you work from home](/guides/lunch-break-when-working-from-home/).
+
+Coming back from time off? [How to get back into work after a holiday](/guides/how-to-get-back-into-work-after-a-holiday/) shows how to ease in with short focus blocks.
 
 ## Common questions
 

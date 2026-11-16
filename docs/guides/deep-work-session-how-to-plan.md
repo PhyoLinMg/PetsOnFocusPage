@@ -2,7 +2,7 @@
 title: Deep work session: how to plan one that works
 description: A deep work session is a block of 50 to 90 minutes on one demanding task with no interruptions. How to plan, start and end one, step by step.
 published: 2026-10-27
-updated: 2026-11-01
+updated: 2026-11-16
 keywords: deep work session, how to plan a deep work session, deep work schedule, deep work timer, focused work block
 ---
 
@@ -72,6 +72,8 @@ That last line makes the next session easy to start, because you are never begin
 ## Can a focus timer app help with deep work?
 
 A timer gives the session a clear start and end, which is most of what you need. Pets on Focus, a focus timer and Pomodoro app for Android, iPhone and iPad, with a pet who keeps you company, offers focus sessions from 5 minutes to 4 hours, so you can set 50 or 90 minutes directly. You can write what you are working on and pin it before you start. If you leave the app for more than 10 seconds during a session, the session ends without a reward and you get a notification. It does not block other apps; it notices you left.
+
+Coming back from time off? [How to get back into work after a holiday](/guides/how-to-get-back-into-work-after-a-holiday/) shows how to ease in with short focus blocks.
 
 ## Common questions
 
