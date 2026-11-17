@@ -2,7 +2,7 @@
 title: What to do in a Pomodoro break: 15 ideas that work
 description: Stand up, drink water, look far away, stretch. Ideas for 5-minute and long Pomodoro breaks, plus what to avoid so your next block starts easily.
 published: 2026-10-23
-updated: 2026-11-07
+updated: 2026-11-17
 keywords: pomodoro break ideas, what to do in a pomodoro break, pomodoro break activities, 5 minute break ideas, study break ideas
 ---
 
@@ -53,6 +53,8 @@ Pick from this list. Most need nothing but a few minutes.
 
 14. Stroke a pet, a real one if you have one.
 15. Put on one song and listen to the whole thing.
+
+If your day is mostly screens, [how to take a proper screen break at work](/guides/how-to-take-a-proper-break-from-screens-at-work/) covers how often to look away and what counts as a real break.
 
 Notice what is missing: email, messages, social media and the news. Those can wait for the long break or the end of the day.
 

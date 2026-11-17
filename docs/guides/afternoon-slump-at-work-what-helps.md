@@ -2,6 +2,7 @@
 title: Afternoon slump at work: what actually helps
 description: Hit a wall after lunch? Learn why the afternoon dip happens and what helps: light, a walk, a lighter lunch, easy tasks and shorter focus blocks.
 published: 2026-11-13
+updated: 2026-11-17
 keywords: afternoon slump at work, afternoon slump, how to beat the afternoon slump, sleepy after lunch, 3pm slump, afternoon energy dip
 ---
 
@@ -23,6 +24,8 @@ The afternoon slump usually comes from a mix of ordinary things rather than one 
 | Hours of hard thinking already done | Flat even on easy tasks |
 
 Often two or three overlap. Start with the cheapest fix.
+
+Short, screen-free breaks help too: see [how to take a proper screen break at work](/guides/how-to-take-a-proper-break-from-screens-at-work/).
 
 ## What helps in the next ten minutes?
 
