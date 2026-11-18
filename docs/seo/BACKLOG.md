@@ -51,5 +51,5 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to stop over-polishing your work: a perfectionism guide for students — perfectionism studying (2026-11-15, how-to-stop-over-polishing-your-work)
 - [x] How to get back into work after a holiday — back to work after holiday (2026-11-16, how-to-get-back-into-work-after-a-holiday)
 - [x] How to take a proper break from screens at work — screen break at work (2026-11-17, how-to-take-a-proper-break-from-screens-at-work)
-- [ ] How to relieve neck and shoulder tension at your desk — desk stretches for neck and shoulders
+- [x] How to relieve neck and shoulder tension at your desk — desk stretches for neck and shoulders (2026-11-18, desk-stretches-for-neck-and-shoulders)
 - [ ] How to set up a work day with no meetings for focus — meeting-free focus time

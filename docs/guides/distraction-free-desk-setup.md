@@ -2,6 +2,7 @@
 title: Distraction-free desk setup: a simple 10-minute reset
 description: Clear the desk, face a wall, put the phone out of reach and set one task out. A simple distraction-free desk setup you can do in ten minutes, with a checklist.
 published: 2026-11-08
+updated: 2026-11-18
 keywords: distraction free desk setup, distraction free desk, clean desk for focus, study desk setup, desk setup for focus
 ---
 
@@ -29,7 +30,7 @@ Work through these in order.
 2. **Put back only what today's task needs.** One notebook, one pen, the laptop or book. Everything else goes in a drawer, a box or another room.
 3. **Move the phone out of reach.** Another room is best; a bag across the room is next best. [How to stop checking your phone while studying](/guides/how-to-stop-checking-your-phone-while-studying/) covers setups for when you need the phone nearby.
 4. **Face a wall or window, not a doorway.** If you can't rearrange the room, a plain screen or a tidy bookshelf behind you works too.
-5. **Check light and seat.** Put the screen so a window doesn't cause glare, and use a lamp if the room is dim. Sit in a chair you can stay in for 25 to 50 minutes without shifting.
+5. **Check light and seat.** Put the screen so a window doesn't cause glare, and use a lamp if the room is dim. Sit in a chair you can stay in for 25 to 50 minutes without shifting. If your neck or shoulders get tight, [desk stretches for neck and shoulders](/guides/desk-stretches-for-neck-and-shoulders/) is a quick routine.
 6. **Write the task on a sticky note.** One line, such as "draft intro paragraph". Put it where you can see it.
 7. **Add water.** A drink at hand removes one reason to stand up and wander off.
 8. **Close what you don't need on the screen.** Quit chat apps, close tabs unrelated to the task, and silence notifications for the session.

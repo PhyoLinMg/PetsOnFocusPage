@@ -2,6 +2,7 @@
 title: How to take a proper screen break at work
 description: A real screen break means looking far away, moving and leaving your phone alone. Here is how often to take one, what to do and how to make it stick.
 published: 2026-11-17
+updated: 2026-11-18
 keywords: screen break at work, how to take a break from screens, computer break ideas, eye strain breaks, how often to take screen breaks
 ---
 
@@ -47,7 +48,7 @@ Do something that rests your eyes, moves your body and ends by itself. Pick from
 
 **Move**
 
-4. Stand up and roll your shoulders, then stretch your neck, wrists and back.
+4. Stand up and roll your shoulders, then stretch your neck, wrists and back. [Desk stretches for neck and shoulders](/guides/desk-stretches-for-neck-and-shoulders/) has a five-minute routine.
 5. Walk to another room, or up and down a corridor.
 6. Climb a flight of stairs.
 
