@@ -2,7 +2,7 @@
 title: Deep work session: how to plan one that works
 description: A deep work session is a block of 50 to 90 minutes on one demanding task with no interruptions. How to plan, start and end one, step by step.
 published: 2026-10-27
-updated: 2026-11-16
+updated: 2026-11-19
 keywords: deep work session, how to plan a deep work session, deep work schedule, deep work timer, focused work block
 ---
 
@@ -41,7 +41,7 @@ Most people do well with 50 to 90 minutes. Your first sessions can be shorter, a
 
 ## How many deep work sessions can you do in a day?
 
-One to three is realistic for most people. Deep work is tiring, and quality drops when you push on. Two good sessions in the morning beat five tired ones across the day. Put admin, email and meetings around them.
+One to three is realistic for most people. Deep work is tiring, and quality drops when you push on. Two good sessions in the morning beat five tired ones across the day. Put admin, email and meetings around them; [meeting-free focus time](/guides/meeting-free-focus-time/) shows how to protect the window in your calendar.
 
 ## What should you do before a session starts?
 

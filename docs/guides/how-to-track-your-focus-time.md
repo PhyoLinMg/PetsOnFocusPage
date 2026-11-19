@@ -2,6 +2,7 @@
 title: How to track your focus time (and what to do with it)
 description: Count only finished, single-task sessions, log them in one place, and review once a week. A simple way to track focus time that actually changes your days.
 published: 2026-11-06
+updated: 2026-11-19
 keywords: track focus time, how to track focus time, focus time tracker, track study time, measure focus
 ---
 
@@ -78,7 +79,7 @@ Use them to set a floor and a modest target, not a score to beat.
 - **Set a floor.** Choose a minimum you can hit on a bad day, such as two sessions. A small daily minimum is what keeps a habit going; [how to build a study streak](/guides/how-to-build-a-study-streak/) shows how.
 - **Raise slowly.** If your average is 90 minutes, aim for 100 next week, not 180.
 - **Watch for the ceiling.** If your total rises but your evening energy falls, you passed your limit. Go back a step.
-- **Protect your best hours.** Move meetings and errands out of them where you can.
+- **Protect your best hours.** Move meetings and errands out of them where you can; [meeting-free focus time](/guides/meeting-free-focus-time/) explains how.
 
 ## What mistakes make tracking useless?
 
