@@ -53,3 +53,6 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to take a proper break from screens at work — screen break at work (2026-11-17, how-to-take-a-proper-break-from-screens-at-work)
 - [x] How to relieve neck and shoulder tension at your desk — desk stretches for neck and shoulders (2026-11-18, desk-stretches-for-neck-and-shoulders)
 - [x] How to set up a work day with no meetings for focus — meeting-free focus time (2026-11-19, meeting-free-focus-time)
+- [x] Single-tasking: how to focus on one thing at a time — single-tasking (2026-11-22, single-tasking-how-to-focus-on-one-thing)
+- [ ] How to write a to-do list you can actually finish — daily to-do list that works
+- [ ] How to do a weekly review in 20 minutes — weekly review
