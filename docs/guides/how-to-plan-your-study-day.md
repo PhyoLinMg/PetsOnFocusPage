@@ -2,7 +2,7 @@
 title: How to plan your study day: a simple schedule
 description: Plan a study day in ten minutes: pick three tasks, put the hardest in your best hours, add breaks and buffers, and stop on time. A schedule you can reuse.
 published: 2026-11-09
-updated: 2026-11-10
+updated: 2026-11-23
 keywords: study schedule for a day, how to plan your study day, daily study plan, study timetable, plan a study day
 ---
 
@@ -21,7 +21,7 @@ Choose the tasks first, then fit them into the day. Doing it in this order stops
 5. **Add breaks and a buffer.** Leave 15 to 30 minutes somewhere in the day for whatever slipped.
 6. **Set a stop time.** Decide now when study ends, so the evening is yours.
 
-If a day has no room for a plan, plan the first block only and decide the rest when you get there.
+If a day has no room for a plan, plan the first block only and decide the rest when you get there. For writing the task list itself, see [how to write a to-do list you can actually finish](/guides/daily-to-do-list-that-works/).
 
 ## How many hours should a study day have?
 

@@ -2,6 +2,7 @@
 title: Single-tasking: how to focus on one thing at a time
 description: Single-tasking means giving one task your full attention. Here is why switching costs you, and a simple routine for doing one thing at a time.
 published: 2026-11-22
+updated: 2026-11-23
 keywords: single-tasking, monotasking, stop multitasking, focus on one thing at a time, how to stop multitasking
 ---
 
@@ -36,7 +37,7 @@ The cost of one switch is small. The cost of fifty a day is a day that felt full
 
 Single-tasking is a short routine you repeat for each block of work.
 
-1. **Choose one task.** Not a project, a task: "write the intro", "answer the five emails from clients", "do questions 1 to 10".
+1. **Choose one task.** Not a project, a task (see [how to write a to-do list you can actually finish](/guides/daily-to-do-list-that-works/) for sizing tasks): "write the intro", "answer the five emails from clients", "do questions 1 to 10".
 2. **Write the finish line.** One sentence on what "done for this block" looks like.
 3. **Clear the space.** Close other tabs and apps, silence notifications and put your phone out of reach. [How to set up a distraction-free desk](/guides/distraction-free-desk-setup/) covers a ten-minute setup.
 4. **Set a timer for one block.** 25 minutes is a gentle start; 50 works for bigger tasks. Stay with the one task until it rings.
