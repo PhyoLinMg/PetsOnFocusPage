@@ -2,6 +2,7 @@
 title: How to write a to-do list you can actually finish
 description: A to-do list works when it is short, specific and sized to your day. Here is a five-step way to write one, plus what to do with the tasks you don't finish.
 published: 2026-11-23
+updated: 2026-11-24
 keywords: daily to-do list that works, how to write a to-do list, to-do list you can finish, daily to-do list, to-do list tips
 ---
 
@@ -73,7 +74,7 @@ Decide on the spot: move it, shrink it or drop it. An unfinished task that rolls
 - **Drop it.** If it has moved three times and you still haven't done it, ask whether it matters. If not, delete it without guilt.
 - **Keep a "done" list.** At the end of the day, write down what you finished. It shows you what you did, which a list of what remains never does.
 
-A short end-of-day review of two minutes is enough: tick, move, drop, then write tomorrow's three.
+A short end-of-day review of two minutes is enough: tick, move, drop, then write tomorrow's three. Once a week, a longer look helps too: see [how to do a weekly review in 20 minutes](/guides/weekly-review-in-20-minutes/).
 
 ## How do you stop a to-do list taking over your day?
 

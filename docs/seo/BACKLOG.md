@@ -55,6 +55,6 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] How to set up a work day with no meetings for focus — meeting-free focus time (2026-11-19, meeting-free-focus-time)
 - [x] Single-tasking: how to focus on one thing at a time — single-tasking (2026-11-22, single-tasking-how-to-focus-on-one-thing)
 - [x] How to write a to-do list you can actually finish — daily to-do list that works (2026-11-23, daily-to-do-list-that-works)
-- [ ] How to do a weekly review in 20 minutes — weekly review
+- [x] How to do a weekly review in 20 minutes — weekly review (2026-11-24, weekly-review-in-20-minutes)
 - [ ] How to decide what to work on first: a simple way to prioritise — how to prioritise tasks
 - [ ] How to take notes while studying without losing focus — note taking while studying

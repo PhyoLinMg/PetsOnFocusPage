@@ -2,7 +2,7 @@
 title: How to plan your study day: a simple schedule
 description: Plan a study day in ten minutes: pick three tasks, put the hardest in your best hours, add breaks and buffers, and stop on time. A schedule you can reuse.
 published: 2026-11-09
-updated: 2026-11-23
+updated: 2026-11-24
 keywords: study schedule for a day, how to plan your study day, daily study plan, study timetable, plan a study day
 ---
 
@@ -76,6 +76,8 @@ If starting is the real problem, [how to start studying when you don't feel like
 ## How can a focus timer help you stick to the plan?
 
 A timer makes each block a small, finishable thing. Pets on Focus, a focus timer and Pomodoro app for Android, iPhone and iPad, with a pet who keeps you company, offers focus sessions from 5 minutes to 4 hours, or Pomodoro with work cycles, short breaks and a long break, set in Settings. You can write what you are working on and pin it before a session, which matches a plan that names one task per block. If you leave the app for more than 10 seconds during a session, the session ends without a reward, a gentle nudge to leave your phone alone. Its Stats show a week chart and a timeline of past sessions, which makes the end-of-day review easy.
+
+To choose what goes into each day in the first place, try [a weekly review in 20 minutes](/guides/weekly-review-in-20-minutes/).
 
 ## Common questions
 
