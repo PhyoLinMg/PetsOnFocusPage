@@ -10,10 +10,10 @@ import { FrontWall } from "./Walls";
 // The same room on a phone, an unfolded foldable and a tablet. A bigger screen gets a wider wall, with
 // things spread further apart, as the app's own big-screen layout does. Each screen shows the band of the
 // wall from `top` down, as tall as its shape allows. Frames are plain: no brand's hardware.
-const DEVICES: { key: string; label: string; W: number; spread: number; top: number; still: StaticImageData }[] = [
-  { key: "tablet", label: "Tablet", W: 2600, spread: 1.7, top: 130, still: retrieverSit },
-  { key: "fold", label: "Foldable", W: 2300, spread: 1.5, top: 110, still: tabbySit },
-  { key: "phone", label: "Phone", W: 966, spread: 1, top: 120, still: catSit },
+const DEVICES: { key: string; label: string; W: number; spread: number; top: number; still: StaticImageData; alt: string }[] = [
+  { key: "tablet", label: "Tablet", W: 2600, spread: 1.7, top: 130, still: retrieverSit, alt: "Golden retriever in its room in the Pets on Focus app on a tablet" },
+  { key: "fold", label: "Foldable", W: 2300, spread: 1.5, top: 110, still: tabbySit, alt: "Orange tabby cat in its room in the Pets on Focus app on a foldable" },
+  { key: "phone", label: "Phone", W: 966, spread: 1, top: 120, still: catSit, alt: "Cat in its room in the Pets on Focus focus timer app on a phone" },
 ];
 
 export function Devices() {
@@ -50,7 +50,7 @@ export function Devices() {
                 <div className="device-baseboard" />
                 <div className="device-floor" />
                 <div className="room-layer">
-                  <FrontWall still={d.still} />
+                  <FrontWall still={d.still} stillAlt={d.alt} />
                 </div>
               </div>
             </div>

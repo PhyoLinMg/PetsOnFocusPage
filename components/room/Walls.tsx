@@ -164,8 +164,12 @@ function Pin() {
   );
 }
 
-/** The front wall. With `still`, the pet only sits, as that one picture (the device frames use this). */
-export function FrontWall({ still }: { still?: StaticImageData }) {
+/**
+ * The front wall. With `still`, the pet only sits, as that one picture (the device frames use this).
+ * Every room sits inside an aria-hidden layer, so the alt text below is for search engines and image search only;
+ * screen readers never read it (and so never read the cat three times).
+ */
+export function FrontWall({ still, stillAlt = "" }: { still?: StaticImageData; stillAlt?: string }) {
   return (
     <>
       <div className="room-sounds" data-part="sounds">
@@ -301,12 +305,12 @@ export function FrontWall({ still }: { still?: StaticImageData }) {
 
       <div className="room-pet">
         {still ? (
-          <Image className="room-pet--still" src={still} alt="" sizes="320px" />
+          <Image className="room-pet--still" src={still} alt={stillAlt} sizes="320px" />
         ) : (
           <>
-            <Image data-pose="sit" src={catSit} alt="" sizes="640px" loading="eager" fetchPriority="high" />
-            <Image data-pose="sleep" className="room-pet--sleep" src={catSleep} alt="" sizes="640px" loading="eager" />
-            <Image data-pose="celebrating" className="room-pet--celebrating" src={catCelebrating} alt="" sizes="640px" loading="eager" />
+            <Image data-pose="sit" src={catSit} alt="Cute hand-drawn cat sitting on a rug in a cosy room while you focus" sizes="640px" loading="eager" fetchPriority="high" />
+            <Image data-pose="sleep" className="room-pet--sleep" src={catSleep} alt="Cute hand-drawn cat napping during a focus session" sizes="640px" loading="eager" />
+            <Image data-pose="celebrating" className="room-pet--celebrating" src={catCelebrating} alt="Cute hand-drawn cat celebrating a finished focus session" sizes="640px" loading="eager" />
           </>
         )}
       </div>

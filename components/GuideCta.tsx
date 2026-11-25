@@ -12,7 +12,7 @@ export function GuideCta({ variant }: { variant: "middle" | "end" }) {
 
   return (
     <aside className={`guide-cta guide-cta--${variant}`} aria-label="Pets on Focus app">
-      <Image src={appIcon} alt="" width={56} height={56} className="guide-cta-icon" />
+      <Image src={appIcon} alt="Pets on Focus app icon" aria-hidden width={56} height={56} className="guide-cta-icon" />
       <div className="guide-cta-text">
         <p className="guide-cta-title">
           {variant === "end" ? "Focus together with Pets on Focus" : "A focus timer with a pet beside you"}

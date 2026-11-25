@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="site-header">
           <div className="container site-header-inner">
             <Link href="/" className="wordmark">
-              <Image src={appIcon} alt="" width={32} height={32} className="wordmark-icon" loading="eager" />
+              <Image src={appIcon} alt="Pets on Focus app icon" aria-hidden width={32} height={32} className="wordmark-icon" loading="eager" />
               Pets on Focus
             </Link>
             <nav aria-label="Main" className="site-nav">
