@@ -12,9 +12,9 @@ export const AUTHOR = "Phyo Lin Mg";
 
 // Search engines weigh the title most and cut it near 60 characters, and the description near 155:
 // the phrases people search ("focus timer", "Pomodoro app") go first.
-export const HOME_TITLE = "Pets on Focus — cosy focus timer & Pomodoro app with a pet";
+export const HOME_TITLE = "Pets on Focus — cute focus timer & Pomodoro app with a pet";
 export const HOME_DESCRIPTION =
-  "A calm focus timer and Pomodoro app for Android and iPhone, with a hand-drawn pet who keeps you " +
+  "A cute focus timer and Pomodoro app for Android and iPhone, with a hand-drawn pet who keeps you " +
   "company. Stay focused, earn coins and make its room your own.";
 
 // What people type when they look for an app like this. Google ignores the keywords tag; Bing and

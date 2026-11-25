@@ -21,7 +21,7 @@ const tourNotes: { anchor?: string; content: React.ReactNode }[] = [
       <>
         <h1 className="eyebrow">Pets on Focus</h1>
         <p className="tour-headline">Focus together.</p>
-        <p className="tour-body">A calm focus timer with a hand-drawn pet who sits with you in a small, cosy room.</p>
+        <p className="tour-body">A calm, cute focus timer with a hand-drawn pet who sits with you in a small, cosy room.</p>
         <ul className="tour-stores" aria-label="Download">
           <li>Android</li>
           <li>iPhone and iPad</li>
@@ -190,6 +190,11 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          <p className="section-lede" data-reveal>
+            Comparing apps? Read{" "}
+            <Link href="/guides/cute-productivity-apps-that-make-focusing-cosy/">how to pick a cute focus app that works</Link>
+            , or browse all the <Link href="/guides/">focus and study guides</Link>.
+          </p>
         </div>
       </section>
 
