@@ -2,7 +2,7 @@
 title: How to write a to-do list you can actually finish
 description: A to-do list works when it is short, specific and sized to your day. Here is a five-step way to write one, plus what to do with the tasks you don't finish.
 published: 2026-11-23
-updated: 2026-11-24
+updated: 2026-11-25
 keywords: daily to-do list that works, how to write a to-do list, to-do list you can finish, daily to-do list, to-do list tips
 ---
 
@@ -32,6 +32,8 @@ Write the list once a day, ideally the evening before, and it takes about five m
 3. **Rewrite each as a specific action.** Start with a verb and say what done looks like: "Draft the first two paragraphs of the report", not "Report".
 4. **Size each task.** Next to each, write a rough time: 15 minutes, 45 minutes, 2 hours. Add about a third, because tasks usually take longer than we guess.
 5. **Order them.** Put the task you most want to avoid first, in the part of the day when you focus best.
+
+Not sure which task goes first? [How to prioritise tasks](/guides/how-to-prioritise-tasks/) gives a five-minute way to decide.
 
 If a task takes longer than a few hours, split it until the first piece fits in one sitting. [How to plan your study day](/guides/how-to-plan-your-study-day/) shows the same idea laid across a whole day.
 

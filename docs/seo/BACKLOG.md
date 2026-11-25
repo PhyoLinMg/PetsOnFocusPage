@@ -56,5 +56,6 @@ Format: `- [ ] <working title> — <main search phrase>`. Done: `- [x] <title> �
 - [x] Single-tasking: how to focus on one thing at a time — single-tasking (2026-11-22, single-tasking-how-to-focus-on-one-thing)
 - [x] How to write a to-do list you can actually finish — daily to-do list that works (2026-11-23, daily-to-do-list-that-works)
 - [x] How to do a weekly review in 20 minutes — weekly review (2026-11-24, weekly-review-in-20-minutes)
-- [ ] How to decide what to work on first: a simple way to prioritise — how to prioritise tasks
+- [x] How to decide what to work on first: a simple way to prioritise — how to prioritise tasks (2026-11-25, how-to-prioritise-tasks)
 - [ ] How to take notes while studying without losing focus — note taking while studying
+- [ ] How to deal with an overloaded to-do list: a reset — overwhelmed by too many tasks

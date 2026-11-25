@@ -2,6 +2,7 @@
 title: How to do a weekly review in 20 minutes
 description: A weekly review is a 20-minute check of last week and a plan for next. Here are four steps, a timed schedule and a template you can reuse every week.
 published: 2026-11-24
+updated: 2026-11-25
 keywords: weekly review, how to do a weekly review, weekly review template, weekly review in 20 minutes, weekly planning
 ---
 
@@ -92,7 +93,7 @@ Pets on Focus, a focus timer and Pomodoro app for Android, iPhone and iPad, with
 
 ## How does a weekly review fit with daily planning?
 
-The weekly review sets the direction and your daily list does the steering. On Monday morning, pick the day's tasks from your three weekly priorities, then size and order them as in [how to write a to-do list you can actually finish](/guides/daily-to-do-list-that-works/). For students, [how to plan your study day](/guides/how-to-plan-your-study-day/) shows how to lay those tasks across hours. If you want to see where your time really went last week, [how to track your focus time](/guides/how-to-track-your-focus-time/) gives you numbers to feed the "look back" step. And to keep each task to one thing at a time, see [single-tasking](/guides/single-tasking-how-to-focus-on-one-thing/).
+The weekly review sets the direction and your daily list does the steering. On Monday morning, pick the day's tasks from your three weekly priorities, then size and order them as in [how to write a to-do list you can actually finish](/guides/daily-to-do-list-that-works/). For students, [how to plan your study day](/guides/how-to-plan-your-study-day/) shows how to lay those tasks across hours. If you want to see where your time really went last week, [how to track your focus time](/guides/how-to-track-your-focus-time/) gives you numbers to feed the "look back" step. And to keep each task to one thing at a time, see [single-tasking](/guides/single-tasking-how-to-focus-on-one-thing/). When several tasks compete for first place, [how to prioritise tasks](/guides/how-to-prioritise-tasks/) helps you choose.
 
 ## What are common weekly review mistakes?
 
