@@ -59,10 +59,9 @@ their own. Rules for writing one: `docs/seo/WRITING.md`; topics waiting: `docs/s
 `npm run lint` and the deploy run `scripts/check-guides.mjs` (`npm run check:guides`), so a guide that breaks the rules never ships.
 
 A daily Claude Code routine (claude.ai/code/routines) writes the next backlog topic, runs lint and build, and pushes
-to `main`. When the store listings are live, put their URLs in `STORE_LINKS` (`lib/site.ts`) and every download box
-shows store buttons instead of "Coming soon".
+to `main`. Store listings live in `STORE_LINKS` (`lib/site.ts`): Google Play is live (2026-11-26); add the App Store
+URL there when its listing is live, and every download box shows its button instead of "Coming soon".
 
 ## Later
 
 - App Store id exists → add the Smart App Banner in `app/layout.tsx` (`apple-itunes-app`).
-- Store listings live → replace the "Coming soon" badges in `app/page.tsx` with links.

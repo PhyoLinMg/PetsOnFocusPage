@@ -11,9 +11,10 @@ function availability(): string {
     STORE_LINKS.android && `[Google Play](${STORE_LINKS.android})`,
     STORE_LINKS.ios && `[App Store](${STORE_LINKS.ios})`,
   ].filter(Boolean);
-  return stores.length > 0
-    ? `Free to download on ${stores.join(" and ")}.`
-    : "Coming soon to Google Play and the App Store; not released yet.";
+  const soon = [!STORE_LINKS.android && "Google Play", !STORE_LINKS.ios && "the App Store"].filter(Boolean);
+  const live = stores.length > 0 ? `Free to download on ${stores.join(" and ")}.` : "";
+  const later = soon.length > 0 ? `Coming soon to ${soon.join(" and ")}.` : "";
+  return [live, later].filter(Boolean).join(" ");
 }
 
 // Relative links in guide bodies become absolute, since the text is read away from the site.

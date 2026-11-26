@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { Devices } from "@/components/room/Devices";
 import { faqs, features } from "@/lib/home-content";
 import { RoomTour } from "@/components/room/RoomTour";
-import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, KEYWORDS, LOGO, OG_IMAGE, SITE_NAME, absoluteUrl, openGraphFor } from "@/lib/site";
+import { AUTHOR, CONTACT_EMAIL, HOME_DESCRIPTION, HOME_TITLE, KEYWORDS, LOGO, OG_IMAGE, SITE_NAME, STORE_LINKS, absoluteUrl, openGraphFor } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -13,6 +13,18 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/") },
   openGraph: openGraphFor({ title: HOME_TITLE, description: HOME_DESCRIPTION, path: "/" }),
 };
+
+// A store in the first note: a link once its listing is live, a plain chip before the "Coming soon" line until then.
+// Live stores sort first, so "Coming soon" sits next to the ones it is about.
+function StoreChip({ href, label, soonLabel }: { href?: string; label: string; soonLabel: string }) {
+  return href ? (
+    <li className="tour-stores-live">
+      <a href={href}>{label}</a>
+    </li>
+  ) : (
+    <li>{soonLabel}</li>
+  );
+}
 
 // What the tour shows, one note per stop (components/room/RoomTour.tsx).
 const tourNotes: { anchor?: string; content: React.ReactNode }[] = [
@@ -23,9 +35,9 @@ const tourNotes: { anchor?: string; content: React.ReactNode }[] = [
         <p className="tour-headline">Focus together.</p>
         <p className="tour-body">A calm, cute focus timer with a hand-drawn pet who sits with you in a small, cosy room.</p>
         <ul className="tour-stores" aria-label="Download">
-          <li>Android</li>
-          <li>iPhone and iPad</li>
-          <li className="tour-stores-soon">Coming soon</li>
+          <StoreChip href={STORE_LINKS.android} label="Google Play" soonLabel="Android" />
+          <StoreChip href={STORE_LINKS.ios} label="App Store" soonLabel="iPhone and iPad" />
+          {(!STORE_LINKS.android || !STORE_LINKS.ios) && <li className="tour-stores-soon">Coming soon</li>}
         </ul>
       </>
     ),
@@ -145,6 +157,8 @@ const jsonLd = {
       author: { "@type": "Person", name: AUTHOR },
       publisher: { "@id": ORG_ID },
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      ...(STORE_LINKS.android && { installUrl: STORE_LINKS.android }),
+      sameAs: [STORE_LINKS.android, STORE_LINKS.ios].filter(Boolean),
     },
     // The FAQ below as structured data, word for word. Answers with links (contact) stay out: the text must be plain.
     {

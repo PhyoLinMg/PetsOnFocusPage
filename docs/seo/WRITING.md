@@ -107,7 +107,8 @@ If a feature is not on this list, the app does not have it. The home page (`app/
 - "Never lose a streak again". A freeze is one day off in seven that doesn't cost you your streak.
 - Features not on the list above: no sync, backup to our servers, widgets, website blocking, Plus sounds, Plus pets,
   friends or leaderboards, Apple Watch.
-- Store links or "download now". The app is not released: the page's download box handles this and says "Coming soon".
+- Store links or "download now" in the text. The download box handles them: Google Play is live, the App Store is
+  "Coming soon" (iPhone and iPad are not released yet, so never say the iPhone app can be downloaded).
 - Made-up reviews, ratings, user counts, testimonials or quotes.
 
 ## Comparison guides (allowed)

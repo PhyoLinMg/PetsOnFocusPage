@@ -47,8 +47,10 @@ export const KEYWORDS = [
   "Pomodoro app for iPad",
 ];
 
-// Store pages, once the listings are live. Until then every download box says "Coming soon" and links nowhere.
-export const STORE_LINKS: { android?: string; ios?: string } = {};
+// Store pages. A store without a link shows "Coming soon" in every download box.
+export const STORE_LINKS: { android?: string; ios?: string } = {
+  android: "https://play.google.com/store/apps/details?id=com.app.petsonfocus",
+};
 
 /** Absolute URL for a site path, e.g. absoluteUrl("/privacy/"). */
 export function absoluteUrl(path: string): string {

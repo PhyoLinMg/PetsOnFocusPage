@@ -318,7 +318,7 @@ body:has(.tour) section[id] {
   color: var(--ink-2);
 }
 
-/* Not links: the store listings do not exist yet. */
+/* A live store is a link; a store not out yet is a plain chip before "Coming soon". */
 .tour-stores {
   list-style: none;
   padding: 0;
@@ -335,6 +335,25 @@ body:has(.tour) section[id] {
   padding: 5px 11px;
   font-size: 0.85rem;
   font-weight: 600;
+}
+
+.tour-stores .tour-stores-live {
+  border: 0;
+  padding: 0;
+}
+
+.tour-stores .tour-stores-live a {
+  display: inline-block;
+  border-radius: 12px;
+  padding: 7px 13px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tour-stores .tour-stores-live a:hover {
+  background: var(--accent-hover);
 }
 
 .tour-stores .tour-stores-soon {

@@ -9,6 +9,9 @@ export function GuideCta({ variant }: { variant: "middle" | "end" }) {
     STORE_LINKS.android && { href: STORE_LINKS.android, label: "Get it on Google Play" },
     STORE_LINKS.ios && { href: STORE_LINKS.ios, label: "Download on the App Store" },
   ].filter((s): s is { href: string; label: string } => Boolean(s));
+  const comingSoon = [!STORE_LINKS.android && "Google Play", !STORE_LINKS.ios && "the App Store"]
+    .filter(Boolean)
+    .join(" and ");
 
   return (
     <aside className={`guide-cta guide-cta--${variant}`} aria-label="Pets on Focus app">
@@ -19,18 +22,16 @@ export function GuideCta({ variant }: { variant: "middle" | "end" }) {
         </p>
         <p>
           Pets on Focus is a calm focus timer and Pomodoro app. Your pet settles in while you work, and you earn coins
-          for its room when you finish. Free on Android, iPhone and iPad.
+          for its room when you finish.{" "}
+          {STORE_LINKS.ios ? "Free on Android, iPhone and iPad." : "Free on Android; iPhone and iPad are on the way."}
         </p>
         <p className="guide-cta-actions">
-          {stores.length > 0 ? (
-            stores.map((s) => (
-              <a key={s.href} href={s.href} className="button">
-                {s.label}
-              </a>
-            ))
-          ) : (
-            <span className="guide-cta-soon">Coming soon to Google Play and the App Store</span>
-          )}
+          {stores.map((s) => (
+            <a key={s.href} href={s.href} className="button">
+              {s.label}
+            </a>
+          ))}
+          {comingSoon && <span className="guide-cta-soon">Coming soon to {comingSoon}</span>}
           <Link href="/" className="guide-cta-more">
             See the app →
           </Link>
