@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { DoubleCoins, FiveWeeks, FrozenCalendar } from "@/components/PlusArt";
 import { Reveal } from "@/components/Reveal";
+import { AppleDevicesIcon, ComingSoonChip, GooglePlayBadge } from "@/components/StoreBadges";
 import { Devices } from "@/components/room/Devices";
 import { faqs, features } from "@/lib/home-content";
 import { RoomTour } from "@/components/room/RoomTour";
@@ -14,17 +15,24 @@ export const metadata: Metadata = {
   openGraph: openGraphFor({ title: HOME_TITLE, description: HOME_DESCRIPTION, path: "/" }),
 };
 
-// A store in the first note: a link once its listing is live, a plain chip before the "Coming soon" line until then.
-// Live stores sort first, so "Coming soon" sits next to the ones it is about.
-function StoreChip({ href, label, soonLabel }: { href?: string; label: string; soonLabel: string }) {
-  return href ? (
-    <li className="tour-stores-live">
-      <a href={href} target="_blank" rel="noopener">
-        {label}
-      </a>
-    </li>
-  ) : (
-    <li>{soonLabel}</li>
+// The first note's stores: Google's badge once the Play listing is live, a "Coming soon" chip for a store not out yet.
+// No App Store badge is bundled yet: when STORE_LINKS.ios is set, add Apple's official badge here.
+function StoreList() {
+  return (
+    <ul className="tour-stores" aria-label="Download">
+      <li>
+        {STORE_LINKS.android ? <GooglePlayBadge href={STORE_LINKS.android} /> : <ComingSoonChip platform="Android" />}
+      </li>
+      <li>
+        {STORE_LINKS.ios ? (
+          <a href={STORE_LINKS.ios} target="_blank" rel="noopener">
+            Download on the App Store
+          </a>
+        ) : (
+          <ComingSoonChip platform="iPhone and iPad" icon={<AppleDevicesIcon className="soon-chip-icon" />} />
+        )}
+      </li>
+    </ul>
   );
 }
 
@@ -36,11 +44,7 @@ const tourNotes: { anchor?: string; content: React.ReactNode }[] = [
         <h1 className="eyebrow">Pets on Focus</h1>
         <p className="tour-headline">Focus together.</p>
         <p className="tour-body">A calm, cute focus timer with a hand-drawn pet who sits with you in a small, cosy room.</p>
-        <ul className="tour-stores" aria-label="Download">
-          <StoreChip href={STORE_LINKS.android} label="Google Play" soonLabel="Android" />
-          <StoreChip href={STORE_LINKS.ios} label="App Store" soonLabel="iPhone and iPad" />
-          {(!STORE_LINKS.android || !STORE_LINKS.ios) && <li className="tour-stores-soon">Coming soon</li>}
-        </ul>
+        <StoreList />
       </>
     ),
   },

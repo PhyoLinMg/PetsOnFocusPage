@@ -321,52 +321,79 @@ body:has(.tour) section[id] {
   color: var(--ink-2);
 }
 
-/* A live store is a link; a store not out yet is a plain chip before "Coming soon". */
+/* The stores in the first note: Google's badge, and a "Coming soon" chip of the same height for a store not out yet. */
 .tour-stores {
+  --store-h: 40px;
   list-style: none;
   padding: 0;
-  margin: 14px 0 0;
+  margin: 16px 0 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  /* Google asks for clear space around its badge of a quarter of its height. */
+  gap: 10px 12px;
 }
 
 .tour-stores li {
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  padding: 5px 11px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  display: flex;
 }
 
-.tour-stores .tour-stores-live {
-  border: 0;
-  padding: 0;
+/* ---------- Store badges (components/StoreBadges.tsx) ---------- */
+
+/* Google's badge is shown as supplied: no recolouring, no border of our own, only scaled. */
+.play-badge {
+  display: inline-flex;
+  border-radius: 5px;
+  transition: translate 160ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tour-stores .tour-stores-live a {
-  display: inline-block;
-  border-radius: 12px;
-  padding: 7px 13px;
-  background: var(--accent);
-  color: var(--on-accent);
-  font-weight: 700;
-  text-decoration: none;
+.play-badge:hover {
+  translate: 0 -2px;
 }
 
-.tour-stores .tour-stores-live a:hover {
-  background: var(--accent-hover);
+.play-badge-art {
+  display: block;
+  width: auto;
+  height: var(--store-h, 44px);
 }
 
-.tour-stores .tour-stores-soon {
-  border: 0;
-  padding: 0;
+/* Same shape as the badge (icon, small line over a name), drawn as an outline in the text colour: not a link. */
+.soon-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--store-h, 44px);
+  padding: 0 11px 0 9px;
+  border: 1.5px solid currentColor;
+  border-radius: 5px;
+  color: var(--ink);
+}
+
+.soon-chip-icon {
+  flex: none;
+  width: 24px;
+  height: 16px;
+}
+
+.soon-chip-words {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.soon-chip-kicker {
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-2);
+}
+
+.soon-chip-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 /* Same query as WIDE in RoomTour.tsx. */
@@ -1713,9 +1740,16 @@ body:has(.tour) section[id] {
   color: var(--on-accent);
 }
 
-.guide-cta-soon {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.85rem;
+.guide-cta-actions {
+  --store-h: 46px;
+}
+
+/* On the dark card the chip's outline and words take the card's text colours. */
+.guide-cta .soon-chip {
+  color: var(--on-floor);
+}
+
+.guide-cta .soon-chip-kicker {
   color: var(--on-floor);
 }
 
@@ -1731,6 +1765,11 @@ body:has(.tour) section[id] {
 @media (max-width: 560px) {
   .guide-cta {
     flex-direction: column;
+  }
+
+  /* The badges stack here; the link gets its own line rather than sitting beside one of them. */
+  .guide-cta-more {
+    flex-basis: 100%;
   }
 }
 

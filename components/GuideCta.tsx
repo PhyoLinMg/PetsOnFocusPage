@@ -1,17 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import appIcon from "@/assets/app-icon.webp";
+import { AppleDevicesIcon, ComingSoonChip, GooglePlayBadge } from "@/components/StoreBadges";
 import { STORE_LINKS } from "@/lib/site";
 
-// The download box in a guide: once in the middle, once at the end. Store buttons appear when STORE_LINKS has them.
+// The download box in a guide: once in the middle, once at the end. A store with a STORE_LINKS entry gets its badge.
 export function GuideCta({ variant }: { variant: "middle" | "end" }) {
-  const stores = [
-    STORE_LINKS.android && { href: STORE_LINKS.android, label: "Get it on Google Play" },
-    STORE_LINKS.ios && { href: STORE_LINKS.ios, label: "Download on the App Store" },
-  ].filter((s): s is { href: string; label: string } => Boolean(s));
-  const comingSoon = [!STORE_LINKS.android && "Google Play", !STORE_LINKS.ios && "the App Store"]
-    .filter(Boolean)
-    .join(" and ");
 
   return (
     <aside className={`guide-cta guide-cta--${variant}`} aria-label="Pets on Focus app">
@@ -26,12 +20,19 @@ export function GuideCta({ variant }: { variant: "middle" | "end" }) {
           {STORE_LINKS.ios ? "Free on Android, iPhone and iPad." : "Free on Android; iPhone and iPad are on the way."}
         </p>
         <p className="guide-cta-actions">
-          {stores.map((s) => (
-            <a key={s.href} href={s.href} className="button" target="_blank" rel="noopener">
-              {s.label}
+          {STORE_LINKS.android ? (
+            <GooglePlayBadge href={STORE_LINKS.android} />
+          ) : (
+            <ComingSoonChip platform="Android" />
+          )}
+          {/* No App Store badge is bundled yet: when STORE_LINKS.ios is set, add Apple's official badge here. */}
+          {STORE_LINKS.ios ? (
+            <a href={STORE_LINKS.ios} className="button" target="_blank" rel="noopener">
+              Download on the App Store
             </a>
-          ))}
-          {comingSoon && <span className="guide-cta-soon">Coming soon to {comingSoon}</span>}
+          ) : (
+            <ComingSoonChip platform="iPhone and iPad" icon={<AppleDevicesIcon className="soon-chip-icon" />} />
+          )}
           <Link href="/" className="guide-cta-more">
             See the app →
           </Link>
