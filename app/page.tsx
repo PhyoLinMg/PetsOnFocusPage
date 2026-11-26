@@ -19,7 +19,9 @@ export const metadata: Metadata = {
 function StoreChip({ href, label, soonLabel }: { href?: string; label: string; soonLabel: string }) {
   return href ? (
     <li className="tour-stores-live">
-      <a href={href}>{label}</a>
+      <a href={href} target="_blank" rel="noopener">
+        {label}
+      </a>
     </li>
   ) : (
     <li>{soonLabel}</li>

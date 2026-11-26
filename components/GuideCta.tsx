@@ -27,7 +27,7 @@ export function GuideCta({ variant }: { variant: "middle" | "end" }) {
         </p>
         <p className="guide-cta-actions">
           {stores.map((s) => (
-            <a key={s.href} href={s.href} className="button">
+            <a key={s.href} href={s.href} className="button" target="_blank" rel="noopener">
               {s.label}
             </a>
           ))}
