@@ -281,10 +281,13 @@ body:has(.tour) section[id] {
   border: 1px solid rgb(31 42 28 / 0.1);
   border-radius: 18px;
   opacity: 0;
+  /* Stacked in one place: only the note on show takes clicks (RoomTour.tsx keeps this in step on scroll). */
+  pointer-events: none;
 }
 
 .tour-note[data-stop="0"] {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .tour-note .eyebrow {

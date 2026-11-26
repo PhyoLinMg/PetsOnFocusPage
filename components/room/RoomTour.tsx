@@ -238,8 +238,13 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
       const time = pos > 0.5 && pos < 1.5 ? clock(Math.ceil(1500 * (1 - clamp((raw - runFrom) / (runTo - runFrom))))) : "25:00";
       for (const el of timers) if (el.textContent !== time) el.textContent = time;
 
-      // Opacity only: the notes are the tour's text for screen readers, so they stay in reach.
-      noteEls.forEach((n, i) => (n.style.opacity = String(clamp(1 - Math.abs(pos - i) * 2.2))));
+      // Opacity only: the notes are the tour's text for screen readers, so they stay in reach. The notes are
+      // stacked in one place, so a faded one must not take clicks: it sat over the first note's store link.
+      noteEls.forEach((n, i) => {
+        const o = clamp(1 - Math.abs(pos - i) * 2.2);
+        n.style.opacity = String(o);
+        n.style.pointerEvents = o > 0.5 ? "auto" : "none";
+      });
     }
 
     let queued = 0;
@@ -278,7 +283,7 @@ export function RoomTour({ notes }: { notes: { anchor?: string; content: ReactNo
     <div className="tour" ref={tourRef}>
       {/* Without JavaScript the notes read as plain text, one after another. */}
       <noscript>
-        <style>{`.tour-stage{position:static;height:auto;overflow:visible}.tour-scene{display:none}.tour-note{position:static;opacity:1;transform:none;margin:16px auto;width:auto;max-width:560px}`}</style>
+        <style>{`.tour-stage{position:static;height:auto;overflow:visible}.tour-scene{display:none}.tour-note{position:static;opacity:1;pointer-events:auto;transform:none;margin:16px auto;width:auto;max-width:560px}`}</style>
       </noscript>
       <div className="tour-track">
         {notes.map((n, i) =>
